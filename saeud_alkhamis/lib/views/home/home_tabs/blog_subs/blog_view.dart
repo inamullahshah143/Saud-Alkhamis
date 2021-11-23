@@ -28,8 +28,9 @@ class _BlogViewState extends State<BlogView> {
             collapsedHeight: height * 0.25 - 125,
             elevation: 0,
             pinned: true,
-            leadingWidth: 240,
-            leading: Row(
+            automaticallyImplyLeading: false,
+            leadingWidth: 0,
+            title: Row(
               children: [
                 Container(
                   width: 40,
@@ -44,30 +45,36 @@ class _BlogViewState extends State<BlogView> {
                     color: darkFonts,
                   ),
                 ),
-                Container(
-                  width: 40,
-                  height: 40,
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: appColorLight,
-                  ),
-                  child: ImageIcon(
-                    AssetImage('assets/images/icons/search-2.png'),
-                    color: darkFonts,
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: appColorLight,
+                    ),
+                    child: ImageIcon(
+                      AssetImage('assets/images/icons/search-2.png'),
+                      color: darkFonts,
+                    ),
                   ),
                 ),
-                Container(
-                  width: 40,
-                  height: 40,
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: appColorLight,
-                  ),
-                  child: ImageIcon(
-                    AssetImage('assets/images/icons/plus.png'),
-                    color: darkFonts,
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: appColorLight,
+                    ),
+                    child: ImageIcon(
+                      AssetImage('assets/images/icons/plus.png'),
+                      color: darkFonts,
+                    ),
                   ),
                 ),
               ],
