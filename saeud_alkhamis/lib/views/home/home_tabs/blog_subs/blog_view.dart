@@ -14,6 +14,8 @@ class BlogView extends StatefulWidget {
 class _BlogViewState extends State<BlogView> {
   @override
   Widget build(BuildContext context) {
+    var demoText =
+        "ذلك الشاب الذي ارهق والده بالطلبات، تفاجئه والدته بحاسب محمول، مختلف عن أخوانه، اتفق مع زوجته بأن المستقبل سيكون افضل، متقوقع في عالمه المليء بالأسلاك والكاميرات والعدسات والقصائد والخواطر وغارق في المساحة البيضاء والسوداء دون الحاجة الى المساحة الرمادية فكانت النتيجة إنسان غير اجتماعي سوداوي وسلبي وبنفس الوقت متناقض ( طبيعة الكائنات البشرية ) يقدم مايستطيع ومالا يستطيع لتقديم المساعدة فكان دائما يتحدث عن عالمه بعيدا عن العالم الخارجي وعندما يواجه العالم الخارجي يفهم الأمور بالفطرة هناك حق وهناك باطل ليس هناك اختلاف، يعمل ويدرس ويتعلم من عالمه بنفس الوقت، يفضل التجربة، مليء بالتغيير، اصبح محرك بحث العائلة والأصدقاء ومن هم افتراضيين في عالم الإنترنت لم يفهم ضميره جيداً حتى اصبح مصدر ضغط له وكانت النتيجة كالآتي";
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -25,63 +27,11 @@ class _BlogViewState extends State<BlogView> {
             collapsedHeight: height * 0.25 - 125,
             elevation: 0,
             pinned: true,
-            leadingWidth: 200,
-            leading: Row(
+            automaticallyImplyLeading: false,
+            leadingWidth: 0,
+            title: Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: appColorLight,
-                    ),
-                    child: ImageIcon(
-                      AssetImage('assets/images/icons/person.png'),
-                      color: darkFonts,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: appColorLight,
-                    ),
-                    child: ImageIcon(
-                      AssetImage('assets/images/icons/search-2.png'),
-                      color: darkFonts,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: appColorLight,
-                    ),
-                    child: ImageIcon(
-                      AssetImage('assets/images/icons/plus.png'),
-                      color: darkFonts,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
+                Container(
                   width: 40,
                   height: 40,
                   padding: EdgeInsets.all(10),
@@ -90,8 +40,57 @@ class _BlogViewState extends State<BlogView> {
                     color: appColorLight,
                   ),
                   child: ImageIcon(
-                    AssetImage('assets/images/icons/arrow_back.png'),
+                    AssetImage('assets/images/icons/person.png'),
                     color: darkFonts,
+                  ),
+                ),
+                Container(
+                  width: 40,
+                  height: 40,
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: appColorLight,
+                  ),
+                  child: ImageIcon(
+                    AssetImage('assets/images/icons/search-2.png'),
+                    color: darkFonts,
+                  ),
+                ),
+                Container(
+                  width: 40,
+                  height: 40,
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: appColorLight,
+                  ),
+                  child: ImageIcon(
+                    AssetImage('assets/images/icons/plus.png'),
+                    color: darkFonts,
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: appColorLight,
+                    ),
+                    child: ImageIcon(
+                      AssetImage('assets/images/icons/arrow_back.png'),
+                      color: darkFonts,
+                    ),
                   ),
                 ),
               ),
@@ -121,6 +120,22 @@ class _BlogViewState extends State<BlogView> {
                             borderRadius: BorderRadius.circular(50),
                             color: pagesColor,
                           ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "مشاركة",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              ImageIcon(
+                                AssetImage('assets/images/icons/share.png'),
+                                color: yellowFonts,
+                              ),
+                            ],
+                          ),
                         ),
                         Container(
                           height: 40,
@@ -130,32 +145,23 @@ class _BlogViewState extends State<BlogView> {
                             color: pagesColor,
                           ),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("مشاركة"),
+                              Text(
+                                "التعليقات",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              SizedBox(width: 10),
                               ImageIcon(
-                                AssetImage('assets/images/icons/search-2.png'),
-                                color: darkFonts,
+                                AssetImage('assets/images/icons/chat.png'),
+                                color: yellowFonts,
                               ),
                             ],
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  ListTile(
-                    dense: true,
-                    leading: ImageIcon(
-                      AssetImage('assets/images/icons/filter.png'),
-                      size: 16,
-                      color: yellowFonts,
-                    ),
-                    trailing: Text(
-                      'آخر التحديثات',
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                        color: yellowFonts,
-                        fontSize: 12,
-                      ),
                     ),
                   ),
                 ],
@@ -187,7 +193,24 @@ class _BlogViewState extends State<BlogView> {
               ),
             ),
           ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      demoText +"/n"+ demoText +"/n"+ demoText,
+                      textDirection: TextDirection.rtl,
+                    ),
+                  )
+                ],
+              )),
         ],
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.green,
+        height: 30,
       ),
     );
   }
