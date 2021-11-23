@@ -52,7 +52,7 @@ class _BlogState extends State<Blog> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0),
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: Container(
                     width: 40,
                     height: 40,
@@ -68,7 +68,7 @@ class _BlogState extends State<Blog> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0),
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: Container(
                     width: 40,
                     height: 40,
@@ -133,42 +133,47 @@ class _BlogState extends State<Blog> {
                       image: AssetImage('assets/images/logo.png'),
                       width: 90,
                     ),
-                    ChipsChoice<String>.multiple(
-                      value: tags,
-                      choiceActiveStyle: C2ChoiceStyle(
-                        showCheckmark: false,
-                        brightness: Brightness.dark,
-                        color: yellowFonts,
-                        borderRadius: BorderRadius.all(Radius.circular(25)),
-                        borderColor: pagesColor,
-                      ),
-                      choiceStyle: C2ChoiceStyle(
-                        showCheckmark: false,
-                        brightness: Brightness.dark,
-                        color: pagesColor,
-                        borderRadius: BorderRadius.all(Radius.circular(25)),
-                        borderColor: pagesColor,
-                      ),
-                      onChanged: (val) => setState(() => tags = val),
-                      choiceItems: C2Choice.listFrom<String, String>(
-                        source: options,
-                        value: (i, v) => v,
-                        label: (i, v) => v,
-                        tooltip: (i, v) => v,
-                        style: (i, v) {
-                          return C2ChoiceStyle(
-                            showCheckmark: false,
-                            borderRadius: BorderRadius.all(Radius.circular(25)),
-                            borderColor: pagesColor,
-                          );
-                        },
-                        activeStyle: (i, v) {
-                          return C2ChoiceStyle(
-                            showCheckmark: false,
-                            borderRadius: BorderRadius.all(Radius.circular(25)),
-                            borderColor: yellowFonts,
-                          );
-                        },
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      child: ChipsChoice<String>.multiple(
+                        value: tags,
+                        choiceActiveStyle: C2ChoiceStyle(
+                          showCheckmark: false,
+                          brightness: Brightness.dark,
+                          color: yellowFonts,
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
+                          borderColor: pagesColor,
+                        ),
+                        choiceStyle: C2ChoiceStyle(
+                          showCheckmark: false,
+                          brightness: Brightness.dark,
+                          color: pagesColor,
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
+                          borderColor: pagesColor,
+                        ),
+                        onChanged: (val) => setState(() => tags = val),
+                        choiceItems: C2Choice.listFrom<String, String>(
+                          source: options,
+                          value: (i, v) => v,
+                          label: (i, v) => v,
+                          tooltip: (i, v) => v,
+                          style: (i, v) {
+                            return C2ChoiceStyle(
+                              showCheckmark: false,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25)),
+                              borderColor: pagesColor,
+                            );
+                          },
+                          activeStyle: (i, v) {
+                            return C2ChoiceStyle(
+                              showCheckmark: false,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25)),
+                              borderColor: yellowFonts,
+                            );
+                          },
+                        ),
                       ),
                     ),
                     ListTile(
