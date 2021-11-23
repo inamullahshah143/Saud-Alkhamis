@@ -50,7 +50,7 @@ class _BlogViewState extends State<BlogView> {
                 Container(
                   width: 40,
                   height: 40,
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
                     color: appColorLight,
@@ -65,7 +65,7 @@ class _BlogViewState extends State<BlogView> {
                   child: Container(
                     width: 40,
                     height: 40,
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
                       color: appColorLight,
@@ -87,7 +87,7 @@ class _BlogViewState extends State<BlogView> {
                     child: Container(
                       width: 40,
                       height: 40,
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                         color: appColorLight,

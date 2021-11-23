@@ -75,7 +75,7 @@ class _DashboardState extends State<Dashboard> {
               child: Container(
                 width: 40,
                 height: 40,
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
                   color: appColorLight,
@@ -159,7 +159,7 @@ class _DashboardState extends State<Dashboard> {
                             child: Container(
                               width: 40,
                               height: 40,
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.all(12),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
                                 color: appColorLight,
