@@ -5,6 +5,7 @@ import 'package:saeud_alkhamis/views/home/home_tabs/blog_subs/blog_view.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'dashboard_subs/filter_form.dart';
+import 'dashboard_subs/notices.dart';
 
 class Blog extends StatefulWidget {
   const Blog({Key key}) : super(key: key);
@@ -52,17 +53,40 @@ class _BlogState extends State<Blog> {
             leadingWidth: 0,
             title: Row(
               children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: appColorLight,
-                  ),
-                  child: ImageIcon(
-                    AssetImage('assets/images/icons/person.png'),
-                    color: darkFonts,
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      enableDrag: true,
+                      isScrollControlled: true,
+                      isDismissible: false,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                        height: MediaQuery.of(context).size.height * 0.9,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0),
+                          ),
+                        ),
+                        child: Notices(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: appColorLight,
+                    ),
+                    child: ImageIcon(
+                      AssetImage('assets/images/icons/person.png'),
+                      color: darkFonts,
+                    ),
                   ),
                 ),
                 Padding(
