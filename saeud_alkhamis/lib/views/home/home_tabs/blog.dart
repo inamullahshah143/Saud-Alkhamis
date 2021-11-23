@@ -91,17 +91,22 @@ class _BlogState extends State<Blog> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: appColorLight,
-                    ),
-                    child: ImageIcon(
-                      AssetImage('assets/images/icons/search-2.png'),
-                      color: darkFonts,
+                  child: InkWell(
+                    onTap: () {
+                      showSearchScreen(context);
+                    },
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: appColorLight,
+                      ),
+                      child: ImageIcon(
+                        AssetImage('assets/images/icons/search-2.png'),
+                        color: darkFonts,
+                      ),
                     ),
                   ),
                 ),
