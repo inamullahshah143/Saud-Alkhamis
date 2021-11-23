@@ -43,9 +43,8 @@ class _DashboardState extends State<Dashboard> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            automaticallyImplyLeading: false,
             expandedHeight: height * 0.5,
-            collapsedHeight: height * 0.25,
+            collapsedHeight: height * 0.25 - 125,
             elevation: 0,
             pinned: true,
             leading: Padding(
@@ -90,9 +89,9 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
             ],
-            flexibleSpace: BackgroundFlexibleSpaceBar(
-              collapseMode: CollapseMode.none,
-              title: Column(
+            bottom: PreferredSize(
+              preferredSize: Size(MediaQuery.of(context).size.width, 125),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -146,7 +145,9 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ],
               ),
-              centerTitle: true,
+            ),
+            flexibleSpace: BackgroundFlexibleSpaceBar(
+              collapseMode: CollapseMode.none,
               background: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
