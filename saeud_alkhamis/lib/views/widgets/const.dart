@@ -23,7 +23,6 @@ const Color darkFonts = Color.fromRGBO(39, 41, 41, 1);
 const Color whiteFonts = Color.fromRGBO(255, 255, 255, 1);
 const Color redFonts = Color.fromRGBO(230, 0, 35, 1);
 
-
 push(BuildContext context, Widget widget) {
   return Navigator.push(
     context,
@@ -42,13 +41,8 @@ pushReplacement(BuildContext context, Widget widget) {
   );
 }
 
-
 Widget customListTile(
-  String type,
-  String title,
-  String subtitle,
-  String date,
-) {
+    String type, String title, String subtitle, String date, bool isShareable) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -93,32 +87,59 @@ Widget customListTile(
                     ),
                   ],
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'يوجد 38 زيارة',
-                      style: TextStyle(
-                        fontSize: 9,
-                        color: yellowFonts,
+                isShareable
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'يوجد 38 زيارة',
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: yellowFonts,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: ImageIcon(
+                              AssetImage('assets/images/icons/link.png'),
+                              color: yellowFonts,
+                            ),
+                          ),
+                          Text(
+                            'زيارة',
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: whiteFonts,
+                            ),
+                          ),
+                        ],
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'يوجد 38 زيارة',
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: yellowFonts,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: ImageIcon(
+                              AssetImage('assets/images/icons/view-2.png'),
+                              color: yellowFonts,
+                            ),
+                          ),
+                          Text(
+                            'قراءة',
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: whiteFonts,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: ImageIcon(
-                        AssetImage('assets/images/icons/link.png'),
-                        color: yellowFonts,
-                      ),
-                    ),
-                    Text(
-                      'زيارة',
-                      style: TextStyle(
-                        fontSize: 9,
-                        color: whiteFonts,
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/views/home/home_tabs/blog.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'home_tabs/dahsboard.dart';
@@ -22,7 +23,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: bottomIndex == 4 ? Dashboard() : Container(),
+      body: bottomIndex == 4
+          ? Dashboard()
+          : bottomIndex == 3
+              ? Blog()
+              : bottomIndex == 2
+                  ? Container()
+                  : Container(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
         clipBehavior: Clip.hardEdge,
