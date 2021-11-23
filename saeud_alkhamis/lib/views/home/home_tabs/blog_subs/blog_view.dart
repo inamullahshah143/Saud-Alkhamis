@@ -22,6 +22,7 @@ class _BlogViewState extends State<BlogView> {
     return Scaffold(
       backgroundColor: pagesColor,
       body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             expandedHeight: height * 0.5,
@@ -46,7 +47,7 @@ class _BlogViewState extends State<BlogView> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0),
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: Container(
                     width: 40,
                     height: 40,
@@ -62,7 +63,7 @@ class _BlogViewState extends State<BlogView> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:8.0),
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: Container(
                     width: 40,
                     height: 40,
@@ -227,13 +228,13 @@ class _BlogViewState extends State<BlogView> {
             ),
           ),
           SliverFillRemaining(
-            hasScrollBody: false,
+              hasScrollBody: false,
               child: Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      demoText +"/n"+ demoText +"/n"+ demoText,
+                      demoText + "/n" + demoText + "/n" + demoText,
                       textDirection: TextDirection.rtl,
                     ),
                   )

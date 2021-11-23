@@ -27,6 +27,7 @@ class _BlogState extends State<Blog> {
     return Scaffold(
       backgroundColor: pagesColor,
       body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             expandedHeight: height * 0.5,
