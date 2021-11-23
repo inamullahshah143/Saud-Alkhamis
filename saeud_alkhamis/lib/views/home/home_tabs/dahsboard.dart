@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
+import 'dashboard_subs/demo.dart';
 import 'dashboard_subs/filter_form.dart';
 
 class Dashboard extends StatefulWidget {
@@ -36,11 +37,11 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    // double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: pagesColor,
       body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             expandedHeight: height * 0.5,
@@ -90,60 +91,80 @@ class _DashboardState extends State<Dashboard> {
               ),
             ],
             bottom: PreferredSize(
-              preferredSize: Size(MediaQuery.of(context).size.width, 125),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Image(
-                    image: AssetImage('assets/images/logo.png'),
-                    width: 100,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'خدمة',
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          color: whiteFonts,
-                          fontSize: 12,
-                        ),
-                      ),
-                      MaterialButton(
-                        color: appColorLight,
-                        shape: CircleBorder(),
-                        textColor: darkFonts,
-                        child: Icon(Icons.add),
-                        onPressed: () {},
-                      ),
-                      Text(
-                        'أطلب',
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          color: whiteFonts,
-                          fontSize: 12,
-                        ),
-                      ),
+              preferredSize: Size(MediaQuery.of(context).size.width, 130),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      pagesColor.withOpacity(0),
+                      pagesColor.withOpacity(0.5),
+                      pagesColor,
                     ],
                   ),
-                  ListTile(
-                    dense: true,
-                    leading: ImageIcon(
-                      AssetImage('assets/images/icons/filter.png'),
-                      size: 16,
-                      color: yellowFonts,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Image(
+                      image: AssetImage('assets/images/logo.png'),
+                      width: 90,
                     ),
-                    trailing: Text(
-                      'آخر التحديثات',
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                        color: yellowFonts,
-                        fontSize: 12,
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'خدمة',
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(
+                              color: whiteFonts,
+                              fontSize: 12,
+                            ),
+                          ),
+                          MaterialButton(
+                            key: key,
+                            color: appColorLight,
+                            shape: CircleBorder(),
+                            textColor: darkFonts,
+                            child: Icon(Icons.add),
+                            onPressed: () {
+                              getOffset(key);
+                              showMyDialog();
+                            },
+                          ),
+                          Text(
+                            'أطلب',
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(
+                              color: whiteFonts,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ],
+                    ListTile(
+                      dense: true,
+                      leading: ImageIcon(
+                        AssetImage('assets/images/icons/filter.png'),
+                        size: 16,
+                        color: yellowFonts,
+                      ),
+                      trailing: Text(
+                        'آخر التحديثات',
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                          color: yellowFonts,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             flexibleSpace: BackgroundFlexibleSpaceBar(
@@ -157,24 +178,125 @@ class _DashboardState extends State<Dashboard> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: const [
-                        Colors.transparent,
-                        pagesColor,
-                      ],
-                    ),
-                  ),
-                ),
               ),
             ),
           ),
           SliverFillRemaining(
+            hasScrollBody: false,
             child: Column(
               children: [
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      isDismissible: false,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0),
+                          ),
+                        ),
+                        child: FilterForm(),
+                      ),
+                    );
+                  },
+                  child: customListTile(
+                    'استشارت',
+                    'تقديم استشارة في تجربة المستخدم',
+                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                    '03/05/2021',
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      isDismissible: false,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0),
+                          ),
+                        ),
+                        child: FilterForm(),
+                      ),
+                    );
+                  },
+                  child: customListTile(
+                    'استشارت',
+                    'تقديم استشارة في تجربة المستخدم',
+                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                    '03/05/2021',
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      isDismissible: false,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0),
+                          ),
+                        ),
+                        child: FilterForm(),
+                      ),
+                    );
+                  },
+                  child: customListTile(
+                    'استشارت',
+                    'تقديم استشارة في تجربة المستخدم',
+                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                    '03/05/2021',
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      isScrollControlled: true,
+                      isDismissible: false,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0),
+                          ),
+                        ),
+                        child: FilterForm(),
+                      ),
+                    );
+                  },
+                  child: customListTile(
+                    'استشارت',
+                    'تقديم استشارة في تجربة المستخدم',
+                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                    '03/05/2021',
+                  ),
+                ),
                 InkWell(
                   onTap: () {
                     showModalBottomSheet(
@@ -208,6 +330,17 @@ class _DashboardState extends State<Dashboard> {
           )
         ],
       ),
+    );
+  }
+
+  Future<void> showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      useSafeArea: false,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Demo(x: x, y: y);
+      },
     );
   }
 }
