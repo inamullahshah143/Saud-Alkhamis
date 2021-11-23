@@ -11,6 +11,7 @@ class Notices extends StatefulWidget {
 }
 
 class _NoticesState extends State<Notices> {
+  ScrollController scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -434,6 +435,7 @@ class _NoticesState extends State<Notices> {
                           alignment: Alignment.center,
                           child: Scrollbar(
                             isAlwaysShown: true,
+                            controller: scrollController,
                             radius: Radius.circular(10),
                             child: ListView(
                               physics: BouncingScrollPhysics(),

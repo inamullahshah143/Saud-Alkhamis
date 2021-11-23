@@ -3,8 +3,9 @@ import 'dart:ui';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-import 'dashboard_subs/demo.dart';
+import '../../widgets/popup_menu_button.dart';
 import 'dashboard_subs/filter_form.dart';
+import 'dashboard_subs/notices.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key key}) : super(key: key);
@@ -50,23 +51,46 @@ class _DashboardState extends State<Dashboard> {
             pinned: true,
             leading: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: 40,
-                height: 40,
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: appColorLight,
-                ),
-                child: ImageIcon(
-                  AssetImage('assets/images/icons/person.png'),
-                  color: darkFonts,
+              child: InkWell(
+                onTap: () {
+                  showModalBottomSheet(
+                    enableDrag: true,
+                    isScrollControlled: true,
+                    isDismissible: false,
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (BuildContext context) => Container(
+                      height: MediaQuery.of(context).size.height * 0.9,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25.0),
+                          topRight: Radius.circular(25.0),
+                        ),
+                      ),
+                      child: Notices(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: appColorLight,
+                  ),
+                  child: ImageIcon(
+                    AssetImage('assets/images/icons/person.png'),
+                    color: darkFonts,
+                  ),
                 ),
               ),
             ),
             actions: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.0),
+                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 3),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: const [
@@ -149,17 +173,39 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     ListTile(
                       dense: true,
-                      leading: ImageIcon(
-                        AssetImage('assets/images/icons/filter.png'),
-                        size: 16,
-                        color: yellowFonts,
+                      leading: IconButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            isScrollControlled: true,
+                            enableDrag: true,
+                            isDismissible: false,
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (BuildContext context) => Container(
+                              height: MediaQuery.of(context).size.height * 0.4,
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25.0),
+                                  topRight: Radius.circular(25.0),
+                                ),
+                              ),
+                              child: FilterForm(),
+                            ),
+                          );
+                        },
+                        icon: ImageIcon(
+                          AssetImage('assets/images/icons/filter.png'),
+                          size: 16,
+                          color: yellowFonts,
+                        ),
                       ),
                       trailing: Text(
                         'آخر التحديثات',
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           color: yellowFonts,
-                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -173,7 +219,7 @@ class _DashboardState extends State<Dashboard> {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      'assets/images/1.png',
+                      'assets/images/2.png',
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -186,138 +232,7 @@ class _DashboardState extends State<Dashboard> {
             child: Column(
               children: [
                 InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      isDismissible: false,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (BuildContext context) => Container(
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25.0),
-                            topRight: Radius.circular(25.0),
-                          ),
-                        ),
-                        child: FilterForm(),
-                      ),
-                    );
-                  },
-                  child: customListTile(
-                    'استشارت',
-                    'تقديم استشارة في تجربة المستخدم',
-                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                    '03/05/2021',
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      isDismissible: false,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (BuildContext context) => Container(
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25.0),
-                            topRight: Radius.circular(25.0),
-                          ),
-                        ),
-                        child: FilterForm(),
-                      ),
-                    );
-                  },
-                  child: customListTile(
-                    'استشارت',
-                    'تقديم استشارة في تجربة المستخدم',
-                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                    '03/05/2021',
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      isDismissible: false,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (BuildContext context) => Container(
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25.0),
-                            topRight: Radius.circular(25.0),
-                          ),
-                        ),
-                        child: FilterForm(),
-                      ),
-                    );
-                  },
-                  child: customListTile(
-                    'استشارت',
-                    'تقديم استشارة في تجربة المستخدم',
-                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                    '03/05/2021',
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      isDismissible: false,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (BuildContext context) => Container(
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25.0),
-                            topRight: Radius.circular(25.0),
-                          ),
-                        ),
-                        child: FilterForm(),
-                      ),
-                    );
-                  },
-                  child: customListTile(
-                    'استشارت',
-                    'تقديم استشارة في تجربة المستخدم',
-                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                    '03/05/2021',
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      isDismissible: false,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (BuildContext context) => Container(
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25.0),
-                            topRight: Radius.circular(25.0),
-                          ),
-                        ),
-                        child: FilterForm(),
-                      ),
-                    );
-                  },
+                  onTap: () {},
                   child: customListTile(
                     'استشارت',
                     'تقديم استشارة في تجربة المستخدم',
@@ -336,10 +251,11 @@ class _DashboardState extends State<Dashboard> {
   Future<void> showMyDialog() async {
     return showDialog<void>(
       context: context,
+      barrierColor: Colors.black87,
       useSafeArea: false,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return Demo(x: x, y: y);
+        return PopupMenuBth(x: x, y: y);
       },
     );
   }

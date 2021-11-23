@@ -429,6 +429,7 @@ class _OrderFormState extends State<OrderForm> {
                                           fillColor: pagesColor,
                                           isDense: true,
                                           hintText: 'الاسم',
+                                          hintTextDirection: TextDirection.rtl,
                                           contentPadding: EdgeInsets.symmetric(
                                             horizontal: 20,
                                             vertical: 15,
@@ -482,6 +483,7 @@ class _OrderFormState extends State<OrderForm> {
                                           fillColor: pagesColor,
                                           isDense: true,
                                           hintText: 'رقم الجوال',
+                                          hintTextDirection: TextDirection.rtl,
                                           contentPadding: EdgeInsets.symmetric(
                                             horizontal: 20,
                                             vertical: 15,
@@ -534,6 +536,7 @@ class _OrderFormState extends State<OrderForm> {
                                           fillColor: pagesColor,
                                           isDense: true,
                                           hintText: 'البريد الالكتروني',
+                                          hintTextDirection: TextDirection.rtl,
                                           contentPadding: EdgeInsets.symmetric(
                                             horizontal: 20,
                                             vertical: 15,
@@ -559,8 +562,8 @@ class _OrderFormState extends State<OrderForm> {
                                       padding:
                                           EdgeInsets.symmetric(vertical: 5.0),
                                       child: DropdownButtonFormField(
-                                        
                                         hint: Text('نوع الطلب'),
+                                        isExpanded: true,
                                         isDense: false,
                                         elevation: 1,
                                         alignment:
@@ -671,6 +674,7 @@ class _OrderFormState extends State<OrderForm> {
                                           fillColor: pagesColor,
                                           isDense: true,
                                           hintText: 'الوصف...',
+                                          hintTextDirection: TextDirection.rtl,
                                           contentPadding: EdgeInsets.symmetric(
                                             horizontal: 20,
                                             vertical: 15,
