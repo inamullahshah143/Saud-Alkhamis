@@ -3,6 +3,7 @@
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/filter_form.dart';
+import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/notices.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 class BlogView extends StatefulWidget {
@@ -47,17 +48,40 @@ class _BlogViewState extends State<BlogView> {
             leadingWidth: 0,
             title: Row(
               children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: appColorLight,
-                  ),
-                  child: ImageIcon(
-                    AssetImage('assets/images/icons/person.png'),
-                    color: darkFonts,
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      enableDrag: true,
+                      isScrollControlled: true,
+                      isDismissible: false,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                        height: MediaQuery.of(context).size.height * 0.9,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25.0),
+                            topRight: Radius.circular(25.0),
+                          ),
+                        ),
+                        child: Notices(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      color: appColorLight,
+                    ),
+                    child: ImageIcon(
+                      AssetImage('assets/images/icons/person.png'),
+                      color: darkFonts,
+                    ),
                   ),
                 ),
                 Padding(
@@ -158,6 +182,19 @@ class _BlogViewState extends State<BlogView> {
                               borderRadius: BorderRadius.circular(50),
                               color: pagesColor,
                             ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("مشاركة"),
+                                SizedBox(width: 10),
+                                ImageIcon(
+                                  AssetImage(
+                                    'assets/images/icons/share.png',
+                                  ),
+                                  color: yellowFonts,
+                                ),
+                              ],
+                            ),
                           ),
                           Container(
                             height: 40,
@@ -167,12 +204,15 @@ class _BlogViewState extends State<BlogView> {
                               color: pagesColor,
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("مشاركة"),
+                                Text("التعليقات"),
+                                SizedBox(width: 10),
                                 ImageIcon(
                                   AssetImage(
-                                      'assets/images/icons/search-2.png'),
-                                  color: darkFonts,
+                                    'assets/images/icons/chat.png',
+                                  ),
+                                  color: yellowFonts,
                                 ),
                               ],
                             ),
@@ -249,23 +289,171 @@ class _BlogViewState extends State<BlogView> {
             ),
           ),
           SliverFillRemaining(
-              hasScrollBody: false,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      demoText + "/n" + demoText + "/n" + demoText,
-                      textDirection: TextDirection.rtl,
-                    ),
-                  )
-                ],
-              )),
+            hasScrollBody: false,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    demoText + demoText + demoText,
+                    textDirection: TextDirection.rtl,
+                  ),
+                )
+              ],
+            ),
+          ),
         ],
       ),
-      bottomNavigationBar: Container(
-        color: Colors.green,
-        height: 30,
+      bottomNavigationBar: SizedBox(
+        height: height * .3,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Card(
+                color: appColorDark,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: ListTile(
+                    dense: true,
+                    leading: ImageIcon(
+                      AssetImage('assets/images/icons/arrow_forward.png'),
+                      color: yellowFonts,
+                    ),
+                    title: Text(
+                      "كن غنياً وأتخذ بالأسباب !",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: whiteFonts,
+                      ),
+                      textDirection: TextDirection.rtl,
+                    ),
+                    trailing: ImageIcon(
+                      AssetImage('assets/images/icons/arrow_forward.png'),
+                      color: yellowFonts,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "تعليق",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: whiteFonts,
+                    ),
+                    textDirection: TextDirection.rtl,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: appColorLight,
+                      ),
+                      child: ImageIcon(
+                        AssetImage('assets/images/icons/plus.png'),
+                        color: darkFonts,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "إضافة",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: whiteFonts,
+                    ),
+                    textDirection: TextDirection.rtl,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Card(
+                color: appColorDark,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                margin: EdgeInsets.symmetric(vertical: 10),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: ListTile(
+                    dense: true,
+                    isThreeLine: true,
+                    leading: Text(
+                      'المصدر',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: yellowFonts,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    title: Text(
+                      'خالد',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: whiteFonts,
+                      ),
+                      textDirection: TextDirection.rtl,
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '03/05/2021',
+                          style: TextStyle(
+                            fontSize: 9,
+                            color: whiteFonts.withOpacity(0.5),
+                          ),
+                          textDirection: TextDirection.rtl,
+                        ),
+                        Text(
+                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                          maxLines: 3,
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: whiteFonts,
+                          ),
+                          textDirection: TextDirection.rtl,
+                        ),
+                      ],
+                    ),
+                    trailing: Container(
+                      height: 40,
+                      width: 40,
+                      clipBehavior: Clip.hardEdge,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: appColorDark,
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Image(
+                        width: 20,
+                        height: 20,
+                        image:
+                            AssetImage('assets/images/icons/user-remove.png'),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
