@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/views/widgets/search_screen.dart';
 
 import 'popup_menu_button.dart';
 
@@ -224,7 +225,7 @@ Widget customListTile(
   );
 }
 
-Future<void> showMyDialog(BuildContext context, x, y)  async {
+Future<void> showMyDialog(BuildContext context, x, y) async {
   return showDialog<void>(
     context: context,
     barrierColor: Colors.black87,
@@ -232,6 +233,18 @@ Future<void> showMyDialog(BuildContext context, x, y)  async {
     barrierDismissible: false,
     builder: (BuildContext context) {
       return PopupMenuBth(x: x, y: y);
+    },
+  );
+}
+
+Future<void> showSearchScreen(BuildContext context,) async {
+  return showDialog<void>(
+    context: context,
+    barrierColor: Colors.black87,
+    useSafeArea: true,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return SearchScreen();
     },
   );
 }
