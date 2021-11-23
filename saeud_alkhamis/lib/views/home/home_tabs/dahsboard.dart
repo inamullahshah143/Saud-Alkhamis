@@ -49,42 +49,41 @@ class _DashboardState extends State<Dashboard> {
             collapsedHeight: height * 0.25 - 125,
             elevation: 0,
             pinned: true,
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {
-                  showModalBottomSheet(
-                    enableDrag: true,
-                    isScrollControlled: true,
-                    isDismissible: false,
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    builder: (BuildContext context) => Container(
-                      height: MediaQuery.of(context).size.height * 0.9,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(25.0),
-                          topRight: Radius.circular(25.0),
-                        ),
+            automaticallyImplyLeading: false,
+            leadingWidth: 0,
+            title: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  enableDrag: true,
+                  isScrollControlled: true,
+                  isDismissible: false,
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (BuildContext context) => Container(
+                    height: MediaQuery.of(context).size.height * 0.9,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(25.0),
+                        topRight: Radius.circular(25.0),
                       ),
-                      child: Notices(),
                     ),
-                  );
-                },
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: appColorLight,
+                    child: Notices(),
                   ),
-                  child: ImageIcon(
-                    AssetImage('assets/images/icons/person.png'),
-                    color: darkFonts,
-                  ),
+                );
+              },
+              child: Container(
+                width: 40,
+                height: 40,
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                  color: appColorLight,
+                ),
+                child: ImageIcon(
+                  AssetImage('assets/images/icons/person.png'),
+                  color: darkFonts,
                 ),
               ),
             ),

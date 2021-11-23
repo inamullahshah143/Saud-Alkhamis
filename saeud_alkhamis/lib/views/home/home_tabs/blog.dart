@@ -32,28 +32,26 @@ class _BlogState extends State<Blog> {
             expandedHeight: height * 0.5,
             collapsedHeight: height * 0.25 - 125,
             elevation: 0,
+            automaticallyImplyLeading: false,
             pinned: true,
             leadingWidth: 0,
             title: Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: appColorLight,
-                    ),
-                    child: ImageIcon(
-                      AssetImage('assets/images/icons/person.png'),
-                      color: darkFonts,
-                    ),
+                Container(
+                  width: 40,
+                  height: 40,
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: appColorLight,
+                  ),
+                  child: ImageIcon(
+                    AssetImage('assets/images/icons/person.png'),
+                    color: darkFonts,
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left:8.0),
                   child: Container(
                     width: 40,
                     height: 40,
@@ -69,7 +67,7 @@ class _BlogState extends State<Blog> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left:8.0),
                   child: Container(
                     width: 40,
                     height: 40,
