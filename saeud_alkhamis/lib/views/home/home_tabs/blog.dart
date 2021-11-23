@@ -33,8 +33,8 @@ class _BlogState extends State<Blog> {
             collapsedHeight: height * 0.25 - 125,
             elevation: 0,
             pinned: true,
-            leadingWidth: 240,
-            leading: Row(
+            leadingWidth: 0,
+            title: Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
