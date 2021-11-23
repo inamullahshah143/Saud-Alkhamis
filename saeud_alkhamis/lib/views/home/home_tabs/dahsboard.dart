@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-import '../../widgets/popup_menu_button.dart';
 import 'dashboard_subs/filter_form.dart';
 import 'dashboard_subs/notices.dart';
 
@@ -148,16 +147,31 @@ class _DashboardState extends State<Dashboard> {
                               fontSize: 12,
                             ),
                           ),
-                          MaterialButton(
+                          SizedBox(
+                            width: 10,
+                          ),
+                          InkWell(
                             key: key,
-                            color: appColorLight,
-                            shape: CircleBorder(),
-                            textColor: darkFonts,
-                            child: Icon(Icons.add),
-                            onPressed: () {
+                            onTap: () {
                               getOffset(key);
-                              showMyDialog();
+                              showMyDialog(context, x, y);
                             },
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: appColorLight,
+                              ),
+                              child: ImageIcon(
+                                AssetImage('assets/images/icons/plus.png'),
+                                color: darkFonts,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
                           ),
                           Text(
                             'أطلب',
@@ -244,18 +258,6 @@ class _DashboardState extends State<Dashboard> {
           )
         ],
       ),
-    );
-  }
-
-  Future<void> showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierColor: Colors.black87,
-      useSafeArea: false,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return PopupMenuBth(x: x, y: y);
-      },
     );
   }
 }

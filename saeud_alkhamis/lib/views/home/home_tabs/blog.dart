@@ -14,6 +14,20 @@ class Blog extends StatefulWidget {
 }
 
 class _BlogState extends State<Blog> {
+  GlobalKey key = GlobalKey();
+
+  double x, y;
+
+  void getOffset(GlobalKey key) {
+    RenderBox box = key.currentContext.findRenderObject();
+    Offset position = box.localToGlobal(Offset.zero);
+
+    setState(() {
+      x = position.dx;
+      y = position.dy;
+    });
+  }
+
   List<String> tags = [];
   List<String> options = [
     'الكل',
@@ -69,17 +83,24 @@ class _BlogState extends State<Blog> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: appColorLight,
-                    ),
-                    child: ImageIcon(
-                      AssetImage('assets/images/icons/plus.png'),
-                      color: darkFonts,
+                  child: InkWell(
+                    key: key,
+                    onTap: () {
+                      getOffset(key);
+                      showMyDialog(context, x, y);
+                    },
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: appColorLight,
+                      ),
+                      child: ImageIcon(
+                        AssetImage('assets/images/icons/plus.png'),
+                        color: darkFonts,
+                      ),
                     ),
                   ),
                 ),

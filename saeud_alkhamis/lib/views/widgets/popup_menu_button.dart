@@ -29,102 +29,114 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          top: y,
-          left: x,
-          child: MaterialButton(
-            color: whiteFonts,
-            shape: CircleBorder(),
-            textColor: darkFonts,
-            child: Icon(Icons.close),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ),
-        Positioned(
-          top: y + 75,
-          left: 0,
-          right: 0,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                children: [
-                  MaterialButton(
-                    color: yellowFonts,
-                    shape: CircleBorder(),
-                    textColor: darkFonts,
-                    child: ImageIcon(
-                      AssetImage(
-                        'assets/images/icons/cv.png',
-                      ),
-                      size: 16,
-                    ),
-                    onPressed: () {},
-                  ),
-                  Text(
-                    'السيرة الذاتية',
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(
-                      color: whiteFonts,
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        children: [
+          Positioned(
+            top: y,
+            left: x,
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                width: 40,
+                height: 40,
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                  color: whiteFonts,
+                ),
+                child: ImageIcon(
+                  AssetImage('assets/images/icons/close.png'),
+                  color: darkFonts,
+                ),
               ),
-              Column(
-                children: [
-                  MaterialButton(
-                    color: yellowFonts,
-                    shape: CircleBorder(),
-                    textColor: darkFonts,
-                    child: ImageIcon(
-                      AssetImage(
-                        'assets/images/icons/winking-face.png',
-                      ),
-                      size: 16,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      showModalBottomSheet(
-                        enableDrag: true,
-                        isScrollControlled: true,
-                        isDismissible: false,
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (BuildContext context) => Container(
-                          height: MediaQuery.of(context).size.height * 0.9,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(25.0),
-                              topRight: Radius.circular(25.0),
-                            ),
-                          ),
-                          child: OrderForm(),
+            ),
+          ),
+          Positioned(
+            top: y + 75,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    MaterialButton(
+                      color: yellowFonts,
+                      shape: CircleBorder(),
+                      textColor: darkFonts,
+                      child: ImageIcon(
+                        AssetImage(
+                          'assets/images/icons/cv.png',
                         ),
-                      );
-                    },
-                  ),
-                  Text(
-                    'طلب خدمة',
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(
-                      color: whiteFonts,
-                      fontSize: 12,
+                        size: 16,
+                      ),
+                      onPressed: () {},
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    Text(
+                      'السيرة الذاتية',
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                        color: whiteFonts,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    MaterialButton(
+                      color: yellowFonts,
+                      shape: CircleBorder(),
+                      textColor: darkFonts,
+                      child: ImageIcon(
+                        AssetImage(
+                          'assets/images/icons/winking-face.png',
+                        ),
+                        size: 16,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        showModalBottomSheet(
+                          enableDrag: true,
+                          isScrollControlled: true,
+                          isDismissible: false,
+                          backgroundColor: Colors.transparent,
+                          context: context,
+                          builder: (BuildContext context) => Container(
+                            height: MediaQuery.of(context).size.height * 0.9,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(25.0),
+                                topRight: Radius.circular(25.0),
+                              ),
+                            ),
+                            child: OrderForm(),
+                          ),
+                        );
+                      },
+                    ),
+                    Text(
+                      'طلب خدمة',
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                        color: whiteFonts,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
