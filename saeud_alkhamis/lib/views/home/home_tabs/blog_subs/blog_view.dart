@@ -305,7 +305,7 @@ class _BlogViewState extends State<BlogView> {
         ],
       ),
       bottomNavigationBar: SizedBox(
-        height: height * .3,
+        height: height * .31,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
