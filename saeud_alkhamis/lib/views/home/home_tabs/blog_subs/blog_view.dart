@@ -180,7 +180,7 @@ class _BlogViewState extends State<BlogView> {
                             width: width * 0.4,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: pagesColor,
+                              color: appColorDark,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -201,7 +201,7 @@ class _BlogViewState extends State<BlogView> {
                             width: width * 0.4,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: pagesColor,
+                              color: appColorDark,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -333,7 +333,7 @@ class _BlogViewState extends State<BlogView> {
                       textDirection: TextDirection.rtl,
                     ),
                     trailing: ImageIcon(
-                      AssetImage('assets/images/icons/arrow_forward.png'),
+                      AssetImage('assets/images/icons/post.png'),
                       color: yellowFonts,
                     ),
                   ),
