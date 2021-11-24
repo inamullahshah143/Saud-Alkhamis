@@ -44,6 +44,14 @@ class _HomeState extends State<Home> {
         decoration: BoxDecoration(
           color: appColorDark,
           borderRadius: BorderRadius.circular(50),
+          boxShadow: [
+            BoxShadow(
+              color: pagesColor.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 2,
+              offset: Offset(0, 0), // changes position of shadow
+            ),
+          ],
         ),
         child: BottomNavigationBar(
           backgroundColor: appColorDark,

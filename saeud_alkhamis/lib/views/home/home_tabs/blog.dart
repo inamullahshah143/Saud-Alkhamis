@@ -58,7 +58,7 @@ class _BlogState extends State<Blog> {
                   key: key,
                   onPressed: () {
                     getOffset(key);
-                    showMyDialog(context, x, y+5);
+                    showMyDialog(context, x, y + 5);
                   },
                   height: 40,
                   minWidth: 40,
@@ -284,6 +284,72 @@ class _BlogState extends State<Blog> {
               hasScrollBody: false,
               child: Column(
                 children: [
+                  InkWell(
+                    onTap: () {
+                      push(context, BlogView());
+                    },
+                    child: CustomListTile(
+                      type: 'استشارت',
+                      title: 'تقديم استشارة في تجربة المستخدم',
+                      subtitle:
+                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                      date: '03/05/2021',
+                      isShareable: false,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      push(context, BlogView());
+                    },
+                    child: CustomListTile(
+                      type: 'استشارت',
+                      title: 'تقديم استشارة في تجربة المستخدم',
+                      subtitle:
+                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                      date: '03/05/2021',
+                      isShareable: false,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      push(context, BlogView());
+                    },
+                    child: CustomListTile(
+                      type: 'استشارت',
+                      title: 'تقديم استشارة في تجربة المستخدم',
+                      subtitle:
+                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                      date: '03/05/2021',
+                      isShareable: false,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      push(context, BlogView());
+                    },
+                    child: CustomListTile(
+                      type: 'استشارت',
+                      title: 'تقديم استشارة في تجربة المستخدم',
+                      subtitle:
+                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                      date: '03/05/2021',
+                      isShareable: false,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      push(context, BlogView());
+                    },
+                    child: CustomListTile(
+                      type: 'استشارت',
+                      title: 'تقديم استشارة في تجربة المستخدم',
+                      subtitle:
+                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                      date: '03/05/2021',
+                      isShareable: false,
+                    ),
+                  ),
+                  
                   InkWell(
                     onTap: () {
                       push(context, BlogView());
