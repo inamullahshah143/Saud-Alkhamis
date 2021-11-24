@@ -472,7 +472,7 @@ class _BlogViewState extends State<BlogView> {
                       clipBehavior: Clip.hardEdge,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: appColorDark,
+                        color: pagesColor,
                         borderRadius: BorderRadius.circular(40),
                       ),
                       child: Image(

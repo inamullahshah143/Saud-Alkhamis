@@ -33,7 +33,7 @@ class _OrderFormState extends State<OrderForm> {
         child: ListTile(
           dense: true,
           isThreeLine: true,
-          leading: Text(
+          trailing: Text(
             'المصدر',
             style: TextStyle(
               fontSize: 12,
@@ -50,7 +50,7 @@ class _OrderFormState extends State<OrderForm> {
             textDirection: TextDirection.rtl,
           ),
           subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 '03/05/2021',
@@ -71,143 +71,7 @@ class _OrderFormState extends State<OrderForm> {
               ),
             ],
           ),
-          trailing: Container(
-            height: 40,
-            width: 40,
-            clipBehavior: Clip.hardEdge,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: appColorDark,
-              borderRadius: BorderRadius.circular(40),
-            ),
-            child: Image(
-              width: 20,
-              height: 20,
-              image: AssetImage('assets/images/icons/user-remove.png'),
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
-      ),
-    ),
-    Card(
-      color: pagesColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Padding(
-        padding: EdgeInsets.all(5.0),
-        child: ListTile(
-          dense: true,
-          isThreeLine: true,
-          leading: Text(
-            'المصدر',
-            style: TextStyle(
-              fontSize: 12,
-              color: yellowFonts,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-          title: Text(
-            'خالد',
-            style: TextStyle(
-              fontSize: 12,
-              color: whiteFonts,
-            ),
-            textDirection: TextDirection.rtl,
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                '03/05/2021',
-                style: TextStyle(
-                  fontSize: 9,
-                  color: whiteFonts.withOpacity(0.5),
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-              Text(
-                'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                maxLines: 3,
-                style: TextStyle(
-                  fontSize: 10,
-                  color: whiteFonts,
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-            ],
-          ),
-          trailing: Container(
-            height: 40,
-            width: 40,
-            clipBehavior: Clip.hardEdge,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: appColorDark,
-              borderRadius: BorderRadius.circular(40),
-            ),
-            child: Image(
-              width: 20,
-              height: 20,
-              image: AssetImage('assets/images/icons/user-remove.png'),
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
-      ),
-    ),
-    Card(
-      color: pagesColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Padding(
-        padding: EdgeInsets.all(5.0),
-        child: ListTile(
-          dense: true,
-          isThreeLine: true,
-          leading: Text(
-            'المصدر',
-            style: TextStyle(
-              fontSize: 12,
-              color: yellowFonts,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-          title: Text(
-            'خالد',
-            style: TextStyle(
-              fontSize: 12,
-              color: whiteFonts,
-            ),
-            textDirection: TextDirection.rtl,
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                '03/05/2021',
-                style: TextStyle(
-                  fontSize: 9,
-                  color: whiteFonts.withOpacity(0.5),
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-              Text(
-                'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                maxLines: 3,
-                style: TextStyle(
-                  fontSize: 10,
-                  color: whiteFonts,
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-            ],
-          ),
-          trailing: Container(
+          leading: Container(
             height: 40,
             width: 40,
             clipBehavior: Clip.hardEdge,
@@ -330,7 +194,7 @@ class _OrderFormState extends State<OrderForm> {
                                     Column(
                                       children: const [
                                         Text(
-                                          '250',
+                                          '04',
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -340,7 +204,7 @@ class _OrderFormState extends State<OrderForm> {
                                           height: 2,
                                         ),
                                         Text(
-                                          'طلب منتهي',
+                                          'طلب جديد',
                                           style: TextStyle(
                                             color: whiteFonts,
                                             fontSize: 12,
@@ -372,7 +236,7 @@ class _OrderFormState extends State<OrderForm> {
                                     Column(
                                       children: const [
                                         Text(
-                                          '04',
+                                          '250',
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -382,7 +246,7 @@ class _OrderFormState extends State<OrderForm> {
                                           height: 2,
                                         ),
                                         Text(
-                                          'طلب جديد',
+                                          'طلب منتهي',
                                           style: TextStyle(
                                             color: whiteFonts,
                                             fontSize: 12,
@@ -576,13 +440,13 @@ class _OrderFormState extends State<OrderForm> {
                                           isDense: false,
                                           elevation: 1,
                                           alignment:
-                                              AlignmentDirectional.centerEnd,
+                                              AlignmentDirectional.centerStart,
                                           iconDisabledColor: yellowFonts,
                                           iconEnabledColor: yellowFonts,
                                           items: const [
                                             DropdownMenuItem(
                                               alignment: AlignmentDirectional
-                                                  .centerEnd,
+                                                  .centerStart,
                                               value: "1",
                                               child: Text(
                                                 "1",
@@ -594,7 +458,7 @@ class _OrderFormState extends State<OrderForm> {
                                             ),
                                             DropdownMenuItem(
                                               alignment: AlignmentDirectional
-                                                  .centerEnd,
+                                                  .centerStart,
                                               value: "2",
                                               child: Text(
                                                 "2",
@@ -720,7 +584,7 @@ class _OrderFormState extends State<OrderForm> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'مطلوبة',
+                            isNotValid ? 'حقول' : 'إرسال',
                             style: TextStyle(
                               color: whiteFonts,
                               fontSize: 12,
@@ -735,22 +599,24 @@ class _OrderFormState extends State<OrderForm> {
                                   // Navigator.of(context).pop();
                                 }
                               },
+                              height: 40,
+                              minWidth: 40,
                               color:
                                   isNotValid != true ? yellowFonts : Colors.red,
                               textColor: darkFonts,
+                              padding: EdgeInsets.zero,
                               child: ImageIcon(
                                 isNotValid != true
                                     ? AssetImage('assets/images/icons/done.png')
                                     : AssetImage(
                                         'assets/images/icons/close.png'),
-                                size: 18,
+                                size: 16,
                               ),
-                              padding: EdgeInsets.all(15),
                               shape: CircleBorder(),
                             ),
                           ),
                           Text(
-                            'إرسال',
+                            isNotValid ? 'مطلوبة' : 'الطلب',
                             style: TextStyle(
                               color: whiteFonts,
                               fontSize: 12,
