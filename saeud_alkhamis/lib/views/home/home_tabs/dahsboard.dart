@@ -138,52 +138,55 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'خدمة',
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                              color: whiteFonts,
-                              fontSize: 12,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          InkWell(
-                            key: key,
-                            onTap: () {
-                              getOffset(key);
-                              showMyDialog(context, x, y);
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              padding: EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: appColorLight,
-                              ),
-                              child: ImageIcon(
-                                AssetImage('assets/images/icons/plus.png'),
-                                color: darkFonts,
+                      child: SizedBox(
+                        height: 50,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'خدمة',
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                color: whiteFonts,
+                                fontSize: 12,
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'أطلب',
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                              color: whiteFonts,
-                              fontSize: 12,
+                            SizedBox(
+                              width: 10,
                             ),
-                          ),
-                        ],
+                            InkWell(
+                              key: key,
+                              onTap: () {
+                                getOffset(key);
+                                showMyDialog(context, x, y);
+                              },
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                padding: EdgeInsets.all(12),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(40),
+                                  color: appColorLight,
+                                ),
+                                child: ImageIcon(
+                                  AssetImage('assets/images/icons/plus.png'),
+                                  color: darkFonts,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'أطلب',
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                color: whiteFonts,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     ListTile(

@@ -185,44 +185,47 @@ class _BlogState extends State<Blog> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10.0),
-                      child: ChipsChoice<String>.multiple(
-                        value: tags,
-                        choiceActiveStyle: C2ChoiceStyle(
-                          showCheckmark: false,
-                          brightness: Brightness.dark,
-                          color: yellowFonts,
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                          borderColor: pagesColor,
-                        ),
-                        choiceStyle: C2ChoiceStyle(
-                          showCheckmark: false,
-                          brightness: Brightness.dark,
-                          color: pagesColor,
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                          borderColor: pagesColor,
-                        ),
-                        onChanged: (val) => setState(() => tags = val),
-                        choiceItems: C2Choice.listFrom<String, String>(
-                          source: options,
-                          value: (i, v) => v,
-                          label: (i, v) => v,
-                          tooltip: (i, v) => v,
-                          style: (i, v) {
-                            return C2ChoiceStyle(
-                              showCheckmark: false,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25)),
-                              borderColor: pagesColor,
-                            );
-                          },
-                          activeStyle: (i, v) {
-                            return C2ChoiceStyle(
-                              showCheckmark: false,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25)),
-                              borderColor: yellowFonts,
-                            );
-                          },
+                      child: SizedBox(
+                        height: 50,
+                        child: ChipsChoice<String>.multiple(
+                          value: tags,
+                          choiceActiveStyle: C2ChoiceStyle(
+                            showCheckmark: false,
+                            brightness: Brightness.dark,
+                            color: yellowFonts,
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            borderColor: appColorDark,
+                          ),
+                          choiceStyle: C2ChoiceStyle(
+                            showCheckmark: false,
+                            brightness: Brightness.dark,
+                            color: appColorDark,
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            borderColor: appColorDark,
+                          ),
+                          onChanged: (val) => setState(() => tags = val),
+                          choiceItems: C2Choice.listFrom<String, String>(
+                            source: options,
+                            value: (i, v) => v,
+                            label: (i, v) => v,
+                            tooltip: (i, v) => v,
+                            style: (i, v) {
+                              return C2ChoiceStyle(
+                                showCheckmark: false,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25)),
+                                borderColor: appColorDark,
+                              );
+                            },
+                            activeStyle: (i, v) {
+                              return C2ChoiceStyle(
+                                showCheckmark: false,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25)),
+                                borderColor: yellowFonts,
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
