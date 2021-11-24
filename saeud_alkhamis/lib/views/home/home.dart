@@ -4,6 +4,7 @@ import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'home_tabs/dahsboard.dart';
 import 'home_tabs/media.dart';
+import 'home_tabs/store.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -31,7 +32,7 @@ class _HomeState extends State<Home> {
               : bottomIndex == 2
                   ? Media()
                   : bottomIndex == 1
-                      ? Container()
+                      ? Store()
                       : bottomIndex == 0
                           ? Container()
                           : Container(),

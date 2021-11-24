@@ -5,14 +5,14 @@ import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'dashboard_subs/filter_form.dart';
 import 'dashboard_subs/notices.dart';
 
-class Media extends StatefulWidget {
-  const Media({Key key}) : super(key: key);
+class Store extends StatefulWidget {
+  const Store({Key key}) : super(key: key);
 
   @override
-  _MediaState createState() => _MediaState();
+  _StoreState createState() => _StoreState();
 }
 
-class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
+class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
   GlobalKey key = GlobalKey();
   double x, y;
   void getOffset(GlobalKey key) {
@@ -212,7 +212,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                             controller: _tabController,
                             tabs: const [
                               Text(
-                                'المرئيات ( 202 )',
+                                'أدواتي ( 12 )',
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: whiteFonts,
@@ -220,7 +220,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               Text(
-                                'اللقاءات ( 46 )',
+                                'كتبي ( 23 )',
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: whiteFonts,
@@ -263,7 +263,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                         ),
                       ),
                       trailing: Text(
-                        'آخر اللقاءات',
+                        'آخر القراءات',
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           color: yellowFonts,
@@ -280,7 +280,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      'assets/images/5.png',
+                      'assets/images/4.png',
                     ),
                     fit: BoxFit.cover,
                   ),
