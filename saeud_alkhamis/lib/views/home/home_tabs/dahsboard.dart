@@ -15,8 +15,10 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   double appBarHeight;
+  bool isLiked;
   @override
   void initState() {
+    isLiked = false;
     appBarHeight = 500.0;
     super.initState();
   }
@@ -246,12 +248,14 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 InkWell(
                   onTap: () {},
-                  child: customListTile(
-                      'استشارت',
-                      'تقديم استشارة في تجربة المستخدم',
-                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      '03/05/2021',
-                      true),
+                  child: CustomListTile(
+                    type: 'استشارت',
+                    title: 'تقديم استشارة في تجربة المستخدم',
+                    subtitle:
+                        'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                    date: '03/05/2021',
+                    isShareable: true,
+                  ),
                 ),
               ],
             ),

@@ -78,7 +78,7 @@ class _BlogState extends State<Blog> {
                   child: Container(
                     width: 40,
                     height: 40,
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),
                       color: appColorLight,
@@ -302,12 +302,13 @@ class _BlogState extends State<Blog> {
                   onTap: () {
                     push(context, BlogView());
                   },
-                  child: customListTile(
-                    'استشارت',
-                    'تقديم استشارة في تجربة المستخدم',
-                    'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                    '03/05/2021',
-                    false,
+                  child: CustomListTile(
+                    type: 'استشارت',
+                    title: 'تقديم استشارة في تجربة المستخدم',
+                    subtitle:
+                        'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                    date: '03/05/2021',
+                    isShareable: false,
                   ),
                 ),
                 SizedBox(height: 80),
