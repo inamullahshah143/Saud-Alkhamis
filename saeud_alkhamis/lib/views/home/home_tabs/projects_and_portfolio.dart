@@ -156,15 +156,14 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                             vertical: 10.0, horizontal: 10.0),
                         child: DropdownButtonFormField(
                           hint: Text('مشاريعي'),
-                          isExpanded: true,
                           isDense: false,
                           elevation: 1,
-                          alignment: AlignmentDirectional.centerEnd,
+                              alignment: AlignmentDirectional.centerStart,
                           iconDisabledColor: yellowFonts,
                           iconEnabledColor: yellowFonts,
                           items: const [
                             DropdownMenuItem(
-                              alignment: AlignmentDirectional.centerEnd,
+                              alignment: AlignmentDirectional.centerStart,
                               value: "1",
                               child: Text(
                                 "1",
@@ -175,7 +174,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                               ),
                             ),
                             DropdownMenuItem(
-                              alignment: AlignmentDirectional.centerEnd,
+                              alignment: AlignmentDirectional.centerStart,
                               value: "2",
                               child: Text(
                                 "2",
@@ -198,7 +197,6 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                             isDense: true,
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 20,
-                              vertical: 1,
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
