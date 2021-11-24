@@ -6,6 +6,8 @@ import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/filter_form.d
 import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/notices.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
+import 'add_comment.dart';
+
 class BlogView extends StatefulWidget {
   const BlogView({Key key}) : super(key: key);
 
@@ -360,17 +362,40 @@ class _BlogViewState extends State<BlogView> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        color: appColorLight,
-                      ),
-                      child: ImageIcon(
-                        AssetImage('assets/images/icons/plus.png'),
-                        color: darkFonts,
+                    child: InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          enableDrag: true,
+                          isDismissible: false,
+                          backgroundColor: Colors.transparent,
+                          context: context,
+                          builder: (BuildContext context) => Container(
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(25.0),
+                                topRight: Radius.circular(25.0),
+                              ),
+                            ),
+                            child: AddComment(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          color: appColorLight,
+                        ),
+                        child: ImageIcon(
+                          AssetImage('assets/images/icons/plus.png'),
+                          color: darkFonts,
+                        ),
                       ),
                     ),
                   ),
