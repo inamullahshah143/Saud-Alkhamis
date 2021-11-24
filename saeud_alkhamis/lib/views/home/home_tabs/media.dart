@@ -66,7 +66,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                   key: key,
                   onPressed: () {
                     getOffset(key);
-                    showMyDialog(context, x, y);
+                    showMyDialog(context, x, y+5);
                   },
                   height: 40,
                   minWidth: 40,

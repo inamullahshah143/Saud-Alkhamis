@@ -13,37 +13,28 @@ class SearchScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 10,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                MaterialButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  height: 40,
+                  minWidth: 40,
+                  color: whiteFonts,
+                  textColor: darkFonts,
+                  padding: EdgeInsets.zero,
+                  child: ImageIcon(
+                    AssetImage('assets/images/icons/close.png'),
+                    size: 16,
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        color: whiteFonts,
-                      ),
-                      child: ImageIcon(
-                        AssetImage('assets/images/icons/close.png'),
-                        color: darkFonts,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Flexible(
+                  shape: CircleBorder(),
+                ),
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right:10.0),
                     child: TextField(
                       textDirection: TextDirection.rtl,
                       style: TextStyle(
@@ -78,8 +69,8 @@ class SearchScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

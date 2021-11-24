@@ -58,7 +58,7 @@ class _BlogState extends State<Blog> {
                   key: key,
                   onPressed: () {
                     getOffset(key);
-                    showMyDialog(context, x, y);
+                    showMyDialog(context, x, y+5);
                   },
                   height: 40,
                   minWidth: 40,

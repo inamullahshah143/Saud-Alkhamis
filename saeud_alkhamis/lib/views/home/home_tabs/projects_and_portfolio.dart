@@ -46,7 +46,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                   key: key,
                   onPressed: () {
                     getOffset(key);
-                    showMyDialog(context, x, y);
+                    showMyDialog(context, x, y+5);
                   },
                   height: 40,
                   minWidth: 40,

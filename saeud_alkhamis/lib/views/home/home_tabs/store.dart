@@ -66,7 +66,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                   key: key,
                   onPressed: () {
                     getOffset(key);
-                    showMyDialog(context, x, y);
+                    showMyDialog(context, x, y + 5);
                   },
                   height: 40,
                   minWidth: 40,
