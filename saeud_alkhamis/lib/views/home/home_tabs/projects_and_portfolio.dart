@@ -174,8 +174,8 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                     Directionality(
                       textDirection: TextDirection.rtl,
                       child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10.0, horizontal: 25),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 10.0),
                         child: DropdownButtonFormField(
                           hint: Text('مشاريعي'),
                           isExpanded: true,

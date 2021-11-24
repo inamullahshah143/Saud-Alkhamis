@@ -197,16 +197,16 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                       child: DefaultTabController(
                         length: 2,
                         child: Container(
-                          height: 40.0,
+                          height: 50.0,
                           decoration: const BoxDecoration(
                             color: appColorDark,
-                            borderRadius: BorderRadius.all(Radius.circular(40)),
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                           child: TabBar(
                             labelPadding: EdgeInsets.zero,
                             indicator: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.circular(40), // Creates border
+                                  BorderRadius.circular(50), // Creates border
                               color: yellowFonts,
                             ),
                             controller: _tabController,
