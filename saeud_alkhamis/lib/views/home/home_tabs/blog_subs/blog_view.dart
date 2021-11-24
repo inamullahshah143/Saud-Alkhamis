@@ -199,6 +199,7 @@ class _BlogViewState extends State<BlogView> {
                                     'assets/images/icons/share.png',
                                   ),
                                   color: yellowFonts,
+                                  size: 16,
                                 ),
                               ],
                             ),
@@ -219,6 +220,7 @@ class _BlogViewState extends State<BlogView> {
                                   AssetImage(
                                     'assets/images/icons/chat.png',
                                   ),
+                                  size: 16,
                                   color: yellowFonts,
                                 ),
                               ],
@@ -311,179 +313,178 @@ class _BlogViewState extends State<BlogView> {
           ),
         ],
       ),
-      bottomNavigationBar: SizedBox(
-        height: height * .31,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Card(
-                color: appColorDark,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50.0),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+            child: Card(
+              color: appColorDark,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                child: ListTile(
+                  dense: true,
+                  leading: ImageIcon(
+                    AssetImage('assets/images/icons/arrow_forward.png'),
+                    color: yellowFonts,
+                    size: 16,
+                  ),
+                  title: Text(
+                    "كن غنياً وأتخذ بالأسباب !",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: whiteFonts,
+                    ),
+                    textDirection: TextDirection.rtl,
+                  ),
+                  trailing: ImageIcon(
+                    AssetImage('assets/images/icons/post.png'),
+                    color: yellowFonts,
+                    size: 16,
+                  ),
                 ),
-                child: Padding(
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "تعليق",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: whiteFonts,
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+                Padding(
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: ListTile(
-                    dense: true,
-                    leading: ImageIcon(
-                      AssetImage('assets/images/icons/arrow_forward.png'),
-                      color: yellowFonts,
-                    ),
-                    title: Text(
-                      "كن غنياً وأتخذ بالأسباب !",
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: whiteFonts,
-                      ),
-                      textDirection: TextDirection.rtl,
-                    ),
-                    trailing: ImageIcon(
-                      AssetImage('assets/images/icons/post.png'),
-                      color: yellowFonts,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "تعليق",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: whiteFonts,
-                    ),
-                    textDirection: TextDirection.rtl,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    child: InkWell(
-                      onTap: () {
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          enableDrag: true,
-                          isDismissible: false,
-                          backgroundColor: Colors.transparent,
-                          context: context,
-                          builder: (BuildContext context) => Container(
-                            height: MediaQuery.of(context).size.height * 0.4,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(25.0),
-                                topRight: Radius.circular(25.0),
-                              ),
+                  child: InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                        enableDrag: true,
+                        isDismissible: false,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (BuildContext context) => Container(
+                          height: MediaQuery.of(context).size.height * 0.4,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(25.0),
+                              topRight: Radius.circular(25.0),
                             ),
-                            child: AddComment(),
                           ),
-                        );
-                      },
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(40),
-                          color: appColorLight,
+                          child: AddComment(),
                         ),
-                        child: ImageIcon(
-                          AssetImage('assets/images/icons/plus.png'),
-                          color: darkFonts,
-                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      padding: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: appColorLight,
+                      ),
+                      child: ImageIcon(
+                        AssetImage('assets/images/icons/plus.png'),
+                        color: darkFonts,
                       ),
                     ),
                   ),
-                  Text(
-                    "إضافة",
+                ),
+                Text(
+                  "إضافة",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: whiteFonts,
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: Card(
+              color: appColorDark,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: Padding(
+                padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                child: ListTile(
+                  dense: true,
+                  isThreeLine: true,
+                  leading: Text(
+                    'المصدر',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: yellowFonts,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  title: Text(
+                    'خالد',
                     style: TextStyle(
                       fontSize: 12,
                       color: whiteFonts,
                     ),
                     textDirection: TextDirection.rtl,
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Card(
-                color: appColorDark,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                margin: EdgeInsets.symmetric(vertical: 10),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: ListTile(
-                    dense: true,
-                    isThreeLine: true,
-                    leading: Text(
-                      'المصدر',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: yellowFonts,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                    title: Text(
-                      'خالد',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: whiteFonts,
-                      ),
-                      textDirection: TextDirection.rtl,
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          '03/05/2021',
-                          style: TextStyle(
-                            fontSize: 9,
-                            color: whiteFonts.withOpacity(0.5),
-                          ),
-                          textDirection: TextDirection.rtl,
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        '03/05/2021',
+                        style: TextStyle(
+                          fontSize: 9,
+                          color: whiteFonts.withOpacity(0.5),
                         ),
-                        Text(
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                          maxLines: 3,
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: whiteFonts,
-                          ),
-                          textDirection: TextDirection.rtl,
+                        textDirection: TextDirection.rtl,
+                      ),
+                      Text(
+                        'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                        maxLines: 3,
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: whiteFonts,
                         ),
-                      ],
+                        textDirection: TextDirection.rtl,
+                      ),
+                    ],
+                  ),
+                  trailing: Container(
+                    height: 40,
+                    width: 40,
+                    clipBehavior: Clip.hardEdge,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: appColorDark,
+                      borderRadius: BorderRadius.circular(40),
                     ),
-                    trailing: Container(
-                      height: 40,
-                      width: 40,
-                      clipBehavior: Clip.hardEdge,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: appColorDark,
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: Image(
-                        width: 20,
-                        height: 20,
-                        image:
-                            AssetImage('assets/images/icons/user-remove.png'),
-                        fit: BoxFit.contain,
-                      ),
+                    child: Image(
+                      width: 20,
+                      height: 20,
+                      image: AssetImage('assets/images/icons/user-remove.png'),
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

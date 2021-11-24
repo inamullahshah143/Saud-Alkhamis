@@ -1,41 +1,51 @@
 import 'package:background_app_bar/background_app_bar.dart';
-import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
-import 'package:saeud_alkhamis/views/home/home_tabs/blog_subs/blog_view.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'dashboard_subs/filter_form.dart';
 import 'dashboard_subs/notices.dart';
 
-class Blog extends StatefulWidget {
-  const Blog({Key key}) : super(key: key);
+class Media extends StatefulWidget {
+  const Media({Key key}) : super(key: key);
 
   @override
-  _BlogState createState() => _BlogState();
+  _MediaState createState() => _MediaState();
 }
 
-class _BlogState extends State<Blog> {
+class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
   GlobalKey key = GlobalKey();
-
   double x, y;
-
   void getOffset(GlobalKey key) {
     RenderBox box = key.currentContext.findRenderObject();
     Offset position = box.localToGlobal(Offset.zero);
-
     setState(() {
       x = position.dx;
       y = position.dy;
     });
   }
 
-  List<String> tags = [];
-  List<String> options = [
-    'الكل',
-    'عن العظماء',
-    'من الواقع',
-    'من حياتي',
-  ];
+  int activePageIndex;
+  TabController _tabController;
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+    activePageIndex = 1;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -184,45 +194,43 @@ class _BlogState extends State<Blog> {
                       width: 90,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10.0),
-                      child: ChipsChoice<String>.multiple(
-                        value: tags,
-                        choiceActiveStyle: C2ChoiceStyle(
-                          showCheckmark: false,
-                          brightness: Brightness.dark,
-                          color: yellowFonts,
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                          borderColor: pagesColor,
-                        ),
-                        choiceStyle: C2ChoiceStyle(
-                          showCheckmark: false,
-                          brightness: Brightness.dark,
-                          color: pagesColor,
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                          borderColor: pagesColor,
-                        ),
-                        onChanged: (val) => setState(() => tags = val),
-                        choiceItems: C2Choice.listFrom<String, String>(
-                          source: options,
-                          value: (i, v) => v,
-                          label: (i, v) => v,
-                          tooltip: (i, v) => v,
-                          style: (i, v) {
-                            return C2ChoiceStyle(
-                              showCheckmark: false,
+                      padding: const EdgeInsets.all(10.0),
+                      child: DefaultTabController(
+                        initialIndex: 1,
+                        length: 2,
+                        child: Container(
+                          height: 50.0,
+                          decoration: const BoxDecoration(
+                            color: appColorDark,
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                          ),
+                          child: TabBar(
+                            labelPadding: EdgeInsets.zero,
+                            indicator: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(25)),
-                              borderColor: pagesColor,
-                            );
-                          },
-                          activeStyle: (i, v) {
-                            return C2ChoiceStyle(
-                              showCheckmark: false,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25)),
-                              borderColor: yellowFonts,
-                            );
-                          },
+                                  BorderRadius.circular(50), // Creates border
+                              color: yellowFonts,
+                            ),
+                            controller: _tabController,
+                            tabs: const [
+                              Text(
+                                'المرئيات ( 202 )',
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: whiteFonts,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                'اللقاءات ( 46 )',
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: whiteFonts,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -257,7 +265,7 @@ class _BlogState extends State<Blog> {
                         ),
                       ),
                       trailing: Text(
-                        'آخر المقالات',
+                        'آخر اللقاءات',
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           color: yellowFonts,
@@ -296,24 +304,10 @@ class _BlogState extends State<Blog> {
           ),
           SliverFillRemaining(
             hasScrollBody: false,
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () {
-                    push(context, BlogView());
-                  },
-                  child: CustomListTile(
-                    type: 'استشارت',
-                    title: 'تقديم استشارة في تجربة المستخدم',
-                    subtitle:
-                        'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                    date: '03/05/2021',
-                    isShareable: false,
-                  ),
-                ),
-                SizedBox(height: 80),
-              ],
-            ),
+            child: [
+              Container(),
+              Container(),
+            ][_tabController.index],
           ),
         ],
       ),
