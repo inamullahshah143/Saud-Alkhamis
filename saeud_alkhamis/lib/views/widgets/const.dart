@@ -107,113 +107,13 @@ class _CustomListTileState extends State<CustomListTile> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              alignment: Alignment.center,
-              width: 125,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'يوجد 38 إعجاب',
-                        style: TextStyle(
-                          fontSize: 9,
-                          color: yellowFonts,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isLiked = !isLiked;
-                          });
-                        },
-                        icon: ImageIcon(
-                          AssetImage('assets/images/icons/like.png'),
-                          color: isLiked ? yellowFonts : pagesColor,
-                        ),
-                      ),
-                      Text(
-                        'إعجاب',
-                        style: TextStyle(
-                          fontSize: 9,
-                          color: whiteFonts,
-                        ),
-                      ),
-                    ],
-                  ),
-                  isShareable
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'يوجد 38 زيارة',
-                              style: TextStyle(
-                                fontSize: 9,
-                                color: yellowFonts,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isShareAble = !isShareAble;
-                                });
-                              },
-                              icon: ImageIcon(
-                                AssetImage('assets/images/icons/link.png'),
-                                color: isShareAble ? yellowFonts : pagesColor,
-                              ),
-                            ),
-                            Text(
-                              'زيارة',
-                              style: TextStyle(
-                                fontSize: 9,
-                                color: whiteFonts,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'يوجد 38 زيارة',
-                              style: TextStyle(
-                                fontSize: 9,
-                                color: yellowFonts,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isViewed = !isViewed;
-                                });
-                              },
-                              icon: ImageIcon(
-                                AssetImage('assets/images/icons/view-2.png'),
-                                color: isViewed ? yellowFonts : pagesColor,
-                              ),
-                            ),
-                            Text(
-                              'قراءة',
-                              style: TextStyle(
-                                fontSize: 9,
-                                color: whiteFonts,
-                              ),
-                            ),
-                          ],
-                        ),
-                ],
-              ),
-            ),
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Container(
                           child: Padding(
@@ -280,6 +180,106 @@ class _CustomListTileState extends State<CustomListTile> {
                 ],
               ),
             ),
+            Container(
+              alignment: Alignment.center,
+              width: 125,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  isShareable
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'يوجد 38 زيارة',
+                              style: TextStyle(
+                                fontSize: 9,
+                                color: yellowFonts,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  isShareAble = !isShareAble;
+                                });
+                              },
+                              icon: ImageIcon(
+                                AssetImage('assets/images/icons/link.png'),
+                                color: isShareAble ? yellowFonts : pagesColor,
+                              ),
+                            ),
+                            Text(
+                              'زيارة',
+                              style: TextStyle(
+                                fontSize: 9,
+                                color: whiteFonts,
+                              ),
+                            ),
+                          ],
+                        )
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'يوجد 38 زيارة',
+                              style: TextStyle(
+                                fontSize: 9,
+                                color: yellowFonts,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  isViewed = !isViewed;
+                                });
+                              },
+                              icon: ImageIcon(
+                                AssetImage('assets/images/icons/view-2.png'),
+                                color: isViewed ? yellowFonts : pagesColor,
+                              ),
+                            ),
+                            Text(
+                              'قراءة',
+                              style: TextStyle(
+                                fontSize: 9,
+                                color: whiteFonts,
+                              ),
+                            ),
+                          ],
+                        ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'يوجد 38 إعجاب',
+                        style: TextStyle(
+                          fontSize: 9,
+                          color: yellowFonts,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            isLiked = !isLiked;
+                          });
+                        },
+                        icon: ImageIcon(
+                          AssetImage('assets/images/icons/like.png'),
+                          color: isLiked ? yellowFonts : pagesColor,
+                        ),
+                      ),
+                      Text(
+                        'إعجاب',
+                        style: TextStyle(
+                          fontSize: 9,
+                          color: whiteFonts,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -312,4 +312,3 @@ Future<void> showSearchScreen(
     },
   );
 }
-

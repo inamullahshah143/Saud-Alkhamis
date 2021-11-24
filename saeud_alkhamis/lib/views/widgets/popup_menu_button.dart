@@ -36,23 +36,20 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
           Positioned(
             top: y,
             left: x,
-            child: InkWell(
-              onTap: () {
+            child: MaterialButton(
+              onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Container(
-                width: 40,
-                height: 40,
-                padding: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: whiteFonts,
-                ),
-                child: ImageIcon(
-                  AssetImage('assets/images/icons/close.png'),
-                  color: darkFonts,
-                ),
+              height: 40,
+              minWidth: 40,
+              color: whiteFonts,
+              textColor: darkFonts,
+              padding: EdgeInsets.zero,
+              child: ImageIcon(
+                AssetImage('assets/images/icons/close.png'),
+                size: 16,
               ),
+              shape: CircleBorder(),
             ),
           ),
           Positioned(
@@ -60,21 +57,20 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
             left: x - 50,
             child: Column(
               children: [
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: yellowFonts,
-                    ),
-                    child: ImageIcon(
-                      AssetImage('assets/images/icons/cv.png'),
-                      color: darkFonts,
-                    ),
+                MaterialButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  height: 40,
+                  minWidth: 40,
+                  color: yellowFonts,
+                  textColor: darkFonts,
+                  padding: EdgeInsets.zero,
+                  child: ImageIcon(
+                    AssetImage('assets/images/icons/cv.png'),
+                    size: 16,
                   ),
+                  shape: CircleBorder(),
                 ),
                 Text(
                   'السيرة الذاتية',
@@ -92,8 +88,8 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
             left: x + 50,
             child: Column(
               children: [
-                InkWell(
-                  onTap: () {
+                MaterialButton(
+                  onPressed: () {
                     Navigator.of(context).pop();
                     showModalBottomSheet(
                       enableDrag: true,
@@ -115,19 +111,16 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
                       ),
                     );
                   },
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: yellowFonts,
-                    ),
-                    child: ImageIcon(
-                      AssetImage('assets/images/icons/winking-face.png'),
-                      color: darkFonts,
-                    ),
+                  height: 40,
+                  minWidth: 40,
+                  color: yellowFonts,
+                  textColor: darkFonts,
+                  padding: EdgeInsets.zero,
+                  child: ImageIcon(
+                    AssetImage('assets/images/icons/winking-face.png'),
+                    size: 16,
                   ),
+                  shape: CircleBorder(),
                 ),
                 Text(
                   'طلب خدمة',
