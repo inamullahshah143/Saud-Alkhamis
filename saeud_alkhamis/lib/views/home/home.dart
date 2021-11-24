@@ -4,6 +4,7 @@ import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'home_tabs/dahsboard.dart';
 import 'home_tabs/media.dart';
+import 'home_tabs/projects_and_portfolio.dart';
 import 'home_tabs/store.dart';
 
 class Home extends StatefulWidget {
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
                   : bottomIndex == 1
                       ? Store()
                       : bottomIndex == 0
-                          ? Container()
+                          ? ProjectsAndPortfolio()
                           : Container(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(

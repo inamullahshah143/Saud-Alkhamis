@@ -239,516 +239,531 @@ class _OrderFormState extends State<OrderForm> {
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Column(
-          children: [
-            MaterialButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              color: whiteFonts,
-              textColor: darkFonts,
-              child: ImageIcon(
-                AssetImage('assets/images/icons/close.png'),
-                size: 14,
-              ),
-              padding: EdgeInsets.all(10),
-              shape: CircleBorder(),
-            ),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                decoration: BoxDecoration(
-                  color: appColorDark,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                  ),
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Column(
+            children: [
+              MaterialButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                color: whiteFonts,
+                textColor: darkFonts,
+                child: ImageIcon(
+                  AssetImage('assets/images/icons/close.png'),
+                  size: 14,
                 ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
-                        child: Column(
-                          children: [
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                'رأي المستفيدين من الخدمات',
-                                textDirection: TextDirection.rtl,
-                                style: TextStyle(
-                                  color: whiteFonts,
+                padding: EdgeInsets.all(10),
+                shape: CircleBorder(),
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: appColorDark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          physics: BouncingScrollPhysics(),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  'رأي المستفيدين من الخدمات',
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: whiteFonts,
+                                  ),
                                 ),
                               ),
-                            ),
-                            CarouselSlider(
-                              options: CarouselOptions(
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 1,
-                                aspectRatio: 2.75,
-                                onPageChanged: (index, reason) {
-                                  setState(() {
-                                    currentIndex = index;
+                              CarouselSlider(
+                                options: CarouselOptions(
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 1,
+                                  aspectRatio: 2.75,
+                                  onPageChanged: (index, reason) {
+                                    setState(() {
+                                      currentIndex = index;
+                                    });
+                                  },
+                                ),
+                                items: cardList.map((card) {
+                                  return Builder(
+                                      builder: (BuildContext context) {
+                                    return card;
                                   });
-                                },
+                                }).toList(),
                               ),
-                              items: cardList.map((card) {
-                                return Builder(builder: (BuildContext context) {
-                                  return card;
-                                });
-                              }).toList(),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: map<Widget>(cardList, (index, url) {
-                                return Container(
-                                  width: 10.0,
-                                  height: 10.0,
-                                  margin: EdgeInsets.symmetric(
-                                      vertical: 5.0, horizontal: 2.0),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: currentIndex == index
-                                        ? whiteFonts
-                                        : Colors.grey,
-                                  ),
-                                );
-                              }),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    children: const [
-                                      Text(
-                                        '250',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 2,
-                                      ),
-                                      Text(
-                                        'طلب منتهي',
-                                        style: TextStyle(
-                                          color: whiteFonts,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: const [
-                                      Text(
-                                        '02',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 2,
-                                      ),
-                                      Text(
-                                        'قيد التنفيذ',
-                                        style: TextStyle(
-                                          color: whiteFonts,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: const [
-                                      Text(
-                                        '04',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 2,
-                                      ),
-                                      Text(
-                                        'طلب جديد',
-                                        style: TextStyle(
-                                          color: whiteFonts,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: map<Widget>(cardList, (index, url) {
+                                  return Container(
+                                    width: 10.0,
+                                    height: 10.0,
+                                    margin: EdgeInsets.symmetric(
+                                        vertical: 5.0, horizontal: 2.0),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: currentIndex == index
+                                          ? whiteFonts
+                                          : Colors.grey,
+                                    ),
+                                  );
+                                }),
                               ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 10.0),
-                              child: Form(
-                                key: _formKey,
-                                child: Column(
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: [
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 5.0),
-                                      child: TextFormField(
-                                        textDirection: TextDirection.rtl,
-                                        validator: (value) {
-                                          if (value.trim().isNotEmpty) {
-                                            setState(() {
-                                              isNotValid = false;
-                                            });
-                                            return null;
-                                          }
-
-                                          setState(() {
-                                            isNotValid = true;
-                                          });
-                                          return '';
-                                        },
-                                        style: TextStyle(
-                                          color: whiteFonts,
-                                          fontSize: 12,
-                                        ),
-                                        onChanged: (value) {},
-                                        keyboardType: TextInputType.text,
-                                        decoration: InputDecoration(
-                                          errorStyle: TextStyle(fontSize: 0),
-                                          helperText: '',
-                                          helperStyle: TextStyle(fontSize: 0),
-                                          filled: true,
-                                          fillColor: pagesColor,
-                                          isDense: true,
-                                          hintText: 'الاسم',
-                                          hintTextDirection: TextDirection.rtl,
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                            vertical: 15,
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              width: 2,
-                                              color: Colors.red,
-                                              style: BorderStyle.solid,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(25),
+                                    Column(
+                                      children: const [
+                                        Text(
+                                          '250',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
                                           ),
                                         ),
-                                      ),
+                                        SizedBox(
+                                          height: 2,
+                                        ),
+                                        Text(
+                                          'طلب منتهي',
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 5.0),
-                                      child: TextFormField(
-                                        textDirection: TextDirection.rtl,
-                                        validator: (value) {
-                                          if (value.trim().isNotEmpty) {
-                                            setState(() {
-                                              isNotValid = false;
-                                            });
-                                            return null;
-                                          }
-
-                                          setState(() {
-                                            isNotValid = true;
-                                          });
-                                          return '';
-                                        },
-                                        style: TextStyle(
-                                          color: whiteFonts,
-                                          fontSize: 12,
-                                        ),
-                                        onChanged: (value) {},
-                                        keyboardType: TextInputType.text,
-                                        decoration: InputDecoration(
-                                          errorStyle: TextStyle(fontSize: 0),
-                                          helperText: '',
-                                          helperStyle: TextStyle(fontSize: 0),
-                                          filled: true,
-                                          fillColor: pagesColor,
-                                          isDense: true,
-                                          hintText: 'رقم الجوال',
-                                          hintTextDirection: TextDirection.rtl,
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                            vertical: 15,
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              width: 2,
-                                              color: Colors.red,
-                                              style: BorderStyle.solid,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(25),
+                                    Column(
+                                      children: const [
+                                        Text(
+                                          '02',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
                                           ),
                                         ),
-                                      ),
+                                        SizedBox(
+                                          height: 2,
+                                        ),
+                                        Text(
+                                          'قيد التنفيذ',
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 5.0),
-                                      child: TextFormField(
-                                        textDirection: TextDirection.rtl,
-                                        validator: (value) {
-                                          if (value.trim().isNotEmpty) {
-                                            setState(() {
-                                              isNotValid = false;
-                                            });
-                                            return null;
-                                          }
-                                          setState(() {
-                                            isNotValid = true;
-                                          });
-                                          return '';
-                                        },
-                                        style: TextStyle(
-                                          color: whiteFonts,
-                                          fontSize: 12,
-                                        ),
-                                        onChanged: (value) {},
-                                        keyboardType: TextInputType.text,
-                                        decoration: InputDecoration(
-                                          errorStyle: TextStyle(fontSize: 0),
-                                          helperText: '',
-                                          helperStyle: TextStyle(fontSize: 0),
-                                          filled: true,
-                                          fillColor: pagesColor,
-                                          isDense: true,
-                                          hintText: 'البريد الالكتروني',
-                                          hintTextDirection: TextDirection.rtl,
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                            vertical: 15,
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              width: 2,
-                                              color: Colors.red,
-                                              style: BorderStyle.solid,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(25),
+                                    Column(
+                                      children: const [
+                                        Text(
+                                          '04',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 5.0),
-                                      child: DropdownButtonFormField(
-                                        hint: Text('نوع الطلب'),
-                                        isExpanded: true,
-                                        isDense: false,
-                                        elevation: 1,
-                                        alignment:
-                                            AlignmentDirectional.centerEnd,
-                                        iconDisabledColor: yellowFonts,
-                                        iconEnabledColor: yellowFonts,
-                                        items: const [
-                                          DropdownMenuItem(
-                                            alignment:
-                                                AlignmentDirectional.centerEnd,
-                                            value: "1",
-                                            child: Text(
-                                              "1",
-                                              style: TextStyle(
-                                                color: whiteFonts,
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                          DropdownMenuItem(
-                                            alignment:
-                                                AlignmentDirectional.centerEnd,
-                                            value: "2",
-                                            child: Text(
-                                              "2",
-                                              style: TextStyle(
-                                                color: whiteFonts,
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                        validator: (value) {
-                                          if (value != null) {
-                                            setState(() {
-                                              isNotValid = false;
-                                            });
-                                            return null;
-                                          }
-                                          setState(() {
-                                            isNotValid = true;
-                                          });
-                                          return '';
-                                        },
-                                        icon: Icon(Icons.arrow_downward),
-                                        onChanged: (value) {},
-                                        style: TextStyle(
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        SizedBox(
+                                          height: 2,
                                         ),
-                                        decoration: InputDecoration(
-                                          errorStyle: TextStyle(fontSize: 0),
-                                          helperText: '',
-                                          helperStyle: TextStyle(fontSize: 0),
-                                          filled: true,
-                                          fillColor: pagesColor,
-                                          isDense: true,
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                            vertical: 1,
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              width: 2,
-                                              color: Colors.red,
-                                              style: BorderStyle.solid,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(25),
+                                        Text(
+                                          'طلب جديد',
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 12,
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 5.0),
-                                      child: TextFormField(
-                                        textDirection: TextDirection.rtl,
-                                        validator: (value) {
-                                          if (value.trim().isNotEmpty) {
-                                            setState(() {
-                                              isNotValid = false;
-                                            });
-                                            return null;
-                                          }
-                                          setState(() {
-                                            isNotValid = true;
-                                          });
-                                          return '';
-                                        },
-                                        style: TextStyle(
-                                          color: whiteFonts,
-                                          fontSize: 12,
-                                        ),
-                                        onChanged: (value) {},
-                                        keyboardType: TextInputType.text,
-                                        maxLines: 4,
-                                        decoration: InputDecoration(
-                                          errorStyle: TextStyle(fontSize: 0),
-                                          helperText: '',
-                                          helperStyle: TextStyle(fontSize: 0),
-                                          filled: true,
-                                          fillColor: pagesColor,
-                                          isDense: true,
-                                          hintText: 'الوصف...',
-                                          hintTextDirection: TextDirection.rtl,
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                            vertical: 15,
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderSide: BorderSide.none,
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              width: 2,
-                                              color: Colors.red,
-                                              style: BorderStyle.solid,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                          ),
-                                        ),
-                                      ),
+                                      ],
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10.0),
+                                child: Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 5.0),
+                                        child: TextFormField(
+                                          textDirection: TextDirection.rtl,
+                                          validator: (value) {
+                                            if (value.trim().isNotEmpty) {
+                                              setState(() {
+                                                isNotValid = false;
+                                              });
+                                              return null;
+                                            }
+
+                                            setState(() {
+                                              isNotValid = true;
+                                            });
+                                            return '';
+                                          },
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                          onChanged: (value) {},
+                                          keyboardType: TextInputType.text,
+                                          decoration: InputDecoration(
+                                            errorStyle: TextStyle(fontSize: 0),
+                                            helperText: '',
+                                            helperStyle: TextStyle(fontSize: 0),
+                                            filled: true,
+                                            fillColor: pagesColor,
+                                            isDense: true,
+                                            hintText: 'الاسم',
+                                            hintTextDirection:
+                                                TextDirection.rtl,
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: 15,
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                width: 2,
+                                                color: Colors.red,
+                                                style: BorderStyle.solid,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 5.0),
+                                        child: TextFormField(
+                                          textDirection: TextDirection.rtl,
+                                          validator: (value) {
+                                            if (value.trim().isNotEmpty) {
+                                              setState(() {
+                                                isNotValid = false;
+                                              });
+                                              return null;
+                                            }
+
+                                            setState(() {
+                                              isNotValid = true;
+                                            });
+                                            return '';
+                                          },
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                          onChanged: (value) {},
+                                          keyboardType: TextInputType.text,
+                                          decoration: InputDecoration(
+                                            errorStyle: TextStyle(fontSize: 0),
+                                            helperText: '',
+                                            helperStyle: TextStyle(fontSize: 0),
+                                            filled: true,
+                                            fillColor: pagesColor,
+                                            isDense: true,
+                                            hintText: 'رقم الجوال',
+                                            hintTextDirection:
+                                                TextDirection.rtl,
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: 15,
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                width: 2,
+                                                color: Colors.red,
+                                                style: BorderStyle.solid,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 5.0),
+                                        child: TextFormField(
+                                          textDirection: TextDirection.rtl,
+                                          validator: (value) {
+                                            if (value.trim().isNotEmpty) {
+                                              setState(() {
+                                                isNotValid = false;
+                                              });
+                                              return null;
+                                            }
+                                            setState(() {
+                                              isNotValid = true;
+                                            });
+                                            return '';
+                                          },
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                          onChanged: (value) {},
+                                          keyboardType: TextInputType.text,
+                                          decoration: InputDecoration(
+                                            errorStyle: TextStyle(fontSize: 0),
+                                            helperText: '',
+                                            helperStyle: TextStyle(fontSize: 0),
+                                            filled: true,
+                                            fillColor: pagesColor,
+                                            isDense: true,
+                                            hintText: 'البريد الالكتروني',
+                                            hintTextDirection:
+                                                TextDirection.rtl,
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: 15,
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                width: 2,
+                                                color: Colors.red,
+                                                style: BorderStyle.solid,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 5.0),
+                                        child: DropdownButtonFormField(
+                                          hint: Text('نوع الطلب'),
+                                          isExpanded: true,
+                                          isDense: false,
+                                          elevation: 1,
+                                          alignment:
+                                              AlignmentDirectional.centerEnd,
+                                          iconDisabledColor: yellowFonts,
+                                          iconEnabledColor: yellowFonts,
+                                          items: const [
+                                            DropdownMenuItem(
+                                              alignment: AlignmentDirectional
+                                                  .centerEnd,
+                                              value: "1",
+                                              child: Text(
+                                                "1",
+                                                style: TextStyle(
+                                                  color: whiteFonts,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ),
+                                            DropdownMenuItem(
+                                              alignment: AlignmentDirectional
+                                                  .centerEnd,
+                                              value: "2",
+                                              child: Text(
+                                                "2",
+                                                style: TextStyle(
+                                                  color: whiteFonts,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                          validator: (value) {
+                                            if (value != null) {
+                                              setState(() {
+                                                isNotValid = false;
+                                              });
+                                              return null;
+                                            }
+                                            setState(() {
+                                              isNotValid = true;
+                                            });
+                                            return '';
+                                          },
+                                          icon: Icon(Icons.arrow_downward),
+                                          onChanged: (value) {},
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                          decoration: InputDecoration(
+                                            errorStyle: TextStyle(fontSize: 0),
+                                            helperText: '',
+                                            helperStyle: TextStyle(fontSize: 0),
+                                            filled: true,
+                                            fillColor: pagesColor,
+                                            isDense: true,
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: 1,
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                width: 2,
+                                                color: Colors.red,
+                                                style: BorderStyle.solid,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 5.0),
+                                        child: TextFormField(
+                                          textDirection: TextDirection.rtl,
+                                          validator: (value) {
+                                            if (value.trim().isNotEmpty) {
+                                              setState(() {
+                                                isNotValid = false;
+                                              });
+                                              return null;
+                                            }
+                                            setState(() {
+                                              isNotValid = true;
+                                            });
+                                            return '';
+                                          },
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                          onChanged: (value) {},
+                                          keyboardType: TextInputType.text,
+                                          maxLines: 4,
+                                          decoration: InputDecoration(
+                                            errorStyle: TextStyle(fontSize: 0),
+                                            helperText: '',
+                                            helperStyle: TextStyle(fontSize: 0),
+                                            filled: true,
+                                            fillColor: pagesColor,
+                                            isDense: true,
+                                            hintText: 'الوصف...',
+                                            hintTextDirection:
+                                                TextDirection.rtl,
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: 15,
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                width: 2,
+                                                color: Colors.red,
+                                                style: BorderStyle.solid,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'مطلوبة',
-                          style: TextStyle(
-                            color: whiteFonts,
-                            fontSize: 12,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: MaterialButton(
-                            onPressed: () {
-                              if (_formKey.currentState.validate()) {
-                                // Navigator.of(context).pop();
-                              }
-                            },
-                            color:
-                                isNotValid != true ? yellowFonts : Colors.red,
-                            textColor: darkFonts,
-                            child: ImageIcon(
-                              isNotValid != true
-                                  ? AssetImage('assets/images/icons/done.png')
-                                  : AssetImage('assets/images/icons/close.png'),
-                              size: 18,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'مطلوبة',
+                            style: TextStyle(
+                              color: whiteFonts,
+                              fontSize: 12,
                             ),
-                            padding: EdgeInsets.all(15),
-                            shape: CircleBorder(),
                           ),
-                        ),
-                        Text(
-                          'إرسال',
-                          style: TextStyle(
-                            color: whiteFonts,
-                            fontSize: 12,
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: MaterialButton(
+                              onPressed: () {
+                                if (_formKey.currentState.validate()) {
+                                  // Navigator.of(context).pop();
+                                }
+                              },
+                              color:
+                                  isNotValid != true ? yellowFonts : Colors.red,
+                              textColor: darkFonts,
+                              child: ImageIcon(
+                                isNotValid != true
+                                    ? AssetImage('assets/images/icons/done.png')
+                                    : AssetImage(
+                                        'assets/images/icons/close.png'),
+                                size: 18,
+                              ),
+                              padding: EdgeInsets.all(15),
+                              shape: CircleBorder(),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          Text(
+                            'إرسال',
+                            style: TextStyle(
+                              color: whiteFonts,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
