@@ -24,6 +24,11 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
     });
   }
 
+  List<String> images = [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/disp/9ee12212906787.5626e998e99ad.jpg",
+    "https://saudalkhamis.net/wp-content/uploads/2019/12/CleanShot-2019-12-15-at-20.39.51-450x350.png",
+  ];
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -46,7 +51,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                   key: key,
                   onPressed: () {
                     getOffset(key);
-                    showMyDialog(context, x, y+5);
+                    showMyDialog(context, x, y + 5);
                   },
                   height: 40,
                   minWidth: 40,
@@ -158,7 +163,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                           hint: Text('مشاريعي'),
                           isDense: false,
                           elevation: 1,
-                              alignment: AlignmentDirectional.centerStart,
+                          alignment: AlignmentDirectional.centerStart,
                           iconDisabledColor: yellowFonts,
                           iconEnabledColor: yellowFonts,
                           items: const [
@@ -274,9 +279,454 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                 ),
               ),
             ),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Container(),
+            SliverToBoxAdapter(
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: whiteFonts,
+                          borderRadius: BorderRadius.circular(80),
+                          border: Border.all(
+                            width: 2.0,
+                            color: appColorDark,
+                          ),
+                        ),
+                        child: Text(
+                          '1',
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: darkFonts,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: whiteFonts,
+                          borderRadius: BorderRadius.circular(80),
+                          border: Border.all(
+                            width: 2.0,
+                            color: appColorDark,
+                          ),
+                        ),
+                        child: Container(
+                          width: 60,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: whiteFonts,
+                            borderRadius: BorderRadius.circular(80),
+                            border: Border.all(
+                              width: 2.0,
+                              color: appColorDark,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: whiteFonts,
+                          borderRadius: BorderRadius.circular(80),
+                          border: Border.all(
+                            width: 2.0,
+                            color: appColorDark,
+                          ),
+                        ),
+                        child: Text(
+                          '3',
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: darkFonts,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text(
+                  'آخر الأعمال',
+                  style: TextStyle(
+                    fontSize: 12.0,
+                    color: yellowFonts,
+                  ),
+                ),
+              ),
+            ),
+            SliverGrid.count(
+              childAspectRatio: 0.6,
+              crossAxisCount: 2,
+              crossAxisSpacing: 10.0,
+              mainAxisSpacing: 10.0,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: appColorDark,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 120,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: NetworkImage(images[1]),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        dense: true,
+                        trailing: Text(
+                          '03/05/2021',
+                          textDirection: TextDirection.ltr,
+                          style: TextStyle(
+                            color: yellowFonts,
+                            fontSize: 9,
+                          ),
+                        ),
+                        title: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'مجموعة مصوري الرياض',
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: whiteFonts,
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          'تجربة توظيف المهامتجربة توظيف المهارات',
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: whiteFonts,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 38 زيارة',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/view-2.png'),
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'قراءة',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 38 إعجاب',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/like.png'),
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'إعجاب',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: appColorDark,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 120,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: NetworkImage(images[1]),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        dense: true,
+                        trailing: Text(
+                          '03/05/2021',
+                          textDirection: TextDirection.ltr,
+                          style: TextStyle(
+                            color: yellowFonts,
+                            fontSize: 9,
+                          ),
+                        ),
+                        title: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'مجموعة مصوري الرياض',
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: whiteFonts,
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          'تجربة توظيف المهامتجربة توظيف المهارات',
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: whiteFonts,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 38 زيارة',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/view-2.png'),
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'قراءة',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 38 إعجاب',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/like.png'),
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'إعجاب',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: appColorDark,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 120,
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: NetworkImage(images[1]),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        dense: true,
+                        trailing: Text(
+                          '03/05/2021',
+                          textDirection: TextDirection.ltr,
+                          style: TextStyle(
+                            color: yellowFonts,
+                            fontSize: 9,
+                          ),
+                        ),
+                        title: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'مجموعة مصوري الرياض',
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 9,
+                              color: whiteFonts,
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          'تجربة توظيف المهامتجربة توظيف المهارات',
+                          maxLines: 2,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: whiteFonts,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 38 زيارة',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/view-2.png'),
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'قراءة',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 38 إعجاب',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/like.png'),
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'إعجاب',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
