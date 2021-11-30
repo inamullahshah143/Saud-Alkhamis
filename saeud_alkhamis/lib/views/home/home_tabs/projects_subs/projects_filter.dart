@@ -2,6 +2,7 @@ import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
+import 'package:intl/intl.dart' as intl;
 class ProjectFilters extends StatefulWidget {
   const ProjectFilters({Key key}) : super(key: key);
 
@@ -17,7 +18,14 @@ class _ProjectFiltersState extends State<ProjectFilters> {
     'خدمات',
     'هجين',
   ];
+  TextEditingController _dateController;
   bool isNotValid;
+  
+  @override
+  void initState() {
+    _dateController = TextEditingController();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -183,12 +191,16 @@ class _ProjectFiltersState extends State<ProjectFilters> {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: TextField(
+                          readOnly: true,
+                          controller:_dateController,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
                             fontSize: 12,
                           ),
-                          onChanged: (value) {},
+                          onTap: () {
+                            selectDate(context);
+                          },
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             errorStyle: TextStyle(fontSize: 0),
@@ -199,8 +211,15 @@ class _ProjectFiltersState extends State<ProjectFilters> {
                             isDense: true,
                             hintText: '00/00/0000',
                             hintTextDirection: TextDirection.rtl,
-                            suffixIcon:
-                                Icon(Icons.calendar_today, color: yellowFonts),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                Icons.calendar_today,
+                                color: yellowFonts,
+                              ),
+                              onPressed: () {
+                                selectDate(context);
+                              },
+                            ),
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 10,
                               vertical: 15,
@@ -266,5 +285,18 @@ class _ProjectFiltersState extends State<ProjectFilters> {
         ),
       ),
     );
+  }
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        initialDatePickerMode: DatePickerMode.day,
+        firstDate: DateTime(1990),
+        lastDate: DateTime(2050));
+    if (picked != null) {
+      setState(() {
+        _dateController.text = intl.DateFormat.yMd().format(picked);
+      });
+    }
   }
 }

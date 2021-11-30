@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
+import 'package:intl/intl.dart' as intl;
 
 class BlogFilters extends StatefulWidget {
   const BlogFilters({Key key}) : super(key: key);
@@ -16,12 +17,13 @@ class _BlogFiltersState extends State<BlogFilters> {
     'دورات',
     'تيليقران',
   ];
+  TextEditingController _dateController;
   bool isNotValid;
-
   bool isRecent;
   bool isOldest;
   @override
   void initState() {
+    _dateController = TextEditingController();
     isRecent = false;
     isOldest = false;
     super.initState();
@@ -98,8 +100,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                                   margin: EdgeInsets.only(left: 5),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(45),
-                                    color:
-                                        isRecent ? yellowFonts : pagesColor,
+                                    color: isRecent ? yellowFonts : pagesColor,
                                   ),
                                   child: Text('الأقدم'),
                                 ),
@@ -119,8 +120,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                                   margin: EdgeInsets.only(right: 5),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(45),
-                                    color:
-                                        isOldest ? yellowFonts : pagesColor,
+                                    color: isOldest ? yellowFonts : pagesColor,
                                   ),
                                   child: Text('الأحدث'),
                                 ),
@@ -142,12 +142,16 @@ class _BlogFiltersState extends State<BlogFilters> {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: TextField(
+                          readOnly: true,
+                          controller: _dateController,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
                             fontSize: 12,
                           ),
-                          onChanged: (value) {},
+                          onTap: () {
+                            selectDate(context);
+                          },
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             errorStyle: TextStyle(fontSize: 0),
@@ -158,8 +162,15 @@ class _BlogFiltersState extends State<BlogFilters> {
                             isDense: true,
                             hintText: '00/00/0000',
                             hintTextDirection: TextDirection.rtl,
-                            suffixIcon: Icon(Icons.calendar_today,
-                                color: yellowFonts),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                Icons.calendar_today,
+                                color: yellowFonts,
+                              ),
+                              onPressed: () {
+                                selectDate(context);
+                              },
+                            ),
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 10,
                               vertical: 15,
@@ -203,8 +214,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                         padding: EdgeInsets.zero,
                         child: ImageIcon(
                           isNotValid != true
-                              ? AssetImage(
-                                  'assets/images/icons/refresh-4.png')
+                              ? AssetImage('assets/images/icons/refresh-4.png')
                               : AssetImage('assets/images/icons/close.png'),
                           size: 16,
                         ),
@@ -226,5 +236,19 @@ class _BlogFiltersState extends State<BlogFilters> {
         ),
       ),
     );
+  }
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        initialDatePickerMode: DatePickerMode.day,
+        firstDate: DateTime(1990),
+        lastDate: DateTime(2050));
+    if (picked != null) {
+      setState(() {
+        _dateController.text = intl.DateFormat.yMd().format(picked);
+      });
+    }
   }
 }
