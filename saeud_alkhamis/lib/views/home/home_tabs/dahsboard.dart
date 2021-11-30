@@ -143,7 +143,7 @@ class _DashboardState extends State<Dashboard> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'خدمة',
+                                'أطلب',
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: whiteFonts,
@@ -174,7 +174,7 @@ class _DashboardState extends State<Dashboard> {
                                 width: 10,
                               ),
                               Text(
-                                'أطلب',
+                                'خدمة',
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: whiteFonts,

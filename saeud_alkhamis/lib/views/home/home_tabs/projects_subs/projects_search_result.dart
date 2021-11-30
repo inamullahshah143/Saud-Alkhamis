@@ -165,7 +165,7 @@ class _ProjectsSearchResultState extends State<ProjectsSearchResult> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/2.png',
+                        'assets/images/3.png',
                       ),
                       fit: BoxFit.cover,
                     ),

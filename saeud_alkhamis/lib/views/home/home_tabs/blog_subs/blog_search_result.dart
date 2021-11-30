@@ -160,7 +160,7 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/2.png',
+                        'assets/images/1.png',
                       ),
                       fit: BoxFit.cover,
                     ),

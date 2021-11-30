@@ -162,7 +162,7 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/2.png',
+                        'assets/images/1.png',
                       ),
                       fit: BoxFit.cover,
                     ),

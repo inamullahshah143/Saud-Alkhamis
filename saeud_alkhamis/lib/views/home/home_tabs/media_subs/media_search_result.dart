@@ -164,7 +164,7 @@ class _MediaSearchResultState extends State<MediaSearchResult> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/2.png',
+                        'assets/images/5.png',
                       ),
                       fit: BoxFit.cover,
                     ),

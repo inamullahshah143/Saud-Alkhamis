@@ -93,320 +93,335 @@ class _NoticesState extends State<Notices> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8.0),
-                          child: SizedBox(
-                            height: 150,
-                            child: GridView.count(
-                              physics: NeverScrollableScrollPhysics(),
-                              crossAxisCount: 4,
-                              childAspectRatio: 1.5,
-                              children: [
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '3K',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                        Directionality(
+                          textDirection: TextDirection.ltr,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            child: SizedBox(
+                              height: 150,
+                              child: GridView.count(
+                                physics: NeverScrollableScrollPhysics(),
+                                crossAxisCount: 4,
+                                childAspectRatio: 1.5,
+                                children: [
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '3K',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add_circle,
-                                        color: redFonts,
-                                        size: 12,
-                                      ),
-                                      Text(
-                                        'تيلقيرام',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Icon(
+                                          Icons.add_circle,
+                                          color: redFonts,
+                                          size: 12,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'تيلقيرام',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '40K',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '40K',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add_circle,
-                                        color: redFonts,
-                                        size: 12,
-                                      ),
-                                      Text(
-                                        'انستقرام',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Icon(
+                                          Icons.add_circle,
+                                          color: redFonts,
+                                          size: 12,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'انستقرام',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '2.2K',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '2.2K',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add_circle,
-                                        color: redFonts,
-                                        size: 12,
-                                      ),
-                                      Text(
-                                        'اليوتيوب',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Icon(
+                                          Icons.add_circle,
+                                          color: redFonts,
+                                          size: 12,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'اليوتيوب',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '218K',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '218K',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add_circle,
-                                        color: redFonts,
-                                        size: 12,
-                                      ),
-                                      Text(
-                                        'تويتر',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Icon(
+                                          Icons.add_circle,
+                                          color: redFonts,
+                                          size: 12,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'تويتر',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '25',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '25',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add_circle,
-                                        color: redFonts,
-                                        size: 12,
-                                      ),
-                                      Text(
-                                        'مقالات شخصية',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Icon(
+                                          Icons.add_circle,
+                                          color: redFonts,
+                                          size: 12,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'مقالات شخصية',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '250',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '250',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add_circle,
-                                        color: redFonts,
-                                        size: 12,
-                                      ),
-                                      Text(
-                                        'تقديم خدمة',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Icon(
+                                          Icons.add_circle,
+                                          color: redFonts,
+                                          size: 12,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'تقديم خدمة',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '1K',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '1K',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add_circle,
-                                        color: redFonts,
-                                        size: 12,
-                                      ),
-                                      Text(
-                                        'تيك توك',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Icon(
+                                          Icons.add_circle,
+                                          color: redFonts,
+                                          size: 12,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'تيك توك',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '-',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '-',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add_circle,
-                                        color: redFonts,
-                                        size: 12,
-                                      ),
-                                      Text(
-                                        'سناب شات',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Icon(
+                                          Icons.add_circle,
+                                          color: redFonts,
+                                          size: 12,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'سناب شات',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '69',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '69',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        'اللقاءات والدورات',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Text(
+                                          'اللقاءات والدورات',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '258',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '258',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        'معلومات عامة',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Text(
+                                          'معلومات عامة',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '202',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '202',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        'محتوى شخصي',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Text(
+                                          'محتوى شخصي',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Column(
-                                    children: const [
-                                      Text(
-                                        '264',
-                                        style: TextStyle(
-                                          color: yellowFonts,
-                                          fontSize: 12,
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Column(
+                                      children: const [
+                                        Text(
+                                          '264',
+                                          style: TextStyle(
+                                            color: yellowFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        'محتوى تقني',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: whiteFonts,
-                                          fontSize: 12,
+                                        Text(
+                                          'محتوى تقني',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: whiteFonts,
+                                            fontSize: 12,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
