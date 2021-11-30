@@ -4,6 +4,8 @@ import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
+import '../store.dart';
+
 class StoreSearchResult extends StatefulWidget {
   String searchKeyword;
   StoreSearchResult({Key key, @required this.searchKeyword}) : super(key: key);
@@ -183,14 +185,17 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
             SliverFillRemaining(
               hasScrollBody: false,
               child: Column(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Text(
-                      '',
-                      textDirection: TextDirection.rtl,
-                    ),
-                  )
+                children: [
+                  StoreListTile(
+                    type: 'فنون',
+                    date: '03/05/2021',
+                    thumnail:
+                        'https://m.media-amazon.com/images/I/71a5OIylnWL._AC_SY606_.jpg',
+                    title: 'ملهمون',
+                    subtitle:
+                        'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                    rating: '3.0',
+                  ),
                 ],
               ),
             ),

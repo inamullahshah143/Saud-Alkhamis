@@ -180,20 +180,27 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                 ),
               ),
             ),
-            SliverFillRemaining(
+             SliverFillRemaining(
               hasScrollBody: false,
               child: Column(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Text(
-                      '',
-                      textDirection: TextDirection.rtl,
+                children: [
+                  InkWell(
+                    onTap: () {
+                    },
+                    child: CustomListTile(
+                      type: 'استشارت',
+                      title: 'تقديم استشارة في تجربة المستخدم',
+                      subtitle:
+                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+                      date: '03/05/2021',
+                      isShareable: false,
                     ),
-                  )
+                  ),
+                  SizedBox(height: 80),
                 ],
               ),
             ),
+         
           ],
         ),
       ),

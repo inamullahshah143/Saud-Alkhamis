@@ -310,7 +310,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                       type: 'فنون',
                       date: '03/05/2021',
                       thumnail:
-                          'https://m.media-amazon.com/images/I/71a5OIylnWL._AC_SY606_.jpg',
+                          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1515707600l/37914024._SY475_.jpg',
                       title: 'ملهمون',
                       subtitle:
                           'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
@@ -320,7 +320,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                       type: 'فنون',
                       date: '03/05/2021',
                       thumnail:
-                          'https://m.media-amazon.com/images/I/71a5OIylnWL._AC_SY606_.jpg',
+                          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1515707600l/37914024._SY475_.jpg',
                       title: 'ملهمون',
                       subtitle:
                           'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
@@ -347,18 +347,8 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                       type: 'فنون',
                       date: '03/05/2021',
                       thumnail:
-                          'https://m.media-amazon.com/images/I/71a5OIylnWL._AC_SY606_.jpg',
-                      title: 'ملهمون',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      rating: '3.0',
-                    ),
-                    StoreListTile(
-                      type: 'فنون',
-                      date: '03/05/2021',
-                      thumnail:
-                          'https://m.media-amazon.com/images/I/71a5OIylnWL._AC_SY606_.jpg',
-                      title: 'ملهمون',
+                          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1515707600l/37914024._SY475_.jpg',
+                      title: 'بعد الأربعين تبدأ الحياة',
                       subtitle:
                           'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
                       rating: '3.0',
