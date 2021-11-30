@@ -54,26 +54,29 @@ class _BlogState extends State<Blog> {
               pinned: true,
               leadingWidth: 0,
               actions: [
-                MaterialButton(
-                  key: key,
-                  onPressed: () {
-                    getOffset(key);
-                    showMyDialog(context, x, y + 5);
-                  },
-                  height: 40,
-                  minWidth: 40,
-                  color: yellowFonts,
-                  textColor: darkFonts,
-                  padding: EdgeInsets.zero,
-                  child: ImageIcon(
-                    AssetImage('assets/images/icons/plus.png'),
-                    size: 16,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: MaterialButton(
+                    key: key,
+                    onPressed: () {
+                      getOffset(key);
+                      showMyDialog(context, x, y + 5);
+                    },
+                    height: 40,
+                    minWidth: 40,
+                    color: yellowFonts,
+                    textColor: darkFonts,
+                    padding: EdgeInsets.zero,
+                    child: ImageIcon(
+                      AssetImage('assets/images/icons/plus.png'),
+                      size: 16,
+                    ),
+                    shape: CircleBorder(),
                   ),
-                  shape: CircleBorder(),
                 ),
                 MaterialButton(
                   onPressed: () {
-                    showSearchScreen(context);
+                    showSearchScreen(context, 'Blog');
                   },
                   height: 40,
                   minWidth: 40,
@@ -86,38 +89,41 @@ class _BlogState extends State<Blog> {
                   ),
                   shape: CircleBorder(),
                 ),
-                MaterialButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      enableDrag: true,
-                      isScrollControlled: true,
-                      isDismissible: false,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (BuildContext context) => Container(
-                        height: MediaQuery.of(context).size.height * 0.9,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(25.0),
-                            topRight: Radius.circular(25.0),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: MaterialButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        enableDrag: true,
+                        isScrollControlled: true,
+                        isDismissible: false,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (BuildContext context) => Container(
+                          height: MediaQuery.of(context).size.height * 0.9,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(25.0),
+                              topRight: Radius.circular(25.0),
+                            ),
                           ),
+                          child: Notices(),
                         ),
-                        child: Notices(),
-                      ),
-                    );
-                  },
-                  height: 40,
-                  minWidth: 40,
-                  color: yellowFonts,
-                  textColor: darkFonts,
-                  padding: EdgeInsets.zero,
-                  child: ImageIcon(
-                    AssetImage('assets/images/icons/person.png'),
-                    size: 16,
+                      );
+                    },
+                    height: 40,
+                    minWidth: 40,
+                    color: yellowFonts,
+                    textColor: darkFonts,
+                    padding: EdgeInsets.zero,
+                    child: ImageIcon(
+                      AssetImage('assets/images/icons/person.png'),
+                      size: 16,
+                    ),
+                    shape: CircleBorder(),
                   ),
-                  shape: CircleBorder(),
                 ),
               ],
               title: Column(
@@ -349,7 +355,6 @@ class _BlogState extends State<Blog> {
                       isShareable: false,
                     ),
                   ),
-                  
                   InkWell(
                     onTap: () {
                       push(context, BlogView());

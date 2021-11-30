@@ -301,6 +301,7 @@ Future<void> showMyDialog(BuildContext context, x, y) async {
 
 Future<void> showSearchScreen(
   BuildContext context,
+  String searchDataFrom,
 ) async {
   return showDialog<void>(
     context: context,
@@ -308,7 +309,7 @@ Future<void> showSearchScreen(
     useSafeArea: true,
     barrierDismissible: false,
     builder: (BuildContext context) {
-      return SearchScreen();
+      return SearchScreen(searchDataFrom: searchDataFrom);
     },
   );
 }
