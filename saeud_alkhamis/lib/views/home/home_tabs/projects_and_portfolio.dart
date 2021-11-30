@@ -1,9 +1,8 @@
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-
-import 'dashboard_subs/filter_form.dart';
 import 'dashboard_subs/notices.dart';
+import 'projects_subs/projects_filter.dart';
 
 class ProjectsAndPortfolio extends StatefulWidget {
   const ProjectsAndPortfolio({Key key}) : super(key: key);
@@ -227,8 +226,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (BuildContext context) => Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.4,
+                                height: 375,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
@@ -237,7 +235,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                                     topRight: Radius.circular(25.0),
                                   ),
                                 ),
-                                child: FilterForm(),
+                                child: ProjectFilters(),
                               ),
                             );
                           },

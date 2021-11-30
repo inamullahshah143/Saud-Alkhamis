@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/blog_subs/blog_view.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
-import 'dashboard_subs/filter_form.dart';
+import 'blog_subs/blog_filter.dart';
 import 'dashboard_subs/notices.dart';
 
 class Blog extends StatefulWidget {
@@ -42,6 +42,7 @@ class _BlogState extends State<Blog> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         backgroundColor: pagesColor,
         body: CustomScrollView(
           physics: BouncingScrollPhysics(),
@@ -227,18 +228,20 @@ class _BlogState extends State<Blog> {
                               isDismissible: false,
                               backgroundColor: Colors.transparent,
                               context: context,
-                              builder: (BuildContext context) => Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.4,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(25.0),
-                                    topRight: Radius.circular(25.0),
+                              builder: (BuildContext context) => Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height: 300,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(25.0),
+                                      topRight: Radius.circular(25.0),
+                                    ),
                                   ),
+                                  child: BlogFilters(),
                                 ),
-                                child: FilterForm(),
                               ),
                             );
                           },

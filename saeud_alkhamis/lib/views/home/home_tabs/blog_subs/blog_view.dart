@@ -2,11 +2,11 @@
 
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/filter_form.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/notices.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'add_comment.dart';
+import 'blog_filter.dart';
 
 class BlogView extends StatefulWidget {
   const BlogView({Key key}) : super(key: key);
@@ -50,8 +50,7 @@ class _BlogViewState extends State<BlogView> {
               pinned: true,
               automaticallyImplyLeading: false,
               leading: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: MaterialButton(
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -247,8 +246,7 @@ class _BlogViewState extends State<BlogView> {
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (BuildContext context) => Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.4,
+                                height:300,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
@@ -257,7 +255,7 @@ class _BlogViewState extends State<BlogView> {
                                     topRight: Radius.circular(25.0),
                                   ),
                                 ),
-                                child: FilterForm(),
+                                child: BlogFilters(),
                               ),
                             );
                           },

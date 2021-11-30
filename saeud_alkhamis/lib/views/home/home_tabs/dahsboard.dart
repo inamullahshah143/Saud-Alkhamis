@@ -196,8 +196,7 @@ class _DashboardState extends State<Dashboard> {
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (BuildContext context) => Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.4,
+                                height: 300,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,

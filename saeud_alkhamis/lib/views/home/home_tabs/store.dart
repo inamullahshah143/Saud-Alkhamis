@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-
-import 'dashboard_subs/filter_form.dart';
 import 'dashboard_subs/notices.dart';
+import 'store_subs/store_filters.dart';
 
 class Store extends StatefulWidget {
   const Store({Key key}) : super(key: key);
@@ -233,8 +232,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (BuildContext context) => Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.4,
+                                height: 375,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
@@ -243,7 +241,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                                     topRight: Radius.circular(25.0),
                                   ),
                                 ),
-                                child: FilterForm(),
+                                child: StoreFilters(),
                               ),
                             );
                           },
