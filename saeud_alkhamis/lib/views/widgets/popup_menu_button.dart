@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable, no_logic_in_create_state
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/order_form.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
@@ -22,8 +24,15 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
     @required this.y,
     @required this.x,
   });
+  bool isAnimated;
   @override
   void initState() {
+    isAnimated = true;
+    Timer(Duration(milliseconds: 100), () {
+      setState(() {
+        isAnimated = false;
+      });
+    });
     super.initState();
   }
 
@@ -33,28 +42,10 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
       backgroundColor: Colors.transparent,
       body: Stack(
         children: [
-          Positioned(
-            top: y,
-            left: x,
-            child: MaterialButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              height: 40,
-              minWidth: 40,
-              color: whiteFonts,
-              textColor: darkFonts,
-              padding: EdgeInsets.zero,
-              child: ImageIcon(
-                AssetImage('assets/images/icons/close.png'),
-                size: 16,
-              ),
-              shape: CircleBorder(),
-            ),
-          ),
-          Positioned(
-            top: y + 75,
-            left: x - 50,
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 200),
+            top: isAnimated ? y : y + 75,
+            left: isAnimated ? x - 5 : x - 50,
             child: Column(
               children: [
                 MaterialButton(
@@ -83,9 +74,10 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
               ],
             ),
           ),
-          Positioned(
-            top: y + 75,
-            left: x + 50,
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 200),
+            top: isAnimated ? y : y + 75,
+            left: isAnimated ? x : x + 50,
             child: Column(
               children: [
                 MaterialButton(
@@ -131,6 +123,30 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
                   ),
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            top: y,
+            left: x,
+            child: MaterialButton(
+              onPressed: () {
+                setState(() {
+                  isAnimated = true;
+                });
+                Timer(Duration(milliseconds: 200), () {
+                  Navigator.of(context).pop();
+                });
+              },
+              height: 40,
+              minWidth: 40,
+              color: whiteFonts,
+              textColor: darkFonts,
+              padding: EdgeInsets.zero,
+              child: ImageIcon(
+                AssetImage('assets/images/icons/close.png'),
+                size: 16,
+              ),
+              shape: CircleBorder(),
             ),
           ),
         ],
