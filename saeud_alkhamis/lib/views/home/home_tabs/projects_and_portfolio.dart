@@ -40,7 +40,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
           slivers: [
             SliverAppBar(
               expandedHeight: height * 0.5,
-              collapsedHeight: height * 0.25 - 125,
+              collapsedHeight: height * 0.25 - 100,
               elevation: 0,
               automaticallyImplyLeading: false,
               pinned: true,
@@ -126,7 +126,8 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: yellowFonts,
-                      fontSize: 24,
+                      height: 1,
+                      fontSize: 23,
                     ),
                   ),
                   Text(
@@ -134,6 +135,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: whiteFonts,
+                      height: 1,
                       fontSize: 12,
                     ),
                   ),
@@ -250,6 +252,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -316,60 +319,6 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: whiteFonts,
-                          borderRadius: BorderRadius.circular(80),
-                          border: Border.all(
-                            width: 2.0,
-                            color: appColorDark,
-                          ),
-                        ),
-                        child: Container(
-                          width: 60,
-                          height: 60,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/icons/type-logo.png'),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: whiteFonts,
-                          borderRadius: BorderRadius.circular(80),
-                          border: Border.all(
-                            width: 2.0,
-                            color: appColorDark,
-                          ),
-                        ),
-                        child: Container(
-                          width: 60,
-                          height: 60,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/icons/type-logo.png'),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -405,7 +354,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
-                            image: NetworkImage(images[1]),
+                            image: NetworkImage(images[0]),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -417,7 +366,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                           textDirection: TextDirection.ltr,
                           style: TextStyle(
                             color: yellowFonts,
-                            fontSize: 9,
+                            fontSize: 6,
                           ),
                         ),
                         title: Container(
@@ -426,7 +375,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                             'مجموعة مصوري الرياض',
                             maxLines: 1,
                             style: TextStyle(
-                              fontSize: 9,
+                              fontSize: 6,
                               color: whiteFonts,
                             ),
                           ),
@@ -444,6 +393,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                           style: TextStyle(
                             fontSize: 12,
                             color: whiteFonts,
+                            height: 1.5,
                           ),
                         ),
                       ),
@@ -456,7 +406,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                               Text(
                                 'يوجد 38 زيارة',
                                 style: TextStyle(
-                                  fontSize: 9,
+                                  fontSize: 6,
                                   color: yellowFonts,
                                 ),
                               ),
@@ -468,9 +418,9 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                                 ),
                               ),
                               Text(
-                                'قراءة',
+                                'مشاهدة',
                                 style: TextStyle(
-                                  fontSize: 9,
+                                  fontSize: 8,
                                   color: whiteFonts,
                                 ),
                               ),
@@ -482,7 +432,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                               Text(
                                 'يوجد 38 إعجاب',
                                 style: TextStyle(
-                                  fontSize: 9,
+                                  fontSize: 6,
                                   color: yellowFonts,
                                 ),
                               ),
@@ -496,237 +446,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                               Text(
                                 'إعجاب',
                                 style: TextStyle(
-                                  fontSize: 9,
-                                  color: whiteFonts,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: appColorDark,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 120,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: NetworkImage(images[1]),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      ListTile(
-                        dense: true,
-                        trailing: Text(
-                          '03/05/2021',
-                          textDirection: TextDirection.ltr,
-                          style: TextStyle(
-                            color: yellowFonts,
-                            fontSize: 9,
-                          ),
-                        ),
-                        title: Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'مجموعة مصوري الرياض',
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 9,
-                              color: whiteFonts,
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          'تجربة توظيف المهامتجربة توظيف المهارات',
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: whiteFonts,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'يوجد 38 زيارة',
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ImageIcon(
-                                  AssetImage('assets/images/icons/view-2.png'),
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              Text(
-                                'قراءة',
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  color: whiteFonts,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'يوجد 38 إعجاب',
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ImageIcon(
-                                  AssetImage('assets/images/icons/like.png'),
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              Text(
-                                'إعجاب',
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  color: whiteFonts,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: appColorDark,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 120,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: NetworkImage(images[1]),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      ListTile(
-                        dense: true,
-                        trailing: Text(
-                          '03/05/2021',
-                          textDirection: TextDirection.ltr,
-                          style: TextStyle(
-                            color: yellowFonts,
-                            fontSize: 9,
-                          ),
-                        ),
-                        title: Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'مجموعة مصوري الرياض',
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 9,
-                              color: whiteFonts,
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          'تجربة توظيف المهامتجربة توظيف المهارات',
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: whiteFonts,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'يوجد 38 زيارة',
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ImageIcon(
-                                  AssetImage('assets/images/icons/view-2.png'),
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              Text(
-                                'قراءة',
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  color: whiteFonts,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'يوجد 38 إعجاب',
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ImageIcon(
-                                  AssetImage('assets/images/icons/like.png'),
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              Text(
-                                'إعجاب',
-                                style: TextStyle(
-                                  fontSize: 9,
+                                  fontSize: 8,
                                   color: whiteFonts,
                                 ),
                               ),

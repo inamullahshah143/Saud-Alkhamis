@@ -49,7 +49,7 @@ class _BlogState extends State<Blog> {
           slivers: [
             SliverAppBar(
               expandedHeight: height * 0.5,
-              collapsedHeight: height * 0.25 - 125,
+              collapsedHeight: height * 0.25 - 100,
               elevation: 0,
               automaticallyImplyLeading: false,
               pinned: true,
@@ -135,7 +135,8 @@ class _BlogState extends State<Blog> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: yellowFonts,
-                      fontSize: 24,
+                      fontSize: 23,
+                      height: 1,
                     ),
                   ),
                   Text(
@@ -143,6 +144,7 @@ class _BlogState extends State<Blog> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: whiteFonts,
+                      height: 1,
                       fontSize: 12,
                     ),
                   ),
@@ -188,6 +190,9 @@ class _BlogState extends State<Blog> {
                               showCheckmark: false,
                               brightness: Brightness.dark,
                               color: appColorDark,
+                              labelStyle: TextStyle(
+                                fontSize: 12,
+                              ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(25)),
                               borderColor: appColorDark,
@@ -256,6 +261,7 @@ class _BlogState extends State<Blog> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -293,71 +299,6 @@ class _BlogState extends State<Blog> {
               hasScrollBody: false,
               child: Column(
                 children: [
-                  InkWell(
-                    onTap: () {
-                      push(context, BlogView());
-                    },
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: false,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      push(context, BlogView());
-                    },
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: false,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      push(context, BlogView());
-                    },
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: false,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      push(context, BlogView());
-                    },
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: false,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      push(context, BlogView());
-                    },
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: false,
-                    ),
-                  ),
                   InkWell(
                     onTap: () {
                       push(context, BlogView());

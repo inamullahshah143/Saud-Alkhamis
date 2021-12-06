@@ -73,6 +73,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -136,6 +137,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -144,6 +146,9 @@ class _StoreFiltersState extends State<StoreFilters> {
                         choiceActiveStyle: C2ChoiceStyle(
                           showCheckmark: false,
                           brightness: Brightness.dark,
+                          labelStyle: TextStyle(
+                            fontSize: 12,
+                          ),
                           color: yellowFonts,
                           borderRadius: BorderRadius.all(Radius.circular(25)),
                           borderColor: pagesColor,
@@ -186,6 +191,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -193,7 +199,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: TextField(
                           readOnly: true,
-                          controller:_dateController,
+                          controller: _dateController,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,

@@ -36,7 +36,7 @@ class _OrderFormState extends State<OrderForm> {
           trailing: Text(
             'المصدر',
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 8,
               color: yellowFonts,
               decoration: TextDecoration.underline,
             ),
@@ -55,7 +55,7 @@ class _OrderFormState extends State<OrderForm> {
               Text(
                 '03/05/2021',
                 style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 6,
                   color: whiteFonts.withOpacity(0.5),
                 ),
                 textDirection: TextDirection.rtl,
@@ -64,7 +64,8 @@ class _OrderFormState extends State<OrderForm> {
                 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
                 maxLines: 3,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 8,
+                  height: 1.5,
                   color: whiteFonts,
                 ),
                 textDirection: TextDirection.rtl,
@@ -146,6 +147,7 @@ class _OrderFormState extends State<OrderForm> {
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: whiteFonts,
+                                    fontSize: 12,
                                   ),
                                 ),
                               ),
@@ -294,14 +296,12 @@ class _OrderFormState extends State<OrderForm> {
                                             helperStyle: TextStyle(fontSize: 0),
                                             filled: true,
                                             fillColor: pagesColor,
-                                            isDense: true,
                                             hintText: 'الاسم',
                                             hintTextDirection:
                                                 TextDirection.rtl,
                                             contentPadding:
                                                 EdgeInsets.symmetric(
                                               horizontal: 20,
-                                              vertical: 15,
                                             ),
                                             border: OutlineInputBorder(
                                               borderSide: BorderSide.none,
@@ -350,14 +350,12 @@ class _OrderFormState extends State<OrderForm> {
                                             helperStyle: TextStyle(fontSize: 0),
                                             filled: true,
                                             fillColor: pagesColor,
-                                            isDense: true,
                                             hintText: 'رقم الجوال',
                                             hintTextDirection:
                                                 TextDirection.rtl,
                                             contentPadding:
                                                 EdgeInsets.symmetric(
                                               horizontal: 20,
-                                              vertical: 15,
                                             ),
                                             border: OutlineInputBorder(
                                               borderSide: BorderSide.none,
@@ -405,14 +403,12 @@ class _OrderFormState extends State<OrderForm> {
                                             helperStyle: TextStyle(fontSize: 0),
                                             filled: true,
                                             fillColor: pagesColor,
-                                            isDense: true,
                                             hintText: 'البريد الالكتروني',
                                             hintTextDirection:
                                                 TextDirection.rtl,
                                             contentPadding:
                                                 EdgeInsets.symmetric(
                                               horizontal: 20,
-                                              vertical: 15,
                                             ),
                                             border: OutlineInputBorder(
                                               borderSide: BorderSide.none,
@@ -497,7 +493,6 @@ class _OrderFormState extends State<OrderForm> {
                                             contentPadding:
                                                 EdgeInsets.symmetric(
                                               horizontal: 20,
-                                              vertical: 1,
                                             ),
                                             border: OutlineInputBorder(
                                               borderSide: BorderSide.none,
@@ -546,14 +541,12 @@ class _OrderFormState extends State<OrderForm> {
                                             helperStyle: TextStyle(fontSize: 0),
                                             filled: true,
                                             fillColor: pagesColor,
-                                            isDense: true,
                                             hintText: 'الوصف...',
                                             hintTextDirection:
                                                 TextDirection.rtl,
                                             contentPadding:
                                                 EdgeInsets.symmetric(
                                               horizontal: 20,
-                                              vertical: 15,
                                             ),
                                             border: OutlineInputBorder(
                                               borderSide: BorderSide.none,

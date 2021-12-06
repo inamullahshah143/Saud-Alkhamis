@@ -56,6 +56,8 @@ class _HomeState extends State<Home> {
         child: BottomNavigationBar(
           backgroundColor: appColorDark,
           elevation: 0.0,
+          selectedFontSize: 0,
+          unselectedFontSize: 0,
           currentIndex: bottomIndex,
           showSelectedLabels: false,
           showUnselectedLabels: false,

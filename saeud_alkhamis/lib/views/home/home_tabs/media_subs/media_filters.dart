@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'package:intl/intl.dart' as intl;
+
 class MediaFilters extends StatefulWidget {
   const MediaFilters({Key key}) : super(key: key);
 
@@ -20,12 +21,13 @@ class _MediaFiltersState extends State<MediaFilters> {
   ];
   TextEditingController _dateController;
   bool isNotValid;
-  
+
   @override
   void initState() {
     _dateController = TextEditingController();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -72,6 +74,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -135,6 +138,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -142,6 +146,9 @@ class _MediaFiltersState extends State<MediaFilters> {
                         value: tags,
                         choiceActiveStyle: C2ChoiceStyle(
                           showCheckmark: false,
+                          labelStyle: TextStyle(
+                            fontSize: 12,
+                          ),
                           brightness: Brightness.dark,
                           color: yellowFonts,
                           borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -185,14 +192,15 @@ class _MediaFiltersState extends State<MediaFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
-                     Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: TextField(
                           readOnly: true,
-                          controller:_dateController,
+                          controller: _dateController,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
@@ -286,6 +294,7 @@ class _MediaFiltersState extends State<MediaFilters> {
       ),
     );
   }
+
   Future<void> selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,

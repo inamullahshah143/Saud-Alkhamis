@@ -89,7 +89,7 @@ class _NoticesState extends State<Notices> {
                             'تابعني',
                             style: TextStyle(
                               color: whiteFonts,
-                              fontSize: 10,
+                              fontSize: 6,
                             ),
                           ),
                         ),
@@ -98,11 +98,11 @@ class _NoticesState extends State<Notices> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 8.0),
                             child: SizedBox(
-                              height: 150,
+                              height: 200,
                               child: GridView.count(
                                 physics: NeverScrollableScrollPhysics(),
                                 crossAxisCount: 4,
-                                childAspectRatio: 1.5,
+                                childAspectRatio: 1.25,
                                 children: [
                                   InkWell(
                                     onTap: () {},
@@ -431,6 +431,7 @@ class _NoticesState extends State<Notices> {
                             'مواليد 1986 م في المملكة العربية السعودية بمدينة الرياض، مدير الإعلام الجديد بجامعة الملك سعود، مؤسس قسم الخدمات الإلكترونية بالمدينة الطبية بجامعة الملك سعود، معد ومنتج بقناة MBC، المصور الرسمي للبنك السعودي الفرنسي سابقاً، مهتم بنشر المعرفة والتحفيز على البحث والتطبيق، كانت البداية من ملهمي الدكتور مصطفى محمود (رحمه الله)، عاشق للتقنية والتصوير الفوتوغرافي والمرئي، متيم بالمجالات الإلهامية خصوصاً المتعلقة في الجرافيكس، اقرأ كثيراً عن تطوير الذات واسأل نفسي بشكل متكرر للبحث والحصول على الإجابات التي من بعد الله صنعت الكثير من نقاط التحول في حياتي، مؤمن بأن عقل الإنسان خارق ويستطيع أن يجمع بين عدة مجالات في زمن واحد مع طلب المزيد والسبب يعود الى الطموح.',
                             style: TextStyle(
                               color: whiteFonts,
+                              height: 1.5,
                               fontSize: 12,
                             ),
                           ),
@@ -442,6 +443,7 @@ class _NoticesState extends State<Notices> {
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               color: yellowFonts,
+                              fontSize: 12,
                             ),
                           ),
                         ),
@@ -532,58 +534,59 @@ class _ListItemState extends State<ListItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      key: key,
-      children: [
-        Text(
-          title,
-          textDirection: TextDirection.rtl,
-          style: TextStyle(
-            color: whiteFonts,
-            fontSize: 12,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        key: key,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              color: whiteFonts,
+              fontSize: 12,
+            ),
           ),
-        ),
-        Text(
-          subtitle,
-          textDirection: TextDirection.rtl,
-          style: TextStyle(
-            color: whiteFonts,
-            fontSize: 10,
+          Text(
+            subtitle,
+            style: TextStyle(
+              color: whiteFonts,
+              fontSize: 8,
+            ),
           ),
-        ),
-        Row(
-          textDirection: TextDirection.rtl,
-          children: [
-            Container(
-              width: 25,
-              height: 25,
-              margin: EdgeInsets.only(left: 10),
-              alignment: Alignment.center,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: yellowFonts,
-              ),
-              child: Text(
-                widget.year,
-                style: TextStyle(
-                  color: darkFonts,
-                  fontSize: 8,
+          Row(
+            mainAxisSize:MainAxisSize.min,
+            children: [
+              Container(
+                width: 25,
+                height: 25,
+                margin: EdgeInsets.only(left: 10),
+                alignment: Alignment.center,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: yellowFonts,
+                ),
+                child: Text(
+                  widget.year,
+                  style: TextStyle(
+                    color: darkFonts,
+                    fontSize: 6,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: dividerWidth,
-              child: Divider(
-                thickness: 2,
-                color: pagesColor,
+              SizedBox(
+                width: dividerWidth,
+                child: Divider(
+                  thickness: 2,
+                  color: pagesColor,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

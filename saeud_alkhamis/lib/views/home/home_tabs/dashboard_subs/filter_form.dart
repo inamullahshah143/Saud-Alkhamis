@@ -27,6 +27,7 @@ class _FilterFormState extends State<FilterForm> {
     _dateController = TextEditingController();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -73,6 +74,7 @@ class _FilterFormState extends State<FilterForm> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -89,6 +91,9 @@ class _FilterFormState extends State<FilterForm> {
                           showCheckmark: false,
                           brightness: Brightness.dark,
                           color: pagesColor,
+                          labelStyle: TextStyle(
+                            fontSize: 12,
+                          ),
                           borderRadius: BorderRadius.all(Radius.circular(25)),
                           borderColor: pagesColor,
                         ),
@@ -123,14 +128,15 @@ class _FilterFormState extends State<FilterForm> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
-                     Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: TextField(
                           readOnly: true,
-                          controller:_dateController,
+                          controller: _dateController,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
@@ -224,6 +230,7 @@ class _FilterFormState extends State<FilterForm> {
       ),
     );
   }
+
   Future<void> selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,

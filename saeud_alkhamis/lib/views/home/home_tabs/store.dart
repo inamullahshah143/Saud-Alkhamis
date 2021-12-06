@@ -59,7 +59,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
           slivers: [
             SliverAppBar(
               expandedHeight: height * 0.5,
-              collapsedHeight: height * 0.25 - 125,
+              collapsedHeight: height * 0.25 - 100,
               elevation: 0,
               automaticallyImplyLeading: false,
               pinned: true,
@@ -146,6 +146,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                     style: TextStyle(
                       color: yellowFonts,
                       fontSize: 24,
+                      height: 1,
                     ),
                   ),
                   Text(
@@ -154,6 +155,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                     style: TextStyle(
                       color: whiteFonts,
                       fontSize: 12,
+                      height: 1,
                     ),
                   ),
                 ],
@@ -256,6 +258,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -304,26 +307,6 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                           'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
                       rating: '3.0',
                     ),
-                    StoreListTile(
-                      type: 'فنون',
-                      date: '03/05/2021',
-                      thumnail:
-                          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1515707600l/37914024._SY475_.jpg',
-                      title: 'ملهمون',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      rating: '3.0',
-                    ),
-                    StoreListTile(
-                      type: 'فنون',
-                      date: '03/05/2021',
-                      thumnail:
-                          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1515707600l/37914024._SY475_.jpg',
-                      title: 'ملهمون',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      rating: '3.0',
-                    ),
                     SizedBox(
                       height: 75,
                     ),
@@ -331,16 +314,6 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                 ),
                 Column(
                   children: [
-                    StoreListTile(
-                      type: 'فنون',
-                      date: '03/05/2021',
-                      thumnail:
-                          'https://m.media-amazon.com/images/I/71a5OIylnWL._AC_SY606_.jpg',
-                      title: 'ملهمون',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      rating: '3.0',
-                    ),
                     StoreListTile(
                       type: 'فنون',
                       date: '03/05/2021',
@@ -461,7 +434,7 @@ class _StoreListTileState extends State<StoreListTile> {
                             child: Text(
                               type,
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 6,
                                 color: whiteFonts,
                               ),
                             ),
@@ -476,7 +449,7 @@ class _StoreListTileState extends State<StoreListTile> {
                           overflow: TextOverflow.ellipsis,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 6,
                             color: whiteFonts.withOpacity(0.5),
                           ),
                         )
@@ -544,7 +517,7 @@ class _StoreListTileState extends State<StoreListTile> {
                       textDirection: TextDirection.rtl,
                       maxLines: 3,
                       style: TextStyle(
-                        fontSize: 9,
+                        fontSize: 8,
                         color: whiteFonts,
                       ),
                     ),
@@ -565,7 +538,7 @@ class _StoreListTileState extends State<StoreListTile> {
                   Text(
                     'يوجد 38 إعجاب',
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 6,
                       color: yellowFonts,
                     ),
                   ),
@@ -583,7 +556,7 @@ class _StoreListTileState extends State<StoreListTile> {
                   Text(
                     'إعجاب',
                     style: TextStyle(
-                      fontSize: 9,
+                      fontSize: 8,
                       color: whiteFonts,
                     ),
                   ),
@@ -607,7 +580,13 @@ class _StoreListTileState extends State<StoreListTile> {
                       color: yellowFonts,
                     ),
                     SizedBox(width: 10),
-                    Text("شراء"),
+                    Text(
+                      "شراء",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: whiteFonts,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -629,7 +608,13 @@ class _StoreListTileState extends State<StoreListTile> {
                       size: 16,
                     ),
                     SizedBox(width: 10),
-                    Text("مشاركة"),
+                    Text(
+                      "مشاركة",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: whiteFonts,
+                      ),
+                    ),
                   ],
                 ),
               ),

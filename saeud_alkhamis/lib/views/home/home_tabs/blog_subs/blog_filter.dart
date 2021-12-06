@@ -79,6 +79,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -102,7 +103,13 @@ class _BlogFiltersState extends State<BlogFilters> {
                                     borderRadius: BorderRadius.circular(45),
                                     color: isRecent ? yellowFonts : pagesColor,
                                   ),
-                                  child: Text('الأقدم'),
+                                  child: Text(
+                                    'الأقدم',
+                                    style: TextStyle(
+                                      color: whiteFonts,
+                                      fontSize: 12,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -122,7 +129,13 @@ class _BlogFiltersState extends State<BlogFilters> {
                                     borderRadius: BorderRadius.circular(45),
                                     color: isOldest ? yellowFonts : pagesColor,
                                   ),
-                                  child: Text('الأحدث'),
+                                  child: Text(
+                                    'الأحدث',
+                                    style: TextStyle(
+                                      color: whiteFonts,
+                                      fontSize: 12,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -136,6 +149,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -159,7 +173,6 @@ class _BlogFiltersState extends State<BlogFilters> {
                             helperStyle: TextStyle(fontSize: 0),
                             filled: true,
                             fillColor: pagesColor,
-                            isDense: true,
                             hintText: '00/00/0000',
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: IconButton(
@@ -173,7 +186,6 @@ class _BlogFiltersState extends State<BlogFilters> {
                             ),
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 10,
-                              vertical: 15,
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,

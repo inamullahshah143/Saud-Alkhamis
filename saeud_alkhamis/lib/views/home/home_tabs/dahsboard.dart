@@ -49,7 +49,7 @@ class _DashboardState extends State<Dashboard> {
           slivers: [
             SliverAppBar(
               expandedHeight: height * 0.5,
-              collapsedHeight: height * 0.25 - 125,
+              collapsedHeight: height * 0.25 - 100,
               elevation: 0,
               pinned: true,
               automaticallyImplyLeading: false,
@@ -99,14 +99,16 @@ class _DashboardState extends State<Dashboard> {
                     '04',
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
+                      height: 1,
                       color: yellowFonts,
-                      fontSize: 24,
+                      fontSize: 23,
                     ),
                   ),
                   Text(
                     'المتواجدون الان',
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
+                      height: 1,
                       color: whiteFonts,
                       fontSize: 12,
                     ),
@@ -220,6 +222,7 @@ class _DashboardState extends State<Dashboard> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -242,75 +245,9 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             SliverFillRemaining(
-              hasScrollBody: false,
+              // hasScrollBody: false,
               child: Column(
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: true,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: true,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: true,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: true,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: true,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: true,
-                    ),
-                  ),
                   InkWell(
                     onTap: () {},
                     child: CustomListTile(

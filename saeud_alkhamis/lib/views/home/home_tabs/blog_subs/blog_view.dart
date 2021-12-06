@@ -45,7 +45,7 @@ class _BlogViewState extends State<BlogView> {
           slivers: [
             SliverAppBar(
               expandedHeight: height * 0.5,
-              collapsedHeight: height * 0.25 - 125,
+              collapsedHeight: height * 0.25 - 100,
               elevation: 0,
               pinned: true,
               automaticallyImplyLeading: false,
@@ -148,7 +148,8 @@ class _BlogViewState extends State<BlogView> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: yellowFonts,
-                      fontSize: 24,
+                      fontSize: 23,
+                      height: 1,
                     ),
                   ),
                   Text(
@@ -157,6 +158,7 @@ class _BlogViewState extends State<BlogView> {
                     style: TextStyle(
                       color: whiteFonts,
                       fontSize: 12,
+                      height: 1,
                     ),
                   ),
                 ],
@@ -206,7 +208,13 @@ class _BlogViewState extends State<BlogView> {
                                     color: yellowFonts,
                                   ),
                                   SizedBox(width: 10),
-                                  Text("التعليقات"),
+                                  Text(
+                                    "التعليقات",
+                                    style: TextStyle(
+                                      color: whiteFonts,
+                                      fontSize: 12,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -228,7 +236,13 @@ class _BlogViewState extends State<BlogView> {
                                     size: 16,
                                   ),
                                   SizedBox(width: 10),
-                                  Text("مشاركة"),
+                                  Text(
+                                    "مشاركة",
+                                    style: TextStyle(
+                                      color: whiteFonts,
+                                      fontSize: 12,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -246,7 +260,7 @@ class _BlogViewState extends State<BlogView> {
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (BuildContext context) => Container(
-                                height:300,
+                                height: 300,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
@@ -270,6 +284,7 @@ class _BlogViewState extends State<BlogView> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -283,7 +298,7 @@ class _BlogViewState extends State<BlogView> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/2.png',
+                        'assets/images/6.png',
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -311,7 +326,10 @@ class _BlogViewState extends State<BlogView> {
                     padding: const EdgeInsets.all(20.0),
                     child: Text(
                       demoText + demoText + demoText,
-                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                        color: whiteFonts,
+                        fontSize: 8,
+                      ),
                     ),
                   )
                 ],
@@ -381,7 +399,7 @@ class _BlogViewState extends State<BlogView> {
                         backgroundColor: Colors.transparent,
                         context: context,
                         builder: (BuildContext context) => Container(
-                          height: MediaQuery.of(context).size.height * 0.4,
+                          height: 385,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             color: Colors.transparent,
@@ -435,7 +453,7 @@ class _BlogViewState extends State<BlogView> {
                     trailing: Text(
                       'المصدر',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 8,
                         color: yellowFonts,
                         decoration: TextDecoration.underline,
                       ),
@@ -454,16 +472,16 @@ class _BlogViewState extends State<BlogView> {
                         Text(
                           '03/05/2021',
                           style: TextStyle(
-                            fontSize: 9,
+                            fontSize: 6,
                             color: whiteFonts.withOpacity(0.5),
                           ),
                           textDirection: TextDirection.rtl,
                         ),
                         Text(
                           'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                          maxLines: 3,
+                          maxLines: 2,
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 8,
                             color: whiteFonts,
                           ),
                           textDirection: TextDirection.rtl,

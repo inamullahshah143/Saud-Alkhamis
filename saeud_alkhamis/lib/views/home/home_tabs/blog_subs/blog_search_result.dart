@@ -36,7 +36,7 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
           slivers: [
             SliverAppBar(
               expandedHeight: height * 0.5,
-              collapsedHeight: height * 0.25 - 125,
+              collapsedHeight: height * 0.25 - 100,
               elevation: 0,
               pinned: true,
               automaticallyImplyLeading: false,
@@ -118,12 +118,10 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                             errorStyle: TextStyle(fontSize: 0),
                             filled: true,
                             fillColor: appColorDark,
-                            isDense: true,
                             hintText: 'أكتب كلمات البحث ..',
                             hintTextDirection: TextDirection.rtl,
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 20,
-                              vertical: 15,
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -147,6 +145,7 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -180,13 +179,12 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                 ),
               ),
             ),
-             SliverFillRemaining(
+            SliverFillRemaining(
               hasScrollBody: false,
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () {
-                    },
+                    onTap: () {},
                     child: CustomListTile(
                       type: 'استشارت',
                       title: 'تقديم استشارة في تجربة المستخدم',
@@ -200,7 +198,6 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                 ],
               ),
             ),
-         
           ],
         ),
       ),

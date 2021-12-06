@@ -80,12 +80,10 @@ class _AddCommentState extends State<AddComment> {
                       helperStyle: TextStyle(fontSize: 0),
                       filled: true,
                       fillColor: pagesColor,
-                      isDense: true,
                       hintText: 'الاسم',
                       hintTextDirection: TextDirection.rtl,
                       contentPadding: EdgeInsets.symmetric(
                         horizontal: 20,
-                        vertical: 15,
                       ),
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
@@ -132,12 +130,10 @@ class _AddCommentState extends State<AddComment> {
                       helperStyle: TextStyle(fontSize: 0),
                       filled: true,
                       fillColor: pagesColor,
-                      isDense: true,
                       hintText: 'التعليق ',
                       hintTextDirection: TextDirection.rtl,
                       contentPadding: EdgeInsets.symmetric(
                         horizontal: 20,
-                        vertical: 15,
                       ),
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
@@ -158,7 +154,7 @@ class _AddCommentState extends State<AddComment> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      isNotValid ? 'حقول' : 'تعليق',
+                      isNotValid ? 'إرسال' : 'التعليق',
                       style: TextStyle(
                         fontSize: 12,
                         color: whiteFonts,
@@ -188,7 +184,7 @@ class _AddCommentState extends State<AddComment> {
                       ),
                     ),
                     Text(
-                      isNotValid ? 'مطلوبة' : 'إضافة',
+                      isNotValid ? 'حقول' : 'مطلوبة',
                       style: TextStyle(
                         fontSize: 12,
                         color: whiteFonts,

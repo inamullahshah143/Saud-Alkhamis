@@ -38,7 +38,7 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
           slivers: [
             SliverAppBar(
               expandedHeight: height * 0.5,
-              collapsedHeight: height * 0.25 - 125,
+              collapsedHeight: height * 0.25 - 100,
               elevation: 0,
               pinned: true,
               automaticallyImplyLeading: false,
@@ -149,6 +149,7 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),

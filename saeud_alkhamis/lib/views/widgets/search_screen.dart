@@ -50,7 +50,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           Navigator.of(context).pop();
                           push(
                             context,
-                            MediaSearchResult(
+                            BlogSearchResult(
                               searchKeyword: seachText.text,
                             ),
                           );
@@ -58,7 +58,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           Navigator.of(context).pop();
                           push(
                             context,
-                            BlogSearchResult(
+                            MediaSearchResult(
                               searchKeyword: seachText.text,
                             ),
                           );
@@ -123,12 +123,10 @@ class _SearchScreenState extends State<SearchScreen> {
                         errorStyle: TextStyle(fontSize: 0),
                         filled: true,
                         fillColor: pagesColor,
-                        isDense: true,
                         hintText: 'أكتب كلمات البحث ..',
                         hintTextDirection: TextDirection.rtl,
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: 20,
-                          vertical: 15,
                         ),
                         border: OutlineInputBorder(
                           borderSide: BorderSide.none,

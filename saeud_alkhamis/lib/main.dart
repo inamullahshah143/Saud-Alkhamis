@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: appThemeColor,
         brightness: Brightness.dark,
+        fontFamily: 'HelveticaNeueLTA',
       ),
       home: const Home(),
     );

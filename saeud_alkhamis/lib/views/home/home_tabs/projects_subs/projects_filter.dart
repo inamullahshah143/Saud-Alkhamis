@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'package:intl/intl.dart' as intl;
+
 class ProjectFilters extends StatefulWidget {
   const ProjectFilters({Key key}) : super(key: key);
 
@@ -20,12 +21,13 @@ class _ProjectFiltersState extends State<ProjectFilters> {
   ];
   TextEditingController _dateController;
   bool isNotValid;
-  
+
   @override
   void initState() {
     _dateController = TextEditingController();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -135,6 +137,7 @@ class _ProjectFiltersState extends State<ProjectFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -143,6 +146,9 @@ class _ProjectFiltersState extends State<ProjectFilters> {
                         choiceActiveStyle: C2ChoiceStyle(
                           showCheckmark: false,
                           brightness: Brightness.dark,
+                          labelStyle: TextStyle(
+                            fontSize: 12,
+                          ),
                           color: yellowFonts,
                           borderRadius: BorderRadius.all(Radius.circular(25)),
                           borderColor: pagesColor,
@@ -185,6 +191,7 @@ class _ProjectFiltersState extends State<ProjectFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -192,7 +199,7 @@ class _ProjectFiltersState extends State<ProjectFilters> {
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: TextField(
                           readOnly: true,
-                          controller:_dateController,
+                          controller: _dateController,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
@@ -286,6 +293,7 @@ class _ProjectFiltersState extends State<ProjectFilters> {
       ),
     );
   }
+
   Future<void> selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,

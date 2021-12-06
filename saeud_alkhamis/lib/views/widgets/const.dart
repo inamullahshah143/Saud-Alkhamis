@@ -84,12 +84,10 @@ class _CustomListTileState extends State<CustomListTile> {
       @required this.isShareable});
   bool isViewed;
   bool isLiked;
-  bool isShareAble;
   @override
   void initState() {
     isViewed = true;
     isLiked = true;
-    isShareAble = true;
     super.initState();
   }
 
@@ -102,7 +100,7 @@ class _CustomListTileState extends State<CustomListTile> {
           borderRadius: BorderRadius.circular(15),
           color: appColorDark,
         ),
-        height: 125,
+        height: 135,
         padding: EdgeInsets.all(10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +119,7 @@ class _CustomListTileState extends State<CustomListTile> {
                             child: Text(
                               type,
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 6,
                                 color: whiteFonts,
                               ),
                             ),
@@ -154,7 +152,7 @@ class _CustomListTileState extends State<CustomListTile> {
                           textDirection: TextDirection.rtl,
                           maxLines: 3,
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 8,
                             color: whiteFonts,
                           ),
                         ),
@@ -171,7 +169,7 @@ class _CustomListTileState extends State<CustomListTile> {
                       child: Text(
                         date,
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 6,
                           color: whiteFonts.withOpacity(0.5),
                         ),
                       ),
@@ -193,25 +191,21 @@ class _CustomListTileState extends State<CustomListTile> {
                             Text(
                               'يوجد 38 زيارة',
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 6,
                                 color: yellowFonts,
                               ),
                             ),
                             IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isShareAble = !isShareAble;
-                                });
-                              },
+                              onPressed: () {},
                               icon: ImageIcon(
                                 AssetImage('assets/images/icons/link.png'),
-                                color: isShareAble ? yellowFonts : pagesColor,
+                                color: yellowFonts,
                               ),
                             ),
                             Text(
                               'زيارة',
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 8,
                                 color: whiteFonts,
                               ),
                             ),
@@ -223,7 +217,7 @@ class _CustomListTileState extends State<CustomListTile> {
                             Text(
                               'يوجد 38 زيارة',
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 6,
                                 color: yellowFonts,
                               ),
                             ),
@@ -241,7 +235,7 @@ class _CustomListTileState extends State<CustomListTile> {
                             Text(
                               'قراءة',
                               style: TextStyle(
-                                fontSize: 9,
+                                fontSize: 8,
                                 color: whiteFonts,
                               ),
                             ),
@@ -253,7 +247,7 @@ class _CustomListTileState extends State<CustomListTile> {
                       Text(
                         'يوجد 38 إعجاب',
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 6,
                           color: yellowFonts,
                         ),
                       ),
@@ -271,7 +265,7 @@ class _CustomListTileState extends State<CustomListTile> {
                       Text(
                         'إعجاب',
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 8,
                           color: whiteFonts,
                         ),
                       ),
