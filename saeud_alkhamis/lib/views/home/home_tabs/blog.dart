@@ -49,7 +49,7 @@ class _BlogState extends State<Blog> {
           slivers: [
             SliverAppBar(
               expandedHeight: height * 0.5,
-              collapsedHeight: height * 0.25 - 100,
+              collapsedHeight: height * 0.25 - 50,
               elevation: 0,
               automaticallyImplyLeading: false,
               pinned: true,

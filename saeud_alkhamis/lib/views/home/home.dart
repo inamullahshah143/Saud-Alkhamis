@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/blog.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
@@ -16,60 +17,79 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int bottomIndex;
+  PageController pageController;
   @override
   void initState() {
-    bottomIndex = 4;
+    bottomIndex = 0;
+    pageController = PageController(
+      initialPage: bottomIndex,
+      keepPage: true,
+    );
     super.initState();
   }
 
+  List pages = [
+    Dashboard(),
+    Blog(),
+    Media(),
+    Store(),
+    ProjectsAndPortfolio(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: bottomIndex == 4
-          ? Dashboard()
-          : bottomIndex == 3
-              ? Blog()
-              : bottomIndex == 2
-                  ? Media()
-                  : bottomIndex == 1
-                      ? Store()
-                      : bottomIndex == 0
-                          ? ProjectsAndPortfolio()
-                          : Container(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
-        clipBehavior: Clip.hardEdge,
-        margin: EdgeInsets.symmetric(horizontal: 25),
-        decoration: BoxDecoration(
-          color: appColorDark,
-          borderRadius: BorderRadius.circular(50),
-          boxShadow: [
-            BoxShadow(
-              color: pagesColor.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: Offset(0, 0), // changes position of shadow
-            ),
-          ],
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          child: PageView.builder(
+            allowImplicitScrolling: true,
+            controller: pageController,
+            onPageChanged: (value) {
+              setState(() {
+                bottomIndex = value;
+              });
+            },
+            itemCount: pages.length,
+            itemBuilder: (BuildContext context, int index) {
+              return pages[index];
+            },
+          ),
         ),
-        child: BottomNavigationBar(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: SnakeNavigationBar.color(
+          height: 50,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
           backgroundColor: appColorDark,
-          elevation: 0.0,
-          selectedFontSize: 0,
-          unselectedFontSize: 0,
+          snakeViewColor: appThemeColor,
+          elevation: 2.0,
+          padding: EdgeInsets.symmetric(horizontal: 25),
+          snakeShape: SnakeShape.circle,
+          behaviour: SnakeBarBehaviour.floating,
           currentIndex: bottomIndex,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          selectedItemColor: appColorLight,
+          selectedItemColor: whiteFonts,
           unselectedItemColor: whiteFonts,
-          type: BottomNavigationBarType.fixed,
           onTap: (index) {
             setState(() {
               bottomIndex = index;
+              pageController.animateToPage(index,
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.ease);
             });
           },
           items: const [
+            BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/icons/home.png'),
+              ),
+              label: '',
+            ),
             BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage('assets/images/icons/project-deadline.png'),
@@ -91,12 +111,6 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage('assets/images/icons/post.png'),
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/images/icons/home.png'),
               ),
               label: '',
             ),

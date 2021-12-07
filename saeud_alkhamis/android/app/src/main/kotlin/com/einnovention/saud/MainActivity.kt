@@ -1,4 +1,4 @@
-package com.einnovention.saeud_alkhamis
+package com.einnovention.saud
 
 import io.flutter.embedding.android.FlutterActivity
 
