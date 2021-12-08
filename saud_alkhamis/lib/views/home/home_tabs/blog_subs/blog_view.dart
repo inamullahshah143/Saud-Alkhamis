@@ -398,17 +398,22 @@ class _BlogViewState extends State<BlogView> {
                         isDismissible: false,
                         backgroundColor: Colors.transparent,
                         context: context,
-                        builder: (BuildContext context) => Container(
-                          height: 385,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(25.0),
-                              topRight: Radius.circular(25.0),
+                        builder: (BuildContext context) => SingleChildScrollView(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                bottom: MediaQuery.of(context).viewInsets.bottom),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25.0),
+                                  topRight: Radius.circular(25.0),
+                                ),
+                              ),
+                              child: AddComment(),
                             ),
                           ),
-                          child: AddComment(),
                         ),
                       );
                     },

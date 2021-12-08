@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
           currentIndex: bottomIndex,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          selectedItemColor: whiteFonts,
+          selectedItemColor: darkFonts,
           unselectedItemColor: whiteFonts,
           onTap: (index) {
             setState(() {
@@ -98,13 +98,13 @@ class _HomeState extends State<Home> {
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage('assets/images/icons/book.png'),
+                AssetImage('assets/images/icons/play.png'),
               ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
-                AssetImage('assets/images/icons/play.png'),
+                AssetImage('assets/images/icons/book.png'),
               ),
               label: '',
             ),
