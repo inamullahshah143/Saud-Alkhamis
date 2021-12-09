@@ -1,7 +1,7 @@
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
-import 'package:saeud_alkhamis/views/home/home_tabs/blog_subs/blog_view.dart';
+import 'package:saeud_alkhamis/controller/blog_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 import 'blog_subs/blog_filter.dart';
@@ -29,7 +29,7 @@ class _BlogState extends State<Blog> {
     });
   }
 
-  List<String> tags = [];
+  String tags = '';
   List<String> options = [
     'الكل',
     'عن العظماء',
@@ -145,7 +145,7 @@ class _BlogState extends State<Blog> {
                     style: TextStyle(
                       color: whiteFonts,
                       height: 1,
-                      fontSize: 12,
+                      fontSize: 14,
                     ),
                   ),
                 ],
@@ -176,7 +176,7 @@ class _BlogState extends State<Blog> {
                         padding: EdgeInsets.symmetric(vertical: 10.0),
                         child: SizedBox(
                           height: 50,
-                          child: ChipsChoice<String>.multiple(
+                          child: ChipsChoice<String>.single(
                             value: tags,
                             choiceActiveStyle: C2ChoiceStyle(
                               showCheckmark: false,
@@ -191,7 +191,7 @@ class _BlogState extends State<Blog> {
                               brightness: Brightness.dark,
                               color: appColorDark,
                               labelStyle: TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(25)),
@@ -261,7 +261,7 @@ class _BlogState extends State<Blog> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -295,25 +295,27 @@ class _BlogState extends State<Blog> {
                 ),
               ),
             ),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      push(context, BlogView());
-                    },
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: false,
-                    ),
-                  ),
-                  SizedBox(height: 80),
-                ],
+            FutureBuilder(
+              future: getBlogs(),
+              builder: (context, snapshot) =>
+                  snapshot.connectionState == ConnectionState.waiting
+                      ? SliverToBoxAdapter(child: LinearProgressIndicator())
+                      : snapshot.hasData
+                          ? SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                (_, index) {
+                                  return snapshot.data[index];
+                                },
+                                childCount: snapshot.data.length,
+                              ),
+                            )
+                          : SliverToBoxAdapter(
+                              child: Text('Record not found'),
+                            ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 75,
               ),
             ),
           ],

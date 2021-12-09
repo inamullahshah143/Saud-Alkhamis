@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/controller/blog_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'dashboard_subs/filter_form.dart';
 import 'dashboard_subs/notices.dart';
@@ -111,7 +112,7 @@ class _DashboardState extends State<Dashboard> {
                     style: TextStyle(
                       height: 1,
                       color: whiteFonts,
-                      fontSize: 12,
+                      fontSize: 14,
                     ),
                   ),
                 ],
@@ -150,7 +151,7 @@ class _DashboardState extends State<Dashboard> {
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: whiteFonts,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                 ),
                               ),
                               SizedBox(
@@ -181,7 +182,7 @@ class _DashboardState extends State<Dashboard> {
                                 textDirection: TextDirection.rtl,
                                 style: TextStyle(
                                   color: whiteFonts,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                 ),
                               ),
                             ],
@@ -223,7 +224,7 @@ class _DashboardState extends State<Dashboard> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -245,25 +246,27 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
             ),
-            SliverFillRemaining(
-              // hasScrollBody: false,
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: CustomListTile(
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: true,
-                    ),
-                  ),
-                  SizedBox(height: 80),
-                ],
-              ),
-            )
+            FutureBuilder(
+              future: getDashboardBlogs(),
+              builder: (context, snapshot) =>
+                  snapshot.connectionState == ConnectionState.waiting
+                      ? SliverToBoxAdapter(child: LinearProgressIndicator())
+                      : snapshot.hasData
+                          ? SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                (_, index) {
+                                  return snapshot.data[index];
+                                },
+                                childCount: 10,
+                              ),
+                            )
+                          : SliverToBoxAdapter(
+                              child: Text('Record not found'),
+                            ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(height: 75,),
+            ),
           ],
         ),
       ),

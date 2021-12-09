@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/blog.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-
 import 'home_tabs/dahsboard.dart';
 import 'home_tabs/media.dart';
 import 'home_tabs/projects_and_portfolio.dart';
@@ -59,62 +57,67 @@ class _HomeState extends State<Home> {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: SnakeNavigationBar.color(
-          height: 50,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          backgroundColor: appColorDark,
-          snakeViewColor: appThemeColor,
-          elevation: 2.0,
+        floatingActionButton: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25),
-          snakeShape: SnakeShape.circle,
-          behaviour: SnakeBarBehaviour.floating,
-          currentIndex: bottomIndex,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          selectedItemColor: darkFonts,
-          unselectedItemColor: whiteFonts,
-          onTap: (index) {
-            setState(() {
-              bottomIndex = index;
-              pageController.animateToPage(index,
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.ease);
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/images/icons/home.png'),
-              ),
-              label: '',
+          child: Card(
+            color: appColorDark,
+            elevation: 2.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
             ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/images/icons/project-deadline.png'),
-              ),
-              label: '',
+            child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              currentIndex: bottomIndex,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              selectedFontSize: 0.0,
+              unselectedFontSize: 0.0,
+              selectedItemColor: yellowFonts,
+              unselectedItemColor: whiteFonts,
+              onTap: (index) {
+                setState(() {
+                  bottomIndex = index;
+                  pageController.animateToPage(index,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.ease);
+                });
+              },
+              items: const [
+                BottomNavigationBarItem(
+                  icon: ImageIcon(
+                    AssetImage('assets/images/icons/home.png'),
+                  ),
+                  label: '',
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(
+                    AssetImage('assets/images/icons/project-deadline.png'),
+                  ),
+                  label: '',
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(
+                    AssetImage('assets/images/icons/play.png'),
+                  ),
+                  label: '',
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(
+                    AssetImage('assets/images/icons/book.png'),
+                  ),
+                  label: '',
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(
+                    AssetImage('assets/images/icons/post.png'),
+                  ),
+                  label: '',
+                ),
+              ],
             ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/images/icons/play.png'),
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/images/icons/book.png'),
-              ),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/images/icons/post.png'),
-              ),
-              label: '',
-            ),
-          ],
+          ),
         ),
       ),
     );

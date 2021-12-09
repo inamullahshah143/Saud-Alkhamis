@@ -3,8 +3,7 @@
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-
-import '../store.dart';
+import 'package:saeud_alkhamis/views/widgets/store_list_tile.dart';
 
 class StoreSearchResult extends StatefulWidget {
   String searchKeyword;

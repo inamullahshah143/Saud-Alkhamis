@@ -27,7 +27,7 @@ const Color yellowFonts = Color.fromRGBO(255, 203, 0, 1);
 const Color darkFonts = Color.fromRGBO(39, 41, 41, 1);
 const Color whiteFonts = Color.fromRGBO(255, 255, 255, 1);
 const Color redFonts = Color.fromRGBO(230, 0, 35, 1);
-
+const String apiURL = 'https://saudalkhamis.net/wp-json/wp/v2';
 push(BuildContext context, Widget widget) {
   return Navigator.push(
     context,
@@ -119,7 +119,7 @@ class _CustomListTileState extends State<CustomListTile> {
                             child: Text(
                               type,
                               style: TextStyle(
-                                fontSize: 6,
+                                fontSize: 8,
                                 color: whiteFonts,
                               ),
                             ),
@@ -152,12 +152,13 @@ class _CustomListTileState extends State<CustomListTile> {
                           textDirection: TextDirection.rtl,
                           maxLines: 3,
                           style: TextStyle(
-                            fontSize: 8,
+                            fontSize: 10,
+                            height: 1.5,
                             color: whiteFonts,
                           ),
                         ),
                         SizedBox(
-                          height: 2,
+                          height: 1,
                         ),
                       ],
                     ),
@@ -169,7 +170,7 @@ class _CustomListTileState extends State<CustomListTile> {
                       child: Text(
                         date,
                         style: TextStyle(
-                          fontSize: 6,
+                          fontSize: 8,
                           color: whiteFonts.withOpacity(0.5),
                         ),
                       ),
@@ -191,7 +192,7 @@ class _CustomListTileState extends State<CustomListTile> {
                             Text(
                               'يوجد 38 زيارة',
                               style: TextStyle(
-                                fontSize: 6,
+                                fontSize: 8,
                                 color: yellowFonts,
                               ),
                             ),
@@ -205,7 +206,7 @@ class _CustomListTileState extends State<CustomListTile> {
                             Text(
                               'زيارة',
                               style: TextStyle(
-                                fontSize: 8,
+                                fontSize: 10,
                                 color: whiteFonts,
                               ),
                             ),
@@ -217,7 +218,7 @@ class _CustomListTileState extends State<CustomListTile> {
                             Text(
                               'يوجد 38 زيارة',
                               style: TextStyle(
-                                fontSize: 6,
+                                fontSize: 8,
                                 color: yellowFonts,
                               ),
                             ),
@@ -235,7 +236,7 @@ class _CustomListTileState extends State<CustomListTile> {
                             Text(
                               'قراءة',
                               style: TextStyle(
-                                fontSize: 8,
+                                fontSize: 10,
                                 color: whiteFonts,
                               ),
                             ),
@@ -247,7 +248,7 @@ class _CustomListTileState extends State<CustomListTile> {
                       Text(
                         'يوجد 38 إعجاب',
                         style: TextStyle(
-                          fontSize: 6,
+                          fontSize: 8,
                           color: yellowFonts,
                         ),
                       ),
@@ -265,7 +266,7 @@ class _CustomListTileState extends State<CustomListTile> {
                       Text(
                         'إعجاب',
                         style: TextStyle(
-                          fontSize: 8,
+                          fontSize: 10,
                           color: whiteFonts,
                         ),
                       ),
