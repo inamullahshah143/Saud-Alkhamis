@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:saeud_alkhamis/views/home/home_tabs/blog_subs/blog_view.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'package:html/parser.dart';
 
-Future<List<Widget>> getDashboardBlogs() async {
+Future<List<Widget>> getDashboardBlogs(BuildContext context) async {
   List<Map> x = [];
   List<Widget> y = [];
   String subtitle = '';
@@ -53,6 +54,9 @@ Future<List<Widget>> getDashboardBlogs() async {
         .format(DateTime.tryParse(element['data']['date']));
     y.add(
       CustomListTile(
+        onPressed: () {
+          push(context, BlogView());
+        },
         type: element['category'],
         title: title,
         subtitle: subtitle,
@@ -64,8 +68,7 @@ Future<List<Widget>> getDashboardBlogs() async {
   return y;
 }
 
-
-Future<List<Widget>> getBlogs() async {
+Future<List<Widget>> getBlogs(BuildContext context) async {
   List<Map> x = [];
   List<Widget> y = [];
   String subtitle = '';
@@ -111,6 +114,9 @@ Future<List<Widget>> getBlogs() async {
         .format(DateTime.tryParse(element['data']['date']));
     y.add(
       CustomListTile(
+        onPressed: () {
+          push(context, BlogView());
+        },
         type: element['category'],
         title: title,
         subtitle: subtitle,
@@ -121,5 +127,3 @@ Future<List<Widget>> getBlogs() async {
   }
   return y;
 }
-
-

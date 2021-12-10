@@ -186,6 +186,7 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                   InkWell(
                     onTap: () {},
                     child: CustomListTile(
+                      onPressed: (){},
                       type: 'استشارت',
                       title: 'تقديم استشارة في تجربة المستخدم',
                       subtitle:

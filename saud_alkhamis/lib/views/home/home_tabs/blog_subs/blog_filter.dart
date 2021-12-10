@@ -10,13 +10,6 @@ class BlogFilters extends StatefulWidget {
 }
 
 class _BlogFiltersState extends State<BlogFilters> {
-  List<String> tags = [];
-  List<String> options = [
-    'استشارات',
-    'سناب شات',
-    'دورات',
-    'تيليقران',
-  ];
   TextEditingController _dateController;
   bool isNotValid;
   bool isRecent;
@@ -79,7 +72,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -91,8 +84,8 @@ class _BlogFiltersState extends State<BlogFilters> {
                               child: InkWell(
                                 onTap: () {
                                   setState(() {
-                                    isOldest = false;
-                                    isRecent = true;
+                                    isOldest = true;
+                                    isRecent = false;
                                   });
                                 },
                                 child: Container(
@@ -101,13 +94,13 @@ class _BlogFiltersState extends State<BlogFilters> {
                                   margin: EdgeInsets.only(left: 5),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(45),
-                                    color: isRecent ? yellowFonts : pagesColor,
+                                    color: isOldest ? yellowFonts : pagesColor,
                                   ),
                                   child: Text(
-                                    'الأقدم',
+                                    'الأحدث',
                                     style: TextStyle(
                                       color: whiteFonts,
-                                      fontSize: 12,
+                                      fontSize: 14,
                                     ),
                                   ),
                                 ),
@@ -117,8 +110,8 @@ class _BlogFiltersState extends State<BlogFilters> {
                               child: InkWell(
                                 onTap: () {
                                   setState(() {
-                                    isOldest = true;
-                                    isRecent = false;
+                                    isOldest = false;
+                                    isRecent = true;
                                   });
                                 },
                                 child: Container(
@@ -127,13 +120,13 @@ class _BlogFiltersState extends State<BlogFilters> {
                                   margin: EdgeInsets.only(right: 5),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(45),
-                                    color: isOldest ? yellowFonts : pagesColor,
+                                    color: isRecent ? yellowFonts : pagesColor,
                                   ),
                                   child: Text(
-                                    'الأحدث',
+                                    'الأقدم',
                                     style: TextStyle(
                                       color: whiteFonts,
-                                      fontSize: 12,
+                                      fontSize: 14,
                                     ),
                                   ),
                                 ),
@@ -149,7 +142,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -161,7 +154,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           onTap: () {
                             selectDate(context);
@@ -173,11 +166,11 @@ class _BlogFiltersState extends State<BlogFilters> {
                             helperStyle: TextStyle(fontSize: 0),
                             filled: true,
                             fillColor: pagesColor,
-                            hintText: '00/00/0000',
+                            hintText: 'تحديد التاريخ',
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: IconButton(
                               icon: Icon(
-                                Icons.calendar_today,
+                                Icons.arrow_downward,
                                 color: yellowFonts,
                               ),
                               onPressed: () {
@@ -212,7 +205,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                       'حدث',
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                     Padding(
@@ -237,7 +230,7 @@ class _BlogFiltersState extends State<BlogFilters> {
                       'الصفحة',
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                   ],

@@ -47,41 +47,48 @@ pushReplacement(BuildContext context, Widget widget) {
 }
 
 class CustomListTile extends StatefulWidget {
+  Function onPressed;
   String type;
   String title;
   String subtitle;
   String date;
   bool isShareable;
-  CustomListTile(
-      {Key key,
-      @required this.type,
-      @required this.title,
-      @required this.subtitle,
-      @required this.date,
-      @required this.isShareable})
-      : super(key: key);
+  CustomListTile({
+    Key key,
+    @required this.onPressed,
+    @required this.type,
+    @required this.title,
+    @required this.subtitle,
+    @required this.date,
+    @required this.isShareable,
+  }) : super(key: key);
 
   @override
   _CustomListTileState createState() => _CustomListTileState(
-      type: type,
-      title: title,
-      subtitle: subtitle,
-      date: date,
-      isShareable: isShareable);
+        onPressed: onPressed,
+        type: type,
+        title: title,
+        subtitle: subtitle,
+        date: date,
+        isShareable: isShareable,
+      );
 }
 
 class _CustomListTileState extends State<CustomListTile> {
+  Function onPressed;
   String type;
   String title;
   String subtitle;
   String date;
   bool isShareable;
-  _CustomListTileState(
-      {@required this.type,
-      @required this.title,
-      @required this.subtitle,
-      @required this.date,
-      @required this.isShareable});
+  _CustomListTileState({
+    @required this.onPressed,
+    @required this.type,
+    @required this.title,
+    @required this.subtitle,
+    @required this.date,
+    @required this.isShareable,
+  });
   bool isViewed;
   bool isLiked;
   @override
@@ -95,187 +102,190 @@ class _CustomListTileState extends State<CustomListTile> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: appColorDark,
-        ),
-        height: 135,
-        padding: EdgeInsets.all(10),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Text(
-                              type,
-                              style: TextStyle(
-                                fontSize: 8,
-                                color: whiteFonts,
+      child: InkWell(
+        onTap: onPressed,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: appColorDark,
+          ),
+          height: 135,
+          padding: EdgeInsets.all(10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Text(
+                                type,
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: whiteFonts,
+                                ),
                               ),
                             ),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(25),
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(25),
+                          SizedBox(
+                            height: 2,
                           ),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          title,
-                          overflow: TextOverflow.ellipsis,
-                          textDirection: TextDirection.rtl,
-                          maxLines: 1,
+                          Text(
+                            title,
+                            overflow: TextOverflow.ellipsis,
+                            textDirection: TextDirection.rtl,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: whiteFonts,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            subtitle,
+                            overflow: TextOverflow.ellipsis,
+                            textDirection: TextDirection.rtl,
+                            maxLines: 3,
+                            style: TextStyle(
+                              fontSize: 10,
+                              height: 1.5,
+                              color: whiteFonts,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5.0),
+                        child: Text(
+                          date,
                           style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: whiteFonts,
+                            fontSize: 8,
+                            color: whiteFonts.withOpacity(0.5),
                           ),
                         ),
-                        SizedBox(
-                          height: 2,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: 125,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    isShareable
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 38 زيارة',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/link.png'),
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'زيارة',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          )
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 38 زيارة',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isViewed = !isViewed;
+                                  });
+                                },
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/view-2.png'),
+                                  color: isViewed ? yellowFonts : pagesColor,
+                                ),
+                              ),
+                              Text(
+                                'قراءة',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'يوجد 38 إعجاب',
+                          style: TextStyle(
+                            fontSize: 8,
+                            color: yellowFonts,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              isLiked = !isLiked;
+                            });
+                          },
+                          icon: ImageIcon(
+                            AssetImage('assets/images/icons/like.png'),
+                            color: isLiked ? yellowFonts : pagesColor,
+                          ),
                         ),
                         Text(
-                          subtitle,
-                          overflow: TextOverflow.ellipsis,
-                          textDirection: TextDirection.rtl,
-                          maxLines: 3,
+                          'إعجاب',
                           style: TextStyle(
                             fontSize: 10,
-                            height: 1.5,
                             color: whiteFonts,
                           ),
-                        ),
-                        SizedBox(
-                          height: 1,
                         ),
                       ],
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Text(
-                        date,
-                        style: TextStyle(
-                          fontSize: 8,
-                          color: whiteFonts.withOpacity(0.5),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              width: 125,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  isShareable
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'يوجد 38 زيارة',
-                              style: TextStyle(
-                                fontSize: 8,
-                                color: yellowFonts,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: ImageIcon(
-                                AssetImage('assets/images/icons/link.png'),
-                                color: yellowFonts,
-                              ),
-                            ),
-                            Text(
-                              'زيارة',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: whiteFonts,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'يوجد 38 زيارة',
-                              style: TextStyle(
-                                fontSize: 8,
-                                color: yellowFonts,
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isViewed = !isViewed;
-                                });
-                              },
-                              icon: ImageIcon(
-                                AssetImage('assets/images/icons/view-2.png'),
-                                color: isViewed ? yellowFonts : pagesColor,
-                              ),
-                            ),
-                            Text(
-                              'قراءة',
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: whiteFonts,
-                              ),
-                            ),
-                          ],
-                        ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'يوجد 38 إعجاب',
-                        style: TextStyle(
-                          fontSize: 8,
-                          color: yellowFonts,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isLiked = !isLiked;
-                          });
-                        },
-                        icon: ImageIcon(
-                          AssetImage('assets/images/icons/like.png'),
-                          color: isLiked ? yellowFonts : pagesColor,
-                        ),
-                      ),
-                      Text(
-                        'إعجاب',
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: whiteFonts,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

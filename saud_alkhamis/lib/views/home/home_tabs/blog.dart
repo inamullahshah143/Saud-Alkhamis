@@ -1,5 +1,6 @@
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:chips_choice/chips_choice.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/controller/blog_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
@@ -296,10 +297,15 @@ class _BlogState extends State<Blog> {
               ),
             ),
             FutureBuilder(
-              future: getBlogs(),
+              future: getBlogs(context),
               builder: (context, snapshot) =>
                   snapshot.connectionState == ConnectionState.waiting
-                      ? SliverToBoxAdapter(child: LinearProgressIndicator())
+                      ? SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Center(
+                            child: CupertinoActivityIndicator(),
+                          ),
+                        )
                       : snapshot.hasData
                           ? SliverList(
                               delegate: SliverChildBuilderDelegate(

@@ -74,7 +74,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -95,7 +95,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                                 "1",
                                 style: TextStyle(
                                   color: whiteFonts,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
@@ -106,7 +106,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                                 "2",
                                 style: TextStyle(
                                   color: whiteFonts,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
@@ -115,14 +115,14 @@ class _MediaFiltersState extends State<MediaFilters> {
                           onChanged: (value) {},
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: pagesColor,
                             isDense: true,
                             contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20,
+                              horizontal: 12.5,
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -138,7 +138,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -147,7 +147,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                         choiceActiveStyle: C2ChoiceStyle(
                           showCheckmark: false,
                           labelStyle: TextStyle(
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           brightness: Brightness.dark,
                           color: yellowFonts,
@@ -192,7 +192,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -204,7 +204,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           onTap: () {
                             selectDate(context);
@@ -216,12 +216,11 @@ class _MediaFiltersState extends State<MediaFilters> {
                             helperStyle: TextStyle(fontSize: 0),
                             filled: true,
                             fillColor: pagesColor,
-                            isDense: true,
-                            hintText: '00/00/0000',
+                            hintText: 'تحديد التاريخ',
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: IconButton(
                               icon: Icon(
-                                Icons.calendar_today,
+                                Icons.arrow_downward,
                                 color: yellowFonts,
                               ),
                               onPressed: () {
@@ -230,7 +229,6 @@ class _MediaFiltersState extends State<MediaFilters> {
                             ),
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 10,
-                              vertical: 15,
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -257,7 +255,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                       'حدث',
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                     Padding(
@@ -282,7 +280,7 @@ class _MediaFiltersState extends State<MediaFilters> {
                       'الصفحة',
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                   ],

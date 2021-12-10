@@ -74,7 +74,7 @@ class _NoticesState extends State<Notices> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
@@ -89,7 +89,7 @@ class _NoticesState extends State<Notices> {
                             'تابعني',
                             style: TextStyle(
                               color: whiteFonts,
-                              fontSize: 6,
+                              fontSize: 8,
                             ),
                           ),
                         ),
@@ -110,6 +110,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '3K',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -122,6 +123,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'تيلقيرام',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -138,6 +140,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '40K',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -150,6 +153,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'انستقرام',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -166,6 +170,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '2.2K',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -178,6 +183,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'اليوتيوب',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -194,6 +200,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '218K',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -206,6 +213,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'تويتر',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -222,6 +230,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '25',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -234,6 +243,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'مقالات شخصية',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -250,6 +260,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '250',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -262,6 +273,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'تقديم خدمة',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -278,6 +290,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '1K',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -290,6 +303,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'تيك توك',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -306,6 +320,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '-',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -318,6 +333,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'سناب شات',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -334,6 +350,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '69',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -341,6 +358,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'اللقاءات والدورات',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -357,6 +375,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '258',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -364,6 +383,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'معلومات عامة',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -380,6 +400,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '202',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -387,6 +408,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'محتوى شخصي',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -403,6 +425,7 @@ class _NoticesState extends State<Notices> {
                                       children: const [
                                         Text(
                                           '264',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 12,
@@ -410,6 +433,7 @@ class _NoticesState extends State<Notices> {
                                         ),
                                         Text(
                                           'محتوى تقني',
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline,
@@ -429,10 +453,11 @@ class _NoticesState extends State<Notices> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             'مواليد 1986 م في المملكة العربية السعودية بمدينة الرياض، مدير الإعلام الجديد بجامعة الملك سعود، مؤسس قسم الخدمات الإلكترونية بالمدينة الطبية بجامعة الملك سعود، معد ومنتج بقناة MBC، المصور الرسمي للبنك السعودي الفرنسي سابقاً، مهتم بنشر المعرفة والتحفيز على البحث والتطبيق، كانت البداية من ملهمي الدكتور مصطفى محمود (رحمه الله)، عاشق للتقنية والتصوير الفوتوغرافي والمرئي، متيم بالمجالات الإلهامية خصوصاً المتعلقة في الجرافيكس، اقرأ كثيراً عن تطوير الذات واسأل نفسي بشكل متكرر للبحث والحصول على الإجابات التي من بعد الله صنعت الكثير من نقاط التحول في حياتي، مؤمن بأن عقل الإنسان خارق ويستطيع أن يجمع بين عدة مجالات في زمن واحد مع طلب المزيد والسبب يعود الى الطموح.',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               color: whiteFonts,
                               height: 1.5,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                         ),
@@ -443,41 +468,41 @@ class _NoticesState extends State<Notices> {
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               color: yellowFonts,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 75,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Scrollbar(
-                              isAlwaysShown: true,
-                              controller: scrollController,
-                              radius: Radius.circular(10),
-                              child: ListView(
-                                physics: BouncingScrollPhysics(),
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8.0),
-                                    child: ListItem(
-                                        title: 'عمل حر',
-                                        subtitle: 'تصميم مواقع ومنتديات',
-                                        year: '2006'),
+                        Scrollbar(
+                          isAlwaysShown: true,
+                          controller: scrollController,
+                          radius: Radius.circular(10),
+                          child: SizedBox(
+                            height: 90,
+                            child: ListView(
+                              shrinkWrap: true,
+                              physics: BouncingScrollPhysics(),
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 8.0),
+                                  child: ListItem(
+                                    title: 'عمل حر',
+                                    subtitle: 'تصميم مواقع ومنتديات',
+                                    year: '2006',
                                   ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8.0),
-                                    child: ListItem(
-                                        title: 'عمل حر',
-                                        subtitle:
-                                            'تصميم وتحليل مواقع، تصوير فوتوغرافي ومرئي، إستشارات تقنية، معد برامج MBC ',
-                                        year: '2008'),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 8.0),
+                                  child: ListItem(
+                                    title: 'عمل حر',
+                                    subtitle:
+                                        'تصميم وتحليل مواقع، تصوير فوتوغرافي ومرئي، إستشارات تقنية، معد برامج MBC ',
+                                    year: '2008',
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         )
@@ -545,18 +570,18 @@ class _ListItemState extends State<ListItem> {
             title,
             style: TextStyle(
               color: whiteFonts,
-              fontSize: 12,
+              fontSize: 14,
             ),
           ),
           Text(
             subtitle,
             style: TextStyle(
               color: whiteFonts,
-              fontSize: 8,
+              fontSize: 10,
             ),
           ),
           Row(
-            mainAxisSize:MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 width: 25,

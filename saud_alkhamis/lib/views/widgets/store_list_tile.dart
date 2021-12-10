@@ -72,8 +72,8 @@ class _StoreListTileState extends State<StoreListTile> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                width: 65,
-                height: 100,
+                width: 75,
+                height: 125,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: pagesColor,
@@ -102,7 +102,7 @@ class _StoreListTileState extends State<StoreListTile> {
                             child: Text(
                               type,
                               style: TextStyle(
-                                fontSize: 6,
+                                fontSize: 8,
                                 color: whiteFonts,
                               ),
                             ),
@@ -117,7 +117,7 @@ class _StoreListTileState extends State<StoreListTile> {
                           overflow: TextOverflow.ellipsis,
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
-                            fontSize: 6,
+                            fontSize: 8,
                             color: whiteFonts.withOpacity(0.5),
                           ),
                         )
@@ -140,7 +140,7 @@ class _StoreListTileState extends State<StoreListTile> {
                               textDirection: TextDirection.rtl,
                               maxLines: 1,
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 color: whiteFonts,
                               ),
@@ -185,7 +185,7 @@ class _StoreListTileState extends State<StoreListTile> {
                       textDirection: TextDirection.rtl,
                       maxLines: 3,
                       style: TextStyle(
-                        fontSize: 8,
+                        fontSize: 10,
                         color: whiteFonts,
                       ),
                     ),
@@ -206,7 +206,7 @@ class _StoreListTileState extends State<StoreListTile> {
                   Text(
                     'يوجد 38 إعجاب',
                     style: TextStyle(
-                      fontSize: 6,
+                      fontSize: 8,
                       color: yellowFonts,
                     ),
                   ),
@@ -224,7 +224,7 @@ class _StoreListTileState extends State<StoreListTile> {
                   Text(
                     'إعجاب',
                     style: TextStyle(
-                      fontSize: 8,
+                      fontSize: 10,
                       color: whiteFonts,
                     ),
                   ),

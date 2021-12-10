@@ -73,7 +73,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -94,7 +94,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                                 "1",
                                 style: TextStyle(
                                   color: whiteFonts,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
@@ -105,7 +105,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                                 "2",
                                 style: TextStyle(
                                   color: whiteFonts,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
@@ -114,14 +114,14 @@ class _StoreFiltersState extends State<StoreFilters> {
                           onChanged: (value) {},
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: pagesColor,
                             isDense: true,
                             contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20,
+                              horizontal: 12.5,
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -137,7 +137,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -147,7 +147,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                           showCheckmark: false,
                           brightness: Brightness.dark,
                           labelStyle: TextStyle(
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           color: yellowFonts,
                           borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -191,7 +191,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -203,7 +203,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           onTap: () {
                             selectDate(context);
@@ -215,12 +215,11 @@ class _StoreFiltersState extends State<StoreFilters> {
                             helperStyle: TextStyle(fontSize: 0),
                             filled: true,
                             fillColor: pagesColor,
-                            isDense: true,
-                            hintText: '00/00/0000',
+                            hintText: 'تحديد التاريخ',
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: IconButton(
                               icon: Icon(
-                                Icons.calendar_today,
+                                Icons.arrow_downward,
                                 color: yellowFonts,
                               ),
                               onPressed: () {
@@ -229,7 +228,6 @@ class _StoreFiltersState extends State<StoreFilters> {
                             ),
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 10,
-                              vertical: 15,
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -256,7 +254,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                       'حدث',
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                     Padding(
@@ -281,7 +279,7 @@ class _StoreFiltersState extends State<StoreFilters> {
                       'الصفحة',
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                   ],

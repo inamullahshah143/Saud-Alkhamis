@@ -36,7 +36,7 @@ class _OrderFormState extends State<OrderForm> {
           trailing: Text(
             'المصدر',
             style: TextStyle(
-              fontSize: 8,
+              fontSize: 10,
               color: yellowFonts,
               decoration: TextDecoration.underline,
             ),
@@ -44,7 +44,7 @@ class _OrderFormState extends State<OrderForm> {
           title: Text(
             'خالد',
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 14,
               color: whiteFonts,
             ),
             textDirection: TextDirection.rtl,
@@ -55,7 +55,7 @@ class _OrderFormState extends State<OrderForm> {
               Text(
                 '03/05/2021',
                 style: TextStyle(
-                  fontSize: 6,
+                  fontSize: 8,
                   color: whiteFonts.withOpacity(0.5),
                 ),
                 textDirection: TextDirection.rtl,
@@ -64,7 +64,7 @@ class _OrderFormState extends State<OrderForm> {
                 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
                 maxLines: 3,
                 style: TextStyle(
-                  fontSize: 8,
+                  fontSize: 10,
                   height: 1.5,
                   color: whiteFonts,
                 ),
@@ -147,7 +147,7 @@ class _OrderFormState extends State<OrderForm> {
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: whiteFonts,
-                                    fontSize: 12,
+                                    fontSize: 14,
                                   ),
                                 ),
                               ),
@@ -156,7 +156,7 @@ class _OrderFormState extends State<OrderForm> {
                                   autoPlay: false,
                                   enlargeCenterPage: true,
                                   viewportFraction: 1,
-                                  aspectRatio: 2.75,
+                                  aspectRatio: 2.5,
                                   onPageChanged: (index, reason) {
                                     setState(() {
                                       currentIndex = index;
@@ -199,7 +199,7 @@ class _OrderFormState extends State<OrderForm> {
                                           '04',
                                           style: TextStyle(
                                             color: yellowFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                         ),
                                         SizedBox(
@@ -209,7 +209,7 @@ class _OrderFormState extends State<OrderForm> {
                                           'طلب جديد',
                                           style: TextStyle(
                                             color: whiteFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                         ),
                                       ],
@@ -220,7 +220,7 @@ class _OrderFormState extends State<OrderForm> {
                                           '02',
                                           style: TextStyle(
                                             color: yellowFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                         ),
                                         SizedBox(
@@ -230,7 +230,7 @@ class _OrderFormState extends State<OrderForm> {
                                           'قيد التنفيذ',
                                           style: TextStyle(
                                             color: whiteFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                         ),
                                       ],
@@ -286,7 +286,7 @@ class _OrderFormState extends State<OrderForm> {
                                           },
                                           style: TextStyle(
                                             color: whiteFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                           onChanged: (value) {},
                                           keyboardType: TextInputType.text,
@@ -340,7 +340,7 @@ class _OrderFormState extends State<OrderForm> {
                                           },
                                           style: TextStyle(
                                             color: whiteFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                           onChanged: (value) {},
                                           keyboardType: TextInputType.text,
@@ -393,7 +393,7 @@ class _OrderFormState extends State<OrderForm> {
                                           },
                                           style: TextStyle(
                                             color: whiteFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                           onChanged: (value) {},
                                           keyboardType: TextInputType.text,
@@ -481,7 +481,7 @@ class _OrderFormState extends State<OrderForm> {
                                           onChanged: (value) {},
                                           style: TextStyle(
                                             color: whiteFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                           decoration: InputDecoration(
                                             errorStyle: TextStyle(fontSize: 0),
@@ -530,7 +530,7 @@ class _OrderFormState extends State<OrderForm> {
                                           },
                                           style: TextStyle(
                                             color: whiteFonts,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                           ),
                                           onChanged: (value) {},
                                           keyboardType: TextInputType.text,
@@ -580,7 +580,7 @@ class _OrderFormState extends State<OrderForm> {
                             isNotValid ? 'حقول' : 'إرسال',
                             style: TextStyle(
                               color: whiteFonts,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                           Padding(
@@ -612,7 +612,7 @@ class _OrderFormState extends State<OrderForm> {
                             isNotValid ? 'مطلوبة' : 'الطلب',
                             style: TextStyle(
                               color: whiteFonts,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                         ],

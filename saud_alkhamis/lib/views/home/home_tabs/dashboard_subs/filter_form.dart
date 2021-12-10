@@ -15,9 +15,9 @@ class FilterForm extends StatefulWidget {
 class _FilterFormState extends State<FilterForm> {
   List<String> tags = [];
   List<String> options = [
+    'دورات',
     'استشارات',
     'سناب شات',
-    'دورات',
     'تيليقران',
   ];
   TextEditingController _dateController;
@@ -74,7 +74,7 @@ class _FilterFormState extends State<FilterForm> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -92,7 +92,7 @@ class _FilterFormState extends State<FilterForm> {
                           brightness: Brightness.dark,
                           color: pagesColor,
                           labelStyle: TextStyle(
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           borderRadius: BorderRadius.all(Radius.circular(25)),
                           borderColor: pagesColor,
@@ -128,7 +128,7 @@ class _FilterFormState extends State<FilterForm> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -140,7 +140,7 @@ class _FilterFormState extends State<FilterForm> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: whiteFonts,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                           onTap: () {
                             selectDate(context);
@@ -152,12 +152,11 @@ class _FilterFormState extends State<FilterForm> {
                             helperStyle: TextStyle(fontSize: 0),
                             filled: true,
                             fillColor: pagesColor,
-                            isDense: true,
-                            hintText: '00/00/0000',
+                            hintText: 'تحديد التاريخ',
                             hintTextDirection: TextDirection.rtl,
                             suffixIcon: IconButton(
                               icon: Icon(
-                                Icons.calendar_today,
+                                Icons.arrow_downward,
                                 color: yellowFonts,
                               ),
                               onPressed: () {
@@ -166,7 +165,6 @@ class _FilterFormState extends State<FilterForm> {
                             ),
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 10,
-                              vertical: 15,
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -193,7 +191,7 @@ class _FilterFormState extends State<FilterForm> {
                       'حدث',
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                     Padding(
@@ -218,7 +216,7 @@ class _FilterFormState extends State<FilterForm> {
                       'الصفحة',
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 12,
+                        fontSize: 14,
                       ),
                     ),
                   ],

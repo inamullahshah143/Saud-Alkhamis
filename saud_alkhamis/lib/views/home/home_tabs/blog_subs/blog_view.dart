@@ -4,9 +4,7 @@ import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/notices.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-
 import 'add_comment.dart';
-import 'blog_filter.dart';
 
 class BlogView extends StatefulWidget {
   const BlogView({Key key}) : super(key: key);
@@ -140,29 +138,6 @@ class _BlogViewState extends State<BlogView> {
                   ),
                 ),
               ],
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    '04',
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(
-                      color: yellowFonts,
-                      fontSize: 23,
-                      height: 1,
-                    ),
-                  ),
-                  Text(
-                    'المتواجدون الان',
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(
-                      color: whiteFonts,
-                      fontSize: 12,
-                      height: 1,
-                    ),
-                  ),
-                ],
-              ),
               bottom: PreferredSize(
                 preferredSize: Size(MediaQuery.of(context).size.width, 130),
                 child: Container(
@@ -191,7 +166,7 @@ class _BlogViewState extends State<BlogView> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Container(
-                              height: 40,
+                              height: 50,
                               width: width * 0.4,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
@@ -204,7 +179,7 @@ class _BlogViewState extends State<BlogView> {
                                     AssetImage(
                                       'assets/images/icons/chat.png',
                                     ),
-                                    size: 16,
+                                    size: 14,
                                     color: yellowFonts,
                                   ),
                                   SizedBox(width: 10),
@@ -212,14 +187,14 @@ class _BlogViewState extends State<BlogView> {
                                     "التعليقات",
                                     style: TextStyle(
                                       color: whiteFonts,
-                                      fontSize: 12,
+                                      fontSize: 14,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
                             Container(
-                              height: 40,
+                              height: 50,
                               width: width * 0.4,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
@@ -240,7 +215,7 @@ class _BlogViewState extends State<BlogView> {
                                     "مشاركة",
                                     style: TextStyle(
                                       color: whiteFonts,
-                                      fontSize: 12,
+                                      fontSize: 14,
                                     ),
                                   ),
                                 ],
@@ -249,44 +224,146 @@ class _BlogViewState extends State<BlogView> {
                           ],
                         ),
                       ),
-                      ListTile(
-                        dense: true,
-                        trailing: IconButton(
-                          onPressed: () {
-                            showModalBottomSheet(
-                              isScrollControlled: true,
-                              enableDrag: true,
-                              isDismissible: false,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (BuildContext context) => Container(
-                                height: 300,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(25.0),
-                                    topRight: Radius.circular(25.0),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(
+                                  'عن العظماء',
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontSize: 8,
+                                    color: whiteFonts,
                                   ),
                                 ),
-                                child: BlogFilters(),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
                               ),
-                            );
-                          },
-                          icon: ImageIcon(
-                            AssetImage('assets/images/icons/filter.png'),
-                            size: 16,
-                            color: yellowFonts,
+                              Text(
+                                'عندما يكون منافسك هو نفسك',
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: whiteFonts,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              Text(
+                                '03/05/2021',
+                                textDirection: TextDirection.rtl,
+                                style: TextStyle(
+                                  color: whiteFonts.withOpacity(0.5),
+                                  fontSize: 8,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        title: Text(
-                          'آخر التحديثات',
-                          textDirection: TextDirection.rtl,
-                          style: TextStyle(
-                            color: yellowFonts,
-                            fontSize: 12,
+                          SizedBox(
+                            width: 5,
                           ),
-                        ),
+                          Spacer(),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 12 تعليق',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/chat.png'),
+                                  size: 16,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'التعليقات',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 32 زيارة',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/view-2.png'),
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'قراءة',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'يوجد 12 إعجاب',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {},
+                                icon: ImageIcon(
+                                  AssetImage('assets/images/icons/like.png'),
+                                  size: 16,
+                                  color: yellowFonts,
+                                ),
+                              ),
+                              Text(
+                                'إعجاب',
+                                style: TextStyle(
+                                  fontSize: 8,
+                                  color: whiteFonts,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -328,7 +405,7 @@ class _BlogViewState extends State<BlogView> {
                       demoText + demoText + demoText,
                       style: TextStyle(
                         color: whiteFonts,
-                        fontSize: 8,
+                        fontSize: 12,
                       ),
                     ),
                   )
@@ -349,7 +426,7 @@ class _BlogViewState extends State<BlogView> {
                   borderRadius: BorderRadius.circular(50.0),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  padding: const EdgeInsets.only(left: 5.0, right: 5.0),
                   child: ListTile(
                     dense: true,
                     trailing: ImageIcon(
@@ -359,8 +436,9 @@ class _BlogViewState extends State<BlogView> {
                     ),
                     title: Text(
                       "كن غنياً وأتخذ بالأسباب !",
+                      textAlign: TextAlign.start,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
                         color: whiteFonts,
                       ),
                       textDirection: TextDirection.rtl,
@@ -382,7 +460,7 @@ class _BlogViewState extends State<BlogView> {
                   Text(
                     "إضافة",
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 14,
                       color: whiteFonts,
                     ),
                     textDirection: TextDirection.rtl,
@@ -398,10 +476,12 @@ class _BlogViewState extends State<BlogView> {
                         isDismissible: false,
                         backgroundColor: Colors.transparent,
                         context: context,
-                        builder: (BuildContext context) => SingleChildScrollView(
+                        builder: (BuildContext context) =>
+                            SingleChildScrollView(
                           child: Padding(
                             padding: EdgeInsets.only(
-                                bottom: MediaQuery.of(context).viewInsets.bottom),
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
                               width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
@@ -434,7 +514,7 @@ class _BlogViewState extends State<BlogView> {
                   Text(
                     "تعليق",
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 14,
                       color: whiteFonts,
                     ),
                     textDirection: TextDirection.rtl,
@@ -442,78 +522,78 @@ class _BlogViewState extends State<BlogView> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Card(
-                color: appColorDark,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                margin: EdgeInsets.symmetric(vertical: 10),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: ListTile(
-                    dense: true,
-                    isThreeLine: true,
-                    trailing: Text(
-                      'المصدر',
-                      style: TextStyle(
-                        fontSize: 8,
-                        color: yellowFonts,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                    title: Text(
-                      'خالد',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: whiteFonts,
-                      ),
-                      textDirection: TextDirection.rtl,
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '03/05/2021',
-                          style: TextStyle(
-                            fontSize: 6,
-                            color: whiteFonts.withOpacity(0.5),
-                          ),
-                          textDirection: TextDirection.rtl,
-                        ),
-                        Text(
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: 8,
-                            color: whiteFonts,
-                          ),
-                          textDirection: TextDirection.rtl,
-                        ),
-                      ],
-                    ),
-                    leading: Container(
-                      height: 40,
-                      width: 40,
-                      clipBehavior: Clip.hardEdge,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: pagesColor,
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: Image(
-                        width: 20,
-                        height: 20,
-                        image:
-                            AssetImage('assets/images/icons/user-remove.png'),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            //   Padding(
+            //     padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+            //     child: Card(
+            //       color: appColorDark,
+            //       shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(15.0),
+            //       ),
+            //       margin: EdgeInsets.symmetric(vertical: 10),
+            //       child: Padding(
+            //         padding: EdgeInsets.only(left: 8.0, right: 8.0),
+            //         child: ListTile(
+            //           dense: true,
+            //           isThreeLine: true,
+            //           trailing: Text(
+            //             'المصدر',
+            //             style: TextStyle(
+            //               fontSize: 8,
+            //               color: yellowFonts,
+            //               decoration: TextDecoration.underline,
+            //             ),
+            //           ),
+            //           title: Text(
+            //             'خالد',
+            //             style: TextStyle(
+            //               fontSize: 12,
+            //               color: whiteFonts,
+            //             ),
+            //             textDirection: TextDirection.rtl,
+            //           ),
+            //           subtitle: Column(
+            //             crossAxisAlignment: CrossAxisAlignment.start,
+            //             children: [
+            //               Text(
+            //                 '03/05/2021',
+            //                 style: TextStyle(
+            //                   fontSize: 6,
+            //                   color: whiteFonts.withOpacity(0.5),
+            //                 ),
+            //                 textDirection: TextDirection.rtl,
+            //               ),
+            //               Text(
+            //                 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
+            //                 maxLines: 2,
+            //                 style: TextStyle(
+            //                   fontSize: 8,
+            //                   color: whiteFonts,
+            //                 ),
+            //                 textDirection: TextDirection.rtl,
+            //               ),
+            //             ],
+            //           ),
+            //           leading: Container(
+            //             height: 40,
+            //             width: 40,
+            //             clipBehavior: Clip.hardEdge,
+            //             alignment: Alignment.center,
+            //             decoration: BoxDecoration(
+            //               color: pagesColor,
+            //               borderRadius: BorderRadius.circular(40),
+            //             ),
+            //             child: Image(
+            //               width: 20,
+            //               height: 20,
+            //               image:
+            //                   AssetImage('assets/images/icons/user-remove.png'),
+            //               fit: BoxFit.contain,
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
           ],
         ),
       ),

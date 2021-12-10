@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:background_app_bar/background_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/controller/blog_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
@@ -132,62 +133,125 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Image(
-                        image: AssetImage('assets/images/logo.png'),
-                        width: 90,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.0),
-                        child: SizedBox(
-                          height: 50,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'أطلب',
-                                textDirection: TextDirection.rtl,
-                                style: TextStyle(
-                                  color: whiteFonts,
-                                  fontSize: 14,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 150,
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: appColorDark,
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: pagesColor,
+                                  spreadRadius: 1,
+                                  blurRadius: 1,
+                                  offset: Offset(0, 0),
                                 ),
+                              ],
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ImageIcon(
+                              AssetImage(
+                                'assets/images/icons/ads.png',
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              MaterialButton(
-                                key: key,
-                                onPressed: () {
-                                  getOffset(key);
-                                  showMyDialog(context, x, y);
-                                },
-                                height: 40,
-                                minWidth: 40,
-                                color: yellowFonts,
-                                textColor: darkFonts,
-                                padding: EdgeInsets.zero,
-                                child: ImageIcon(
-                                  AssetImage('assets/images/icons/plus.png'),
-                                  size: 16,
-                                ),
-                                shape: CircleBorder(),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'خدمة',
-                                textDirection: TextDirection.rtl,
-                                style: TextStyle(
-                                  color: whiteFonts,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
+                              color: whiteFonts,
+                              size: 25,
+                            ),
                           ),
-                        ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Image(
+                                  image: AssetImage('assets/images/logo.png'),
+                                  width: 90,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                                  child: SizedBox(
+                                    height: 50,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'أطلب',
+                                          textDirection: TextDirection.rtl,
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        MaterialButton(
+                                          key: key,
+                                          onPressed: () {
+                                            getOffset(key);
+                                            showMyDialog(context, x, y);
+                                          },
+                                          height: 40,
+                                          minWidth: 40,
+                                          color: yellowFonts,
+                                          textColor: darkFonts,
+                                          padding: EdgeInsets.zero,
+                                          child: ImageIcon(
+                                            AssetImage(
+                                                'assets/images/icons/plus.png'),
+                                            size: 16,
+                                          ),
+                                          shape: CircleBorder(),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'خدمة',
+                                          textDirection: TextDirection.rtl,
+                                          style: TextStyle(
+                                            color: whiteFonts,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 100,
+                            height: 150,
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: pagesColor,
+                                  spreadRadius: 1,
+                                  blurRadius: 1,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                              color: appColorDark,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ImageIcon(
+                              AssetImage(
+                                'assets/images/icons/ads.png',
+                              ),
+                              color: whiteFonts,
+                              size: 25,
+                            ),
+                          ),
+                        ],
                       ),
                       ListTile(
                         dense: true,
@@ -247,10 +311,15 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             FutureBuilder(
-              future: getDashboardBlogs(),
+              future: getDashboardBlogs(context),
               builder: (context, snapshot) =>
                   snapshot.connectionState == ConnectionState.waiting
-                      ? SliverToBoxAdapter(child: LinearProgressIndicator())
+                      ? SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Center(
+                            child: CupertinoActivityIndicator(),
+                          ),
+                        )
                       : snapshot.hasData
                           ? SliverList(
                               delegate: SliverChildBuilderDelegate(
@@ -265,7 +334,9 @@ class _DashboardState extends State<Dashboard> {
                             ),
             ),
             SliverToBoxAdapter(
-              child: SizedBox(height: 75,),
+              child: SizedBox(
+                height: 75,
+              ),
             ),
           ],
         ),
