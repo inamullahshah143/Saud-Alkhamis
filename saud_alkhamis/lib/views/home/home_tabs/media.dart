@@ -1,5 +1,7 @@
 import 'package:background_app_bar/background_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/controller/media_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'package:saeud_alkhamis/views/widgets/video_gird_tile.dart';
 import 'dashboard_subs/notices.dart';
@@ -294,23 +296,41 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
               ),
             ),
             [
-              SliverGrid.count(
-                childAspectRatio: 0.6,
-                crossAxisCount: 2,
-                crossAxisSpacing: 10.0,
-                mainAxisSpacing: 10.0,
-                children: [
-                   VideoGridTile(
-                    type: 'مجموعة مصوري الرياض',
-                    date: '03/05/2021',
-                    title: 'تجربة توظيف المهامتجربة توظيف المهارات',
-                    thumnail: images[0],
-                    likes: '23',
-                    views: '43',
-                    shares: '',
-                    isShareable: true,
-                  ),
-                ],
+              FutureBuilder(
+                future: getMedia(context),
+                builder: (context, snapshot) =>
+                    snapshot.connectionState == ConnectionState.waiting
+                        ? SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: Center(
+                              child: CupertinoActivityIndicator(),
+                            ),
+                          )
+                        : snapshot.hasData
+                            ? SliverGrid(
+                                gridDelegate:
+                                    SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: MediaQuery.of(context).size.width * 0.5,
+                                  mainAxisSpacing: 10.0,
+                                  crossAxisSpacing: 10.0,
+                                  childAspectRatio: 2.0,
+                                  mainAxisExtent: 300,
+                                ),
+                                delegate: SliverChildBuilderDelegate(
+                                  (_, index) {
+                                    return Column(
+                                      children: [
+                                        snapshot.data[index],
+                                        // if ((index + 1) % 4 == 0) ads(),
+                                      ],
+                                    );
+                                  },
+                                  childCount: snapshot.data.length,
+                                ),
+                              )
+                            : SliverToBoxAdapter(
+                                child: Text('Record not found'),
+                              ),
               ),
               SliverGrid.count(
                 childAspectRatio: 0.6,
@@ -319,6 +339,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                 mainAxisSpacing: 10.0,
                 children: [
                   VideoGridTile(
+                    onPressed: () {},
                     type: 'مجموعة مصوري الرياض',
                     date: '03/05/2021',
                     title: 'تجربة توظيف المهامتجربة توظيف المهارات',
@@ -338,6 +359,25 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget ads() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: appColorDark,
+      ),
+      height: 100,
+      alignment: Alignment.center,
+      margin: EdgeInsets.all(8),
+      child: ImageIcon(
+        AssetImage(
+          'assets/images/icons/ads.png',
+        ),
+        color: whiteFonts,
+        size: 25,
       ),
     );
   }

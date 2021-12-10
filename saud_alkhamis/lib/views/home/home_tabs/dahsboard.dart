@@ -324,7 +324,13 @@ class _DashboardState extends State<Dashboard> {
                           ? SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (_, index) {
-                                  return snapshot.data[index];
+                                  return Column(
+                                    children: [
+                                      snapshot.data[index],
+                                      if ((index + 1) % 3 == 0)
+                                        ads(),
+                                    ],
+                                  );
                                 },
                                 childCount: 10,
                               ),
@@ -340,6 +346,25 @@ class _DashboardState extends State<Dashboard> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget ads() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: appColorDark,
+      ),
+      height: 100,
+      alignment: Alignment.center,
+      margin: EdgeInsets.all(8),
+      child: ImageIcon(
+        AssetImage(
+          'assets/images/icons/ads.png',
+        ),
+        color: whiteFonts,
+        size: 25,
       ),
     );
   }

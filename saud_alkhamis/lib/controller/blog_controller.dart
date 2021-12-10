@@ -36,6 +36,7 @@ Future<List<Widget>> getDashboardBlogs(BuildContext context) async {
       }
     }
   }).catchError((e) {
+    // ignore: avoid_print
     print(e.toString());
   });
   x.sort((a, b) {
@@ -96,6 +97,7 @@ Future<List<Widget>> getBlogs(BuildContext context) async {
       }
     }
   }).catchError((e) {
+    // ignore: avoid_print
     print(e.toString());
   });
   x.sort((a, b) {

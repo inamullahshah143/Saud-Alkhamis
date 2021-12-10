@@ -343,6 +343,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
               mainAxisSpacing: 10.0,
               children: [
                  VideoGridTile(
+                  onPressed: (){},
                     type: 'مجموعة مصوري الرياض',
                     date: '03/05/2021',
                     title: 'تجربة توظيف المهامتجربة توظيف المهارات',

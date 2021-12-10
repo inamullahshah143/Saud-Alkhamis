@@ -296,6 +296,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                 delegate: SliverChildBuilderDelegate(
                   (_, index) {
                     return StoreListTile(
+                  onPressed: (){},
                       type: 'فنون',
                       date: '03/05/2021',
                       thumnail:
@@ -313,6 +314,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                 delegate: SliverChildBuilderDelegate(
                   (_, index) {
                     return StoreListTile(
+                  onPressed: (){},
                       type: 'فنون',
                       date: '03/05/2021',
                       thumnail:

@@ -193,17 +193,18 @@ class _ProjectsSearchResultState extends State<ProjectsSearchResult> {
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 10.0,
               children: [
-                 VideoGridTile(
-                    type: 'مجموعة مصوري الرياض',
-                    date: '03/05/2021',
-                    title: 'تجربة توظيف المهامتجربة توظيف المهارات',
-                    thumnail: images[1],
-                    likes: '23',
-                    views: '43',
-                    shares: '',
-                    isShareable: true,
-                  ),
-               ],
+                VideoGridTile(
+                  onPressed: () {},
+                  type: 'مجموعة مصوري الرياض',
+                  date: '03/05/2021',
+                  title: 'تجربة توظيف المهامتجربة توظيف المهارات',
+                  thumnail: images[1],
+                  likes: '23',
+                  views: '43',
+                  shares: '',
+                  isShareable: true,
+                ),
+              ],
             ),
             SliverToBoxAdapter(
               child: SizedBox(
