@@ -3,6 +3,7 @@
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
+import 'package:saeud_alkhamis/views/widgets/video_gird_tile.dart';
 
 class ProjectsSearchResult extends StatefulWidget {
   String searchKeyword;
@@ -192,123 +193,17 @@ class _ProjectsSearchResultState extends State<ProjectsSearchResult> {
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 10.0,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: appColorDark,
+                 VideoGridTile(
+                    type: 'مجموعة مصوري الرياض',
+                    date: '03/05/2021',
+                    title: 'تجربة توظيف المهامتجربة توظيف المهارات',
+                    thumnail: images[1],
+                    likes: '23',
+                    views: '43',
+                    shares: '',
+                    isShareable: true,
                   ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 120,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: NetworkImage(images[0]),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      ListTile(
-                        dense: true,
-                        trailing: Text(
-                          '03/05/2021',
-                          textDirection: TextDirection.ltr,
-                          style: TextStyle(
-                            color: yellowFonts,
-                            fontSize: 6,
-                          ),
-                        ),
-                        title: Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'مجموعة مصوري الرياض',
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 6,
-                              color: whiteFonts,
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          'تجربة توظيف المهامتجربة توظيف المهارات',
-                          maxLines: 2,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: whiteFonts,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'يوجد 38 زيارة',
-                                style: TextStyle(
-                                  fontSize: 6,
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ImageIcon(
-                                  AssetImage('assets/images/icons/view-2.png'),
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              Text(
-                                'قراءة',
-                                style: TextStyle(
-                                  fontSize: 8,
-                                  color: whiteFonts,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'يوجد 38 إعجاب',
-                                style: TextStyle(
-                                  fontSize: 6,
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ImageIcon(
-                                  AssetImage('assets/images/icons/like.png'),
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              Text(
-                                'إعجاب',
-                                style: TextStyle(
-                                  fontSize: 8,
-                                  color: whiteFonts,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+               ],
             ),
             SliverToBoxAdapter(
               child: SizedBox(

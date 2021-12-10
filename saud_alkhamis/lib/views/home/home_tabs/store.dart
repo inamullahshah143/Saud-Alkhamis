@@ -316,7 +316,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                       type: 'فنون',
                       date: '03/05/2021',
                       thumnail:
-                          'https://m.media-amazon.com/images/I/71a5OIylnWL._AC_SY606_.jpg',
+                          'https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781634502672/ibn-saud-9781634502672_hr.jpg',
                       title: 'ملهمون',
                       subtitle:
                           'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',

@@ -342,16 +342,16 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 10.0,
               children: [
-                videoGridTile(
-                  context,
-                  'مجموعة مصوري الرياض',
-                  '03/05/2021',
-                  'تجربة توظيف المهامتجربة توظيف المهارات',
-                  images[1],
-                  '23',
-                  '43',
-                  false,
-                ),
+                 VideoGridTile(
+                    type: 'مجموعة مصوري الرياض',
+                    date: '03/05/2021',
+                    title: 'تجربة توظيف المهامتجربة توظيف المهارات',
+                    thumnail: images[1],
+                    likes: '23',
+                    views: '43',
+                    shares: '',
+                    isShareable: true,
+                  ),
               ],
             ),
             SliverToBoxAdapter(

@@ -89,11 +89,9 @@ class _CustomListTileState extends State<CustomListTile> {
     @required this.date,
     @required this.isShareable,
   });
-  bool isViewed;
   bool isLiked;
   @override
   void initState() {
-    isViewed = true;
     isLiked = true;
     super.initState();
   }
@@ -233,13 +231,10 @@ class _CustomListTileState extends State<CustomListTile> {
                               ),
                               IconButton(
                                 onPressed: () {
-                                  setState(() {
-                                    isViewed = !isViewed;
-                                  });
                                 },
                                 icon: ImageIcon(
                                   AssetImage('assets/images/icons/view-2.png'),
-                                  color: isViewed ? yellowFonts : pagesColor,
+                                  color: yellowFonts,
                                 ),
                               ),
                               Text(

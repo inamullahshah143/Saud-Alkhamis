@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -6,21 +6,21 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 class StoreListTile extends StatefulWidget {
-  String type;
-  String date;
-  String thumnail;
-  String title;
-  String subtitle;
-  String rating;
-  StoreListTile({
-    Key key,
+  final String type;
+  final String date;
+  final String thumnail;
+  final String title;
+  final String subtitle;
+  final String rating;
+  // ignore: use_key_in_widget_constructors
+  const StoreListTile({
     @required this.type,
     @required this.date,
     @required this.thumnail,
     @required this.title,
     @required this.subtitle,
     @required this.rating,
-  }) : super(key: key);
+  });
 
   @override
   // ignore: no_logic_in_create_state
@@ -35,12 +35,12 @@ class StoreListTile extends StatefulWidget {
 }
 
 class _StoreListTileState extends State<StoreListTile> {
-  String type;
-  String date;
-  String thumnail;
-  String title;
-  String subtitle;
-  String rating;
+  final String type;
+  final String date;
+  final String thumnail;
+  final String title;
+  final String subtitle;
+  final String rating;
   _StoreListTileState({
     @required this.type,
     @required this.date,
@@ -292,4 +292,5 @@ class _StoreListTileState extends State<StoreListTile> {
       ),
     );
   }
+
 }

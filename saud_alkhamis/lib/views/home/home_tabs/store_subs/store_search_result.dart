@@ -182,11 +182,10 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
                 ),
               ),
             ),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Column(
-                children: [
-                  StoreListTile(
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (_, index) {
+                  return StoreListTile(
                     type: 'فنون',
                     date: '03/05/2021',
                     thumnail:
@@ -194,9 +193,10 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
                     title: 'ملهمون',
                     subtitle:
                         'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                    rating: '3.0',
-                  ),
-                ],
+                    rating: '4.0',
+                  );
+                },
+                childCount: 1,
               ),
             ),
           ],
