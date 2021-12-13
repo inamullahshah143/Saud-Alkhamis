@@ -8,11 +8,11 @@ import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'package:saeud_alkhamis/views/widgets/video_gird_tile.dart';
 
 String getYoutubeThumbnail(String videoUrl) {
-  final Uri uri = Uri.tryParse("https://www.youtube.com/watch?v=6cwnBBAVIwE");
+  final Uri uri = Uri.tryParse(videoUrl);
   if (uri == null) {
     return null;
   }
-  return 'https://img.youtube.com/vi/NjHtNHF3NcE/0.jpg';
+  return 'https://img.youtube.com/vi/${uri.queryParameters['v']}/0.jpg';
 }
 
 Future<List<Widget>> getMedia(BuildContext context) async {
@@ -52,12 +52,8 @@ Future<List<Widget>> getMedia(BuildContext context) async {
     return adate.compareTo(bdate);
   });
   for (final element in x) {
-    // final thumnailData =
-    //     parse(element['data']['content']['rendered'].toString());
-    // final String thumnailString =
-    //     parse(thumnailData.body.text).documentElement.text;
     title = element['data']['title']['rendered'].toString();
-    // thumnail = thumnailString;
+    thumnail = element['data']['_interview_video'].toString();
     date = DateFormat('dd/MM/yyyy')
         .format(DateTime.tryParse(element['data']['date']));
 
