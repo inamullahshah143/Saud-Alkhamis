@@ -3,24 +3,20 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:saeud_alkhamis/views/home/home_tabs/media_subs/playe_video.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 // import 'package:html/parser.dart';
 import 'package:saeud_alkhamis/views/widgets/video_gird_tile.dart';
-
-String getYoutubeThumbnail(String videoUrl) {
-  final Uri uri = Uri.tryParse(videoUrl);
-  if (uri == null) {
-    return null;
-  }
-  return 'https://img.youtube.com/vi/${uri.queryParameters['v']}/0.jpg';
-}
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 Future<List<Widget>> getMedia(BuildContext context) async {
   List<Map> x = [];
   List<Widget> y = [];
+  List<String> videoURLs = [];
   String title = '';
   String date = '';
-  String thumnail = 'WMMiJDpD87g';
+  String thumnail = '';
+  String views = '';
   await http.get(Uri.parse("$apiURL/interview_cate")).then((value) async {
     if (value.statusCode == 200) {
       List data = jsonDecode(value.body);
@@ -51,22 +47,34 @@ Future<List<Widget>> getMedia(BuildContext context) async {
     DateTime bdate = DateTime.tryParse(b['data']['date']);
     return adate.compareTo(bdate);
   });
-  for (final element in x) {
-    title = element['data']['title']['rendered'].toString();
-    thumnail = element['data']['_interview_video'].toString();
+  for (var i = 0; i < x.length; i++) {
+    title = x[i]['data']['title']['rendered'].toString();
+    thumnail = x[i]['data']['featured_media_src_url'].toString();
     date = DateFormat('dd/MM/yyyy')
-        .format(DateTime.tryParse(element['data']['date']));
-
+        .format(DateTime.tryParse(x[i]['data']['date']));
+    views = x[i]['data']['views'].toString();
+    videoURLs.add(
+      YoutubePlayer.convertUrlToId(x[i]['data']['_interview_video']),
+    );
     y.add(
       VideoGridTile(
-        onPressed: () {},
-        type: element['category'],
+        onPressed: () {
+          showDialog(
+            barrierColor: Colors.black87,
+            context: context,
+            barrierDismissible: false,
+            builder: (_) => VideoPlayer(
+              url: videoURLs[i],
+            ),
+          );
+        },
+        type: x[i]['category'],
         date: date,
         title: title,
-        thumnail: getYoutubeThumbnail(thumnail),
+        thumnail: thumnail,
         likes: '21',
         shares: '23',
-        views: '32',
+        views: views,
         isShareable: false,
       ),
     );

@@ -72,6 +72,7 @@ class _VideoGridTileState extends State<VideoGridTile> {
           color: appColorDark,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 120,

@@ -310,7 +310,8 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                             ? SliverGrid(
                                 gridDelegate:
                                     SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: MediaQuery.of(context).size.width * 0.5,
+                                  maxCrossAxisExtent:
+                                      MediaQuery.of(context).size.width * 0.5,
                                   mainAxisSpacing: 10.0,
                                   crossAxisSpacing: 10.0,
                                   childAspectRatio: 2.0,
@@ -318,12 +319,8 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                                 ),
                                 delegate: SliverChildBuilderDelegate(
                                   (_, index) {
-                                    return Column(
-                                      children: [
-                                        snapshot.data[index],
-                                        // if ((index + 1) % 4 == 0) ads(),
-                                      ],
-                                    );
+                                    if ((index + 1) % 6 == 0) return ads();
+                                    return snapshot.data[index];
                                   },
                                   childCount: snapshot.data.length,
                                 ),
@@ -370,8 +367,8 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
         color: appColorDark,
       ),
       height: 100,
+      width: MediaQuery.of(context).size.width,
       alignment: Alignment.center,
-      margin: EdgeInsets.all(8),
       child: ImageIcon(
         AssetImage(
           'assets/images/icons/ads.png',

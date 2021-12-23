@@ -144,11 +144,11 @@ class _DashboardState extends State<Dashboard> {
                             margin: EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: appColorDark,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
-                                  color: pagesColor,
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
+                                  color: pagesColor.withOpacity(0.5),
+                                  spreadRadius: 0.5,
+                                  blurRadius: 0.5,
                                   offset: Offset(0, 0),
                                 ),
                               ],
@@ -232,11 +232,11 @@ class _DashboardState extends State<Dashboard> {
                             alignment: Alignment.center,
                             margin: EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
-                                  color: pagesColor,
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
+                                  color: pagesColor.withOpacity(0.5),
+                                  spreadRadius: 0.5,
+                                  blurRadius: 0.5,
                                   offset: Offset(0, 0),
                                 ),
                               ],
@@ -327,16 +327,23 @@ class _DashboardState extends State<Dashboard> {
                                   return Column(
                                     children: [
                                       snapshot.data[index],
-                                      if ((index + 1) % 3 == 0)
-                                        ads(),
+                                      if ((index + 1) % 3 == 0) ads(),
                                     ],
                                   );
                                 },
-                                childCount: 10,
+                                childCount: snapshot.data.length,
                               ),
                             )
-                          : SliverToBoxAdapter(
-                              child: Text('Record not found'),
+                          : SliverFillRemaining(
+                              hasScrollBody: false,
+                              child: Center(
+                                child: Text(
+                                  'لا توجد\n نتيجة',
+                                  style: TextStyle(
+                                    color: whiteFonts.withOpacity(0.25),
+                                  ),
+                                ),
+                              ),
                             ),
             ),
             SliverToBoxAdapter(

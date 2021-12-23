@@ -121,19 +121,18 @@ class _CustomListTileState extends State<CustomListTile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                type,
-                                style: TextStyle(
-                                  fontSize: 8,
-                                  color: whiteFonts,
-                                ),
+                            width: 75,
+                            alignment: Alignment.center,
+                            child: Text(
+                              type,
+                              style: TextStyle(
+                                fontSize: 8,
+                                color: whiteFonts,
                               ),
                             ),
                             decoration: BoxDecoration(
                               color: Colors.red,
-                              borderRadius: BorderRadius.circular(25),
+                              borderRadius: BorderRadius.circular(7.5),
                             ),
                           ),
                           SizedBox(
@@ -230,8 +229,7 @@ class _CustomListTileState extends State<CustomListTile> {
                                 ),
                               ),
                               IconButton(
-                                onPressed: () {
-                                },
+                                onPressed: () {},
                                 icon: ImageIcon(
                                   AssetImage('assets/images/icons/view-2.png'),
                                   color: yellowFonts,

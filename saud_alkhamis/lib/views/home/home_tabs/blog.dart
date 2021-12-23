@@ -320,8 +320,16 @@ class _BlogState extends State<Blog> {
                                 childCount: snapshot.data.length,
                               ),
                             )
-                          : SliverToBoxAdapter(
-                              child: Text('Record not found'),
+                          : SliverFillRemaining(
+                              hasScrollBody: false,
+                              child: Center(
+                                child: Text(
+                                  'لا توجد\n نتيجة',
+                                  style: TextStyle(
+                                    color: whiteFonts.withOpacity(0.25),
+                                  ),
+                                ),
+                              ),
                             ),
             ),
             SliverToBoxAdapter(

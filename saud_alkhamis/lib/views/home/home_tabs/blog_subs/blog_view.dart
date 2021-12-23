@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, must_be_immutable, no_logic_in_create_state
 
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +7,48 @@ import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'add_comment.dart';
 
 class BlogView extends StatefulWidget {
-  const BlogView({Key key}) : super(key: key);
+  String type;
+  String title;
+  String date;
+  var blogText = '';
+  String thumbnail;
+  int commentCount;
+  BlogView({
+    Key key,
+    @required this.type,
+    @required this.title,
+    @required this.date,
+    @required this.blogText,
+    @required this.thumbnail,
+    @required this.commentCount,
+  }) : super(key: key);
 
   @override
-  _BlogViewState createState() => _BlogViewState();
+  _BlogViewState createState() => _BlogViewState(
+        blogText: blogText,
+        thumbnail: thumbnail,
+        commentCount: commentCount,
+        type: type,
+        title: title,
+        date: date,
+      );
 }
 
 class _BlogViewState extends State<BlogView> {
+  String type;
+  String title;
+  String date;
+  var blogText = '';
+  String thumbnail;
+  int commentCount;
+  _BlogViewState({
+    @required this.type,
+    @required this.title,
+    @required this.date,
+    @required this.blogText,
+    @required this.thumbnail,
+    @required this.commentCount,
+  });
   GlobalKey key = GlobalKey();
 
   double x, y;
@@ -30,8 +65,6 @@ class _BlogViewState extends State<BlogView> {
 
   @override
   Widget build(BuildContext context) {
-    var demoText =
-        "ذلك الشاب الذي ارهق والده بالطلبات، تفاجئه والدته بحاسب محمول، مختلف عن أخوانه، اتفق مع زوجته بأن المستقبل سيكون افضل، متقوقع في عالمه المليء بالأسلاك والكاميرات والعدسات والقصائد والخواطر وغارق في المساحة البيضاء والسوداء دون الحاجة الى المساحة الرمادية فكانت النتيجة إنسان غير اجتماعي سوداوي وسلبي وبنفس الوقت متناقض ( طبيعة الكائنات البشرية ) يقدم مايستطيع ومالا يستطيع لتقديم المساعدة فكان دائما يتحدث عن عالمه بعيدا عن العالم الخارجي وعندما يواجه العالم الخارجي يفهم الأمور بالفطرة هناك حق وهناك باطل ليس هناك اختلاف، يعمل ويدرس ويتعلم من عالمه بنفس الوقت، يفضل التجربة، مليء بالتغيير، اصبح محرك بحث العائلة والأصدقاء ومن هم افتراضيين في عالم الإنترنت لم يفهم ضميره جيداً حتى اصبح مصدر ضغط له وكانت النتيجة كالآتي";
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Directionality(
@@ -48,7 +81,7 @@ class _BlogViewState extends State<BlogView> {
               pinned: true,
               automaticallyImplyLeading: false,
               leading: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.5),
                 child: MaterialButton(
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -230,42 +263,47 @@ class _BlogViewState extends State<BlogView> {
                           SizedBox(
                             width: 10,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                child: Text(
-                                  'عن العظماء',
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                    fontSize: 8,
-                                    color: whiteFonts,
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  alignment: Alignment.center,
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  child: Text(
+                                    type,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 8,
+                                      color: whiteFonts,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(7.5),
                                   ),
                                 ),
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(25),
+                                Text(
+                                  title,
+                                  overflow: TextOverflow.ellipsis,
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: whiteFonts,
+                                    fontSize: 14,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'عندما يكون منافسك هو نفسك',
-                                textDirection: TextDirection.rtl,
-                                style: TextStyle(
-                                  color: whiteFonts,
-                                  fontSize: 14,
+                                Text(
+                                  date,
+                                  textDirection: TextDirection.rtl,
+                                  style: TextStyle(
+                                    color: whiteFonts.withOpacity(0.5),
+                                    fontSize: 8,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                '03/05/2021',
-                                textDirection: TextDirection.rtl,
-                                style: TextStyle(
-                                  color: whiteFonts.withOpacity(0.5),
-                                  fontSize: 8,
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           SizedBox(
                             width: 5,
@@ -275,7 +313,7 @@ class _BlogViewState extends State<BlogView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'يوجد 12 تعليق',
+                                'يوجد ${commentCount} تعليق',
                                 style: TextStyle(
                                   fontSize: 8,
                                   color: yellowFonts,
@@ -374,9 +412,11 @@ class _BlogViewState extends State<BlogView> {
                 background: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/6.png',
-                      ),
+                      image: thumbnail == ''
+                          ? AssetImage('assets/images/6.png')
+                          : NetworkImage(
+                              thumbnail,
+                            ),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -402,7 +442,7 @@ class _BlogViewState extends State<BlogView> {
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Text(
-                      demoText + demoText + demoText,
+                      blogText,
                       style: TextStyle(
                         color: whiteFonts,
                         fontSize: 12,
