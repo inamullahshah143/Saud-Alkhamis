@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -138,7 +136,7 @@ class _DashboardState extends State<Dashboard> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 100,
+                            width: 90,
                             height: 150,
                             alignment: Alignment.center,
                             margin: EdgeInsets.all(10),
@@ -227,7 +225,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ),
                           Container(
-                            width: 100,
+                            width: 90,
                             height: 150,
                             alignment: Alignment.center,
                             margin: EdgeInsets.all(10),

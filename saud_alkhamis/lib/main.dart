@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'views/home/home.dart';
+import 'splash_screen.dart';
 import 'views/widgets/const.dart';
 
 void main() {
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'HelveticaNeueLTA',
       ),
-      home: const Home(),
+      home: Splash(),
     );
   }
 }

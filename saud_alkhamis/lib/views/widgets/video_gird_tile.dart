@@ -61,6 +61,13 @@ class _VideoGridTileState extends State<VideoGridTile> {
     @required this.views,
     @required this.isShareable,
   });
+  bool isLiked;
+  @override
+  void initState() {
+    isLiked = false;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(

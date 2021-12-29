@@ -1,6 +1,8 @@
 // ignore_for_file: no_logic_in_create_state
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/controller/timeline_list.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 class Notices extends StatefulWidget {
@@ -477,35 +479,29 @@ class _NoticesState extends State<Notices> {
                           controller: scrollController,
                           radius: Radius.circular(10),
                           child: SizedBox(
-                            height: 90,
-                            child: ListView(
-                              shrinkWrap: true,
-                              physics: BouncingScrollPhysics(),
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: ListItem(
-                                    title: 'عمل حر',
-                                    subtitle: 'تصميم مواقع ومنتديات',
-                                    year: '2006',
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: ListItem(
-                                    title: 'عمل حر',
-                                    subtitle:
-                                        'تصميم وتحليل مواقع، تصوير فوتوغرافي ومرئي، إستشارات تقنية، معد برامج MBC ',
-                                    year: '2008',
-                                  ),
-                                ),
-                              ],
+                            height: 125,
+                            child: FutureBuilder(
+                              future: getTimeline(context),
+                              builder: (context, snapshot) =>
+                                  snapshot.connectionState ==
+                                          ConnectionState.waiting
+                                      ? Center(
+                                          child: CupertinoActivityIndicator(),
+                                        )
+                                      : snapshot.hasData
+                                          ? snapshot.data
+                                          : Center(
+                                              child: Text(
+                                                'لا توجد نتائج\n بحث',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: whiteFonts
+                                                        .withOpacity(0.5)),
+                                              ),
+                                            ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -586,7 +582,6 @@ class _ListItemState extends State<ListItem> {
               Container(
                 width: 25,
                 height: 25,
-                margin: EdgeInsets.only(left: 10),
                 alignment: Alignment.center,
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(

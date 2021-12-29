@@ -12,6 +12,7 @@ class OrderForm extends StatefulWidget {
 class _OrderFormState extends State<OrderForm> {
   final _formKey = GlobalKey<FormState>();
   bool isNotValid;
+  bool isSubmited;
   int currentIndex = 0;
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -95,6 +96,7 @@ class _OrderFormState extends State<OrderForm> {
   @override
   void initState() {
     isNotValid = false;
+    isSubmited = false;
     super.initState();
   }
 
@@ -443,9 +445,9 @@ class _OrderFormState extends State<OrderForm> {
                                             DropdownMenuItem(
                                               alignment: AlignmentDirectional
                                                   .centerStart,
-                                              value: "1",
+                                              value: "تواصل",
                                               child: Text(
-                                                "1",
+                                                "تواصل",
                                                 style: TextStyle(
                                                   color: whiteFonts,
                                                   fontSize: 12,
@@ -455,9 +457,33 @@ class _OrderFormState extends State<OrderForm> {
                                             DropdownMenuItem(
                                               alignment: AlignmentDirectional
                                                   .centerStart,
-                                              value: "2",
+                                              value: "تقديم إستشارات",
                                               child: Text(
-                                                "2",
+                                                "تقديم إستشارات",
+                                                style: TextStyle(
+                                                  color: whiteFonts,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ),
+                                            DropdownMenuItem(
+                                              alignment: AlignmentDirectional
+                                                  .centerStart,
+                                              value: "تقديم دورات",
+                                              child: Text(
+                                                "تقديم دورات",
+                                                style: TextStyle(
+                                                  color: whiteFonts,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ),
+                                            DropdownMenuItem(
+                                              alignment: AlignmentDirectional
+                                                  .centerStart,
+                                              value: "تقديم خدمات",
+                                              child: Text(
+                                                "تقديم خدمات",
                                                 style: TextStyle(
                                                   color: whiteFonts,
                                                   fontSize: 12,
@@ -589,13 +615,19 @@ class _OrderFormState extends State<OrderForm> {
                             child: MaterialButton(
                               onPressed: () {
                                 if (_formKey.currentState.validate()) {
-                                  // Navigator.of(context).pop();
+                                  setState(() {
+                                    isSubmited = true;
+                                    isNotValid = false;
+                                  });
                                 }
                               },
                               height: 40,
                               minWidth: 40,
-                              color:
-                                  isNotValid != true ? yellowFonts : Colors.red,
+                              color: isNotValid
+                                  ? Colors.red
+                                  : isSubmited
+                                      ? Colors.green
+                                      : yellowFonts,
                               textColor: darkFonts,
                               padding: EdgeInsets.zero,
                               child: ImageIcon(

@@ -1,7 +1,8 @@
 import 'package:background_app_bar/background_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/controller/projects_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-import 'package:saeud_alkhamis/views/widgets/video_gird_tile.dart';
 import 'dashboard_subs/notices.dart';
 import 'projects_subs/projects_filter.dart';
 
@@ -288,40 +289,23 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
               ),
             ),
             SliverToBoxAdapter(
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: whiteFonts,
-                          borderRadius: BorderRadius.circular(80),
-                          border: Border.all(
-                            width: 2.0,
-                            color: appColorDark,
-                          ),
-                        ),
-                        child: Container(
-                          width: 60,
-                          height: 60,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/icons/type-logo.png'),
+              child: FutureBuilder(
+                future: getCustomer(context),
+                builder: (context, snapshot) => snapshot.connectionState ==
+                        ConnectionState.waiting
+                    ? Center(
+                        child: CupertinoActivityIndicator(),
+                      )
+                    : snapshot.hasData
+                        ? snapshot.data
+                        : Center(
+                            child: Text(
+                              'لا توجد نتائج\n بحث',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: whiteFonts.withOpacity(0.5)),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ),
             ),
             SliverToBoxAdapter(
@@ -336,24 +320,46 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                 ),
               ),
             ),
-            SliverGrid.count(
-              childAspectRatio: 0.6,
-              crossAxisCount: 2,
-              crossAxisSpacing: 10.0,
-              mainAxisSpacing: 10.0,
-              children: [
-                 VideoGridTile(
-                  onPressed: (){},
-                    type: 'مجموعة مصوري الرياض',
-                    date: '03/05/2021',
-                    title: 'تجربة توظيف المهامتجربة توظيف المهارات',
-                    thumnail: images[1],
-                    likes: '23',
-                    views: '43',
-                    shares: '',
-                    isShareable: true,
-                  ),
-              ],
+            FutureBuilder(
+              future: getJobs(context),
+              builder: (context, snapshot) => snapshot.connectionState ==
+                      ConnectionState.waiting
+                  ? SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: CupertinoActivityIndicator(),
+                      ),
+                    )
+                  : snapshot.hasData
+                      ? SliverGrid(
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent:
+                                MediaQuery.of(context).size.width * 0.5,
+                            mainAxisSpacing: 10.0,
+                            crossAxisSpacing: 10.0,
+                            childAspectRatio: 2.0,
+                            mainAxisExtent: 300,
+                          ),
+                          delegate: SliverChildBuilderDelegate(
+                            (_, index) {
+                              // if ((index + 1) % 6 == 0) return ads();
+                              return snapshot.data[index];
+                            },
+                            childCount: snapshot.data.length,
+                          ),
+                        )
+                      : SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Center(
+                            child: Text(
+                              'لا توجد نتائج\n بحث',
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: whiteFonts.withOpacity(0.5)),
+                            ),
+                          ),
+                        ),
             ),
             SliverToBoxAdapter(
               child: SizedBox(

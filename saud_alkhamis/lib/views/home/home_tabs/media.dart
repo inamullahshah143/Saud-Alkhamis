@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/controller/media_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-import 'package:saeud_alkhamis/views/widgets/video_gird_tile.dart';
 import 'dashboard_subs/notices.dart';
 import 'media_subs/media_filters.dart';
 
@@ -26,10 +25,6 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
     });
   }
 
-  List<String> images = [
-    "https://mir-s3-cdn-cf.behance.net/project_modules/disp/9ee12212906787.5626e998e99ad.jpg",
-    "https://saudalkhamis.net/wp-content/uploads/2019/12/CleanShot-2019-12-15-at-20.39.51-450x350.png",
-  ];
   TabController _tabController;
   @override
   void dispose() {
@@ -206,7 +201,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                               controller: _tabController,
                               tabs: const [
                                 Text(
-                                  'المرئيات ( 202 )',
+                                  'اللقاءات ( 46 )',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: whiteFonts,
@@ -214,7 +209,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                                 Text(
-                                  'اللقاءات ( 46 )',
+                                  'المرئيات ( 202 )',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: whiteFonts,
@@ -326,27 +321,48 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                                 ),
                               )
                             : SliverToBoxAdapter(
-                                child: Text('Record not found'),
+                                child: Text('لا توجد نتائج بحث'),
                               ),
               ),
-              SliverGrid.count(
-                childAspectRatio: 0.6,
-                crossAxisCount: 2,
-                crossAxisSpacing: 10.0,
-                mainAxisSpacing: 10.0,
-                children: [
-                  VideoGridTile(
-                    onPressed: () {},
-                    type: 'مجموعة مصوري الرياض',
-                    date: '03/05/2021',
-                    title: 'تجربة توظيف المهامتجربة توظيف المهارات',
-                    thumnail: images[1],
-                    likes: '23',
-                    views: '43',
-                    shares: '',
-                    isShareable: true,
-                  ),
-                ],
+              FutureBuilder(
+                future: getDiaries(context),
+                builder: (context, snapshot) =>
+                    snapshot.connectionState == ConnectionState.waiting
+                        ? SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: Center(
+                              child: CupertinoActivityIndicator(),
+                            ),
+                          )
+                        : snapshot.hasData
+                            ? SliverGrid(
+                                gridDelegate:
+                                    SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  mainAxisSpacing: 10.0,
+                                  crossAxisSpacing: 10.0,
+                                  childAspectRatio: 2.0,
+                                  mainAxisExtent: 300,
+                                ),
+                                delegate: SliverChildBuilderDelegate(
+                                  (_, index) {
+                                    if ((index + 1) % 6 == 0) return ads();
+                                    return snapshot.data[index];
+                                  },
+                                  childCount: snapshot.data.length,
+                                ),
+                              )
+                            : SliverFillRemaining(
+                                hasScrollBody: false,
+                                child: Center(
+                                  child: Text(
+                                    'لا توجد نتائج\n بحث',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: whiteFonts.withOpacity(0.5)),
+                                  ),
+                                ),
+                              ),
               ),
             ][_tabController.index],
             SliverToBoxAdapter(
