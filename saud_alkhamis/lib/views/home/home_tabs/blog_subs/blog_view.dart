@@ -12,7 +12,11 @@ class BlogView extends StatefulWidget {
   String date;
   var blogText = '';
   String thumbnail;
+  int likesCount;
+  int viewsCount;
   int commentCount;
+  Function onShare;
+  Function onComment;
   BlogView({
     Key key,
     @required this.type,
@@ -20,7 +24,11 @@ class BlogView extends StatefulWidget {
     @required this.date,
     @required this.blogText,
     @required this.thumbnail,
+    @required this.likesCount,
+    @required this.viewsCount,
     @required this.commentCount,
+    @required this.onShare,
+    @required this.onComment,
   }) : super(key: key);
 
   @override
@@ -28,9 +36,13 @@ class BlogView extends StatefulWidget {
         blogText: blogText,
         thumbnail: thumbnail,
         commentCount: commentCount,
+        likesCount: likesCount,
+        viewsCount: viewsCount,
         type: type,
         title: title,
         date: date,
+        onShare: onShare,
+        onComment: onComment,
       );
 }
 
@@ -40,14 +52,22 @@ class _BlogViewState extends State<BlogView> {
   String date;
   var blogText = '';
   String thumbnail;
+  int likesCount;
+  int viewsCount;
   int commentCount;
+  Function onShare;
+  Function onComment;
   _BlogViewState({
     @required this.type,
     @required this.title,
     @required this.date,
     @required this.blogText,
     @required this.thumbnail,
+    @required this.likesCount,
+    @required this.viewsCount,
     @required this.commentCount,
+    @required this.onShare,
+    @required this.onComment,
   });
   GlobalKey key = GlobalKey();
 
@@ -198,60 +218,66 @@ class _BlogViewState extends State<BlogView> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Container(
-                              height: 50,
-                              width: width * 0.4,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: appColorDark,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ImageIcon(
-                                    AssetImage(
-                                      'assets/images/icons/chat.png',
+                            InkWell(
+                              onTap: onComment,
+                              child: Container(
+                                height: 50,
+                                width: width * 0.4,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: appColorDark,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ImageIcon(
+                                      AssetImage(
+                                        'assets/images/icons/chat.png',
+                                      ),
+                                      size: 14,
+                                      color: yellowFonts,
                                     ),
-                                    size: 14,
-                                    color: yellowFonts,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    "التعليقات",
-                                    style: TextStyle(
-                                      color: whiteFonts,
-                                      fontSize: 14,
+                                    SizedBox(width: 10),
+                                    Text(
+                                      "التعليقات",
+                                      style: TextStyle(
+                                        color: whiteFonts,
+                                        fontSize: 14,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                            Container(
-                              height: 50,
-                              width: width * 0.4,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: appColorDark,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ImageIcon(
-                                    AssetImage(
-                                      'assets/images/icons/share.png',
+                            InkWell(
+                              onTap: onShare,
+                              child: Container(
+                                height: 50,
+                                width: width * 0.4,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: appColorDark,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ImageIcon(
+                                      AssetImage(
+                                        'assets/images/icons/share.png',
+                                      ),
+                                      color: yellowFonts,
+                                      size: 16,
                                     ),
-                                    color: yellowFonts,
-                                    size: 16,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    "مشاركة",
-                                    style: TextStyle(
-                                      color: whiteFonts,
-                                      fontSize: 14,
+                                    SizedBox(width: 10),
+                                    Text(
+                                      "مشاركة",
+                                      style: TextStyle(
+                                        color: whiteFonts,
+                                        fontSize: 14,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -344,7 +370,7 @@ class _BlogViewState extends State<BlogView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'يوجد 32 زيارة',
+                                'يوجد ${viewsCount} زيارة',
                                 style: TextStyle(
                                   fontSize: 8,
                                   color: yellowFonts,
@@ -374,7 +400,7 @@ class _BlogViewState extends State<BlogView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'يوجد 12 إعجاب',
+                                'يوجد ${likesCount} إعجاب',
                                 style: TextStyle(
                                   fontSize: 8,
                                   color: yellowFonts,

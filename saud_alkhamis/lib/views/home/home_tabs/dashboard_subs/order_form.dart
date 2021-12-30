@@ -1,5 +1,6 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/controller/comments_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 class OrderForm extends StatefulWidget {
@@ -10,91 +11,15 @@ class OrderForm extends StatefulWidget {
 }
 
 class _OrderFormState extends State<OrderForm> {
+  Future<Widget> comments;
   final _formKey = GlobalKey<FormState>();
   bool isNotValid;
   bool isSubmited;
-  int currentIndex = 0;
-  List<T> map<T>(List list, Function handler) {
-    List<T> result = [];
-    for (var i = 0; i < list.length; i++) {
-      result.add(handler(i, list[i]));
-    }
-    return result;
-  }
+  Map requestFormData = {};
 
-  List cardList = [
-    Card(
-      color: pagesColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Padding(
-        padding: EdgeInsets.all(5.0),
-        child: ListTile(
-          dense: true,
-          isThreeLine: true,
-          trailing: Text(
-            'المصدر',
-            style: TextStyle(
-              fontSize: 10,
-              color: yellowFonts,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-          title: Text(
-            'خالد',
-            style: TextStyle(
-              fontSize: 14,
-              color: whiteFonts,
-            ),
-            textDirection: TextDirection.rtl,
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '03/05/2021',
-                style: TextStyle(
-                  fontSize: 8,
-                  color: whiteFonts.withOpacity(0.5),
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-              Text(
-                'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                maxLines: 3,
-                style: TextStyle(
-                  fontSize: 10,
-                  height: 1.5,
-                  color: whiteFonts,
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-            ],
-          ),
-          leading: Container(
-            height: 40,
-            width: 40,
-            clipBehavior: Clip.hardEdge,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: appColorDark,
-              borderRadius: BorderRadius.circular(40),
-            ),
-            child: Image(
-              width: 20,
-              height: 20,
-              image: AssetImage('assets/images/icons/user-remove.png'),
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
-      ),
-    ),
-  ];
   @override
   void initState() {
+    comments = getComments(context);
     isNotValid = false;
     isSubmited = false;
     super.initState();
@@ -153,41 +78,25 @@ class _OrderFormState extends State<OrderForm> {
                                   ),
                                 ),
                               ),
-                              CarouselSlider(
-                                options: CarouselOptions(
-                                  autoPlay: false,
-                                  enlargeCenterPage: true,
-                                  viewportFraction: 1,
-                                  aspectRatio: 2.5,
-                                  onPageChanged: (index, reason) {
-                                    setState(() {
-                                      currentIndex = index;
-                                    });
-                                  },
-                                ),
-                                items: cardList.map((card) {
-                                  return Builder(
-                                      builder: (BuildContext context) {
-                                    return card;
-                                  });
-                                }).toList(),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: map<Widget>(cardList, (index, url) {
-                                  return Container(
-                                    width: 10.0,
-                                    height: 10.0,
-                                    margin: EdgeInsets.symmetric(
-                                        vertical: 5.0, horizontal: 2.0),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: currentIndex == index
-                                          ? whiteFonts
-                                          : Colors.grey,
-                                    ),
-                                  );
-                                }),
+                              FutureBuilder(
+                                future: comments,
+                                builder: (context, snapshot) =>
+                                    snapshot.connectionState ==
+                                            ConnectionState.waiting
+                                        ? Center(
+                                            child: CupertinoActivityIndicator(),
+                                          )
+                                        : snapshot.hasData
+                                            ? snapshot.data
+                                            : Center(
+                                                child: Text(
+                                                  'لا توجد نتائج\n بحث',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: whiteFonts
+                                                          .withOpacity(0.5)),
+                                                ),
+                                              ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -290,7 +199,12 @@ class _OrderFormState extends State<OrderForm> {
                                             color: whiteFonts,
                                             fontSize: 14,
                                           ),
-                                          onChanged: (value) {},
+                                          onChanged: (value) {
+                                            setState(() {
+                                              requestFormData['username'] =
+                                                  value;
+                                            });
+                                          },
                                           keyboardType: TextInputType.text,
                                           decoration: InputDecoration(
                                             errorStyle: TextStyle(fontSize: 0),
@@ -344,7 +258,12 @@ class _OrderFormState extends State<OrderForm> {
                                             color: whiteFonts,
                                             fontSize: 14,
                                           ),
-                                          onChanged: (value) {},
+                                          onChanged: (value) {
+                                            setState(() {
+                                              requestFormData['username'] =
+                                                  value;
+                                            });
+                                          },
                                           keyboardType: TextInputType.text,
                                           decoration: InputDecoration(
                                             errorStyle: TextStyle(fontSize: 0),
@@ -397,7 +316,12 @@ class _OrderFormState extends State<OrderForm> {
                                             color: whiteFonts,
                                             fontSize: 14,
                                           ),
-                                          onChanged: (value) {},
+                                          onChanged: (value) {
+                                            setState(() {
+                                              requestFormData['username'] =
+                                                  value;
+                                            });
+                                          },
                                           keyboardType: TextInputType.text,
                                           decoration: InputDecoration(
                                             errorStyle: TextStyle(fontSize: 0),
@@ -434,7 +358,6 @@ class _OrderFormState extends State<OrderForm> {
                                             EdgeInsets.symmetric(vertical: 5.0),
                                         child: DropdownButtonFormField(
                                           hint: Text('نوع الطلب'),
-                                          isExpanded: true,
                                           isDense: false,
                                           elevation: 1,
                                           alignment:
@@ -444,7 +367,7 @@ class _OrderFormState extends State<OrderForm> {
                                           items: const [
                                             DropdownMenuItem(
                                               alignment: AlignmentDirectional
-                                                  .centerStart,
+                                                  .centerEnd,
                                               value: "تواصل",
                                               child: Text(
                                                 "تواصل",
@@ -456,7 +379,7 @@ class _OrderFormState extends State<OrderForm> {
                                             ),
                                             DropdownMenuItem(
                                               alignment: AlignmentDirectional
-                                                  .centerStart,
+                                                  .centerEnd,
                                               value: "تقديم إستشارات",
                                               child: Text(
                                                 "تقديم إستشارات",
@@ -468,7 +391,7 @@ class _OrderFormState extends State<OrderForm> {
                                             ),
                                             DropdownMenuItem(
                                               alignment: AlignmentDirectional
-                                                  .centerStart,
+                                                  .centerEnd,
                                               value: "تقديم دورات",
                                               child: Text(
                                                 "تقديم دورات",
@@ -480,7 +403,7 @@ class _OrderFormState extends State<OrderForm> {
                                             ),
                                             DropdownMenuItem(
                                               alignment: AlignmentDirectional
-                                                  .centerStart,
+                                                  .centerEnd,
                                               value: "تقديم خدمات",
                                               child: Text(
                                                 "تقديم خدمات",
@@ -504,7 +427,12 @@ class _OrderFormState extends State<OrderForm> {
                                             return '';
                                           },
                                           icon: Icon(Icons.arrow_downward),
-                                          onChanged: (value) {},
+                                          onChanged: (value) {
+                                            setState(() {
+                                              requestFormData['username'] =
+                                                  value;
+                                            });
+                                          },
                                           style: TextStyle(
                                             color: whiteFonts,
                                             fontSize: 14,
@@ -558,7 +486,12 @@ class _OrderFormState extends State<OrderForm> {
                                             color: whiteFonts,
                                             fontSize: 14,
                                           ),
-                                          onChanged: (value) {},
+                                          onChanged: (value) {
+                                            setState(() {
+                                              requestFormData['username'] =
+                                                  value;
+                                            });
+                                          },
                                           keyboardType: TextInputType.text,
                                           maxLines: 4,
                                           decoration: InputDecoration(
@@ -615,9 +548,12 @@ class _OrderFormState extends State<OrderForm> {
                             child: MaterialButton(
                               onPressed: () {
                                 if (_formKey.currentState.validate()) {
-                                  setState(() {
-                                    isSubmited = true;
-                                    isNotValid = false;
+                                  submitRequest(requestFormData)
+                                      .whenComplete(() {
+                                    setState(() {
+                                      isSubmited = true;
+                                      isNotValid = false;
+                                    });
                                   });
                                 }
                               },

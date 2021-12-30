@@ -17,9 +17,7 @@ class Blog extends StatefulWidget {
 
 class _BlogState extends State<Blog> {
   GlobalKey key = GlobalKey();
-
   double x, y;
-
   void getOffset(GlobalKey key) {
     RenderBox box = key.currentContext.findRenderObject();
     Offset position = box.localToGlobal(Offset.zero);
@@ -30,6 +28,7 @@ class _BlogState extends State<Blog> {
     });
   }
 
+  Future<List<Widget>> blogs;
   String tags = '';
   List<String> options = [
     'الكل',
@@ -37,6 +36,12 @@ class _BlogState extends State<Blog> {
     'من الواقع',
     'من حياتي',
   ];
+  @override
+  void initState() {
+    blogs = getBlogs(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -146,6 +151,7 @@ class _BlogState extends State<Blog> {
                     style: TextStyle(
                       color: whiteFonts,
                       height: 1,
+                      fontWeight: FontWeight.bold,
                       fontSize: 14,
                     ),
                   ),
@@ -262,6 +268,7 @@ class _BlogState extends State<Blog> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
                         ),
@@ -297,7 +304,7 @@ class _BlogState extends State<Blog> {
               ),
             ),
             FutureBuilder(
-              future: getBlogs(context),
+              future: blogs,
               builder: (context, snapshot) =>
                   snapshot.connectionState == ConnectionState.waiting
                       ? SliverFillRemaining(

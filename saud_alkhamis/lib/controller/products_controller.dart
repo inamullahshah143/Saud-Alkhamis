@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'package:saeud_alkhamis/views/widgets/store_list_tile.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/parser.dart';
 
@@ -46,6 +47,15 @@ Future<List<Widget>> getProducts(BuildContext context) async {
               StoreListTile(
                 onPressed: () {
                   launchURL(element['link']);
+                },
+                onShare: () async {
+                  final RenderBox box = context.findRenderObject() as RenderBox;
+                  await Share.share(element['link'],
+                      sharePositionOrigin:
+                          box.localToGlobal(Offset.zero) & box.size);
+                },
+                onBuy: () {
+                  launchURL(element['_product_url']);
                 },
                 type: element['type'],
                 date: DateFormat('dd/MM/yyyy')

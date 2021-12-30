@@ -14,10 +14,12 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  Future<List<Widget>> dashboardBlogs;
   double appBarHeight;
   bool isLiked;
   @override
   void initState() {
+    dashboardBlogs = getDashboardBlogs(context);
     isLiked = false;
     appBarHeight = 500.0;
     super.initState();
@@ -111,6 +113,7 @@ class _DashboardState extends State<Dashboard> {
                     style: TextStyle(
                       height: 1,
                       color: whiteFonts,
+                      fontWeight: FontWeight.bold,
                       fontSize: 14,
                     ),
                   ),
@@ -286,6 +289,7 @@ class _DashboardState extends State<Dashboard> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
                         ),
@@ -309,7 +313,7 @@ class _DashboardState extends State<Dashboard> {
               ),
             ),
             FutureBuilder(
-              future: getDashboardBlogs(context),
+              future: dashboardBlogs,
               builder: (context, snapshot) =>
                   snapshot.connectionState == ConnectionState.waiting
                       ? SliverFillRemaining(

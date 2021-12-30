@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
    <application
-        android:label="سعود-الخميس"
+        android:label="سعود الخميس"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

@@ -16,6 +16,7 @@ class Store extends StatefulWidget {
 }
 
 class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
+  Future<List<Widget>> products;
   GlobalKey key = GlobalKey();
   double x, y;
   void getOffset(GlobalKey key) {
@@ -42,6 +43,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
+    products = getProducts(context);
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabSelection);
     super.initState();
@@ -155,6 +157,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                     style: TextStyle(
                       color: whiteFonts,
                       fontSize: 14,
+                      fontWeight: FontWeight.bold,
                       height: 1,
                     ),
                   ),
@@ -258,6 +261,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
                         ),
@@ -294,7 +298,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
             ),
             [
               FutureBuilder(
-                future: getProducts(context),
+                future: products,
                 builder: (context, snapshot) =>
                     snapshot.connectionState == ConnectionState.waiting
                         ? SliverFillRemaining(
@@ -330,7 +334,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                               ),
               ),
               FutureBuilder(
-                future: getProducts(context),
+                future: products,
                 builder: (context, snapshot) =>
                     snapshot.connectionState == ConnectionState.waiting
                         ? SliverFillRemaining(

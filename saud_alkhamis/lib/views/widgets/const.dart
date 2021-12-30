@@ -92,7 +92,7 @@ class _CustomListTileState extends State<CustomListTile> {
   bool isLiked;
   @override
   void initState() {
-    isLiked = true;
+    isLiked = false;
     super.initState();
   }
 

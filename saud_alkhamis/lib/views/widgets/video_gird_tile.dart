@@ -138,7 +138,7 @@ class _VideoGridTileState extends State<VideoGridTile> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'يوجد 38 زيارة',
+                            'يوجد ${shares.toString()} زيارة',
                             style: TextStyle(
                               fontSize: 8,
                               color: yellowFonts,
@@ -197,10 +197,14 @@ class _VideoGridTileState extends State<VideoGridTile> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          isLiked = !isLiked;
+                        });
+                      },
                       icon: ImageIcon(
                         AssetImage('assets/images/icons/like.png'),
-                        color: yellowFonts,
+                        color: isLiked ? yellowFonts : pagesColor,
                       ),
                     ),
                     Text(

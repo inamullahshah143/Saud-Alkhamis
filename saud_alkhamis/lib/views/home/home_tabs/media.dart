@@ -14,6 +14,8 @@ class Media extends StatefulWidget {
 }
 
 class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
+  Future<List<Widget>> media;
+  Future<List<Widget>> diaries;
   GlobalKey key = GlobalKey();
   double x, y;
   void getOffset(GlobalKey key) {
@@ -40,6 +42,8 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
+    media = getMedia(context);
+    diaries = getDiaries(context);
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabSelection);
     super.initState();
@@ -152,6 +156,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: whiteFonts,
+                      fontWeight: FontWeight.bold,
                       height: 1,
                       fontSize: 14,
                     ),
@@ -256,6 +261,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
                         ),
@@ -292,7 +298,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
             ),
             [
               FutureBuilder(
-                future: getMedia(context),
+                future: media,
                 builder: (context, snapshot) =>
                     snapshot.connectionState == ConnectionState.waiting
                         ? SliverFillRemaining(
@@ -325,7 +331,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                               ),
               ),
               FutureBuilder(
-                future: getDiaries(context),
+                future: diaries,
                 builder: (context, snapshot) =>
                     snapshot.connectionState == ConnectionState.waiting
                         ? SliverFillRemaining(
@@ -359,7 +365,8 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                                   child: Text(
                                     'لا توجد نتائج\n بحث',
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(color: whiteFonts.withOpacity(0.5)),
+                                    style: TextStyle(
+                                        color: whiteFonts.withOpacity(0.5)),
                                   ),
                                 ),
                               ),

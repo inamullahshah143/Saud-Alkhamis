@@ -186,7 +186,7 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
               delegate: SliverChildBuilderDelegate(
                 (_, index) {
                   return StoreListTile(
-                  onPressed: (){},
+                    onPressed: () {},
                     type: 'فنون',
                     date: '03/05/2021',
                     thumnail:
@@ -195,6 +195,8 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
                     subtitle:
                         'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
                     rating: '4.0',
+                    onBuy: () {},
+                    onShare: () {},
                   );
                 },
                 childCount: 1,

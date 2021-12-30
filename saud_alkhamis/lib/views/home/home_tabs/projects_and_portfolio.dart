@@ -16,6 +16,8 @@ class ProjectsAndPortfolio extends StatefulWidget {
 class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
   GlobalKey key = GlobalKey();
   double x, y;
+  Future<Widget> customer;
+  Future<List<Widget>> jobs;
   void getOffset(GlobalKey key) {
     RenderBox box = key.currentContext.findRenderObject();
     Offset position = box.localToGlobal(Offset.zero);
@@ -25,10 +27,12 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
     });
   }
 
-  List<String> images = [
-    "https://mir-s3-cdn-cf.behance.net/project_modules/disp/9ee12212906787.5626e998e99ad.jpg",
-    "https://saudalkhamis.net/wp-content/uploads/2019/12/CleanShot-2019-12-15-at-20.39.51-450x350.png",
-  ];
+  @override
+  void initState() {
+    jobs = getJobs(context);
+    customer = getCustomer(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +142,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                     style: TextStyle(
                       color: whiteFonts,
                       height: 1,
+                      fontWeight: FontWeight.bold,
                       fontSize: 14,
                     ),
                   ),
@@ -254,6 +259,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
+                            fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
                         ),
@@ -290,7 +296,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
             ),
             SliverToBoxAdapter(
               child: FutureBuilder(
-                future: getCustomer(context),
+                future: customer,
                 builder: (context, snapshot) => snapshot.connectionState ==
                         ConnectionState.waiting
                     ? Center(
@@ -316,12 +322,13 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                   style: TextStyle(
                     fontSize: 14.0,
                     color: yellowFonts,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
             FutureBuilder(
-              future: getJobs(context),
+              future: jobs,
               builder: (context, snapshot) => snapshot.connectionState ==
                       ConnectionState.waiting
                   ? SliverFillRemaining(

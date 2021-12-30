@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/order_form.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PopupMenuBth extends StatefulWidget {
   double x, y;
@@ -50,7 +51,8 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
               children: [
                 MaterialButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    launchURL(
+                        'https://saudalkhamis.net/wp-content/uploads/2020/01/C.V.pdf');
                   },
                   height: 40,
                   minWidth: 40,
@@ -152,5 +154,13 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
         ],
       ),
     );
+  }
+
+  Future<void> launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

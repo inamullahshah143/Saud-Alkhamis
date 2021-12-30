@@ -14,6 +14,13 @@ class Notices extends StatefulWidget {
 
 class _NoticesState extends State<Notices> {
   ScrollController scrollController = ScrollController();
+  Future<Widget> timeline;
+  @override
+  void initState() {
+    timeline = getTimeline(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -481,7 +488,7 @@ class _NoticesState extends State<Notices> {
                           child: SizedBox(
                             height: 125,
                             child: FutureBuilder(
-                              future: getTimeline(context),
+                              future: timeline,
                               builder: (context, snapshot) =>
                                   snapshot.connectionState ==
                                           ConnectionState.waiting

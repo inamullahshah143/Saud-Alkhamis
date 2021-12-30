@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:saeud_alkhamis/views/home/home_tabs/blog_subs/blog_view.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'package:html/parser.dart';
+import 'package:share/share.dart';
 
 Future<List<Widget>> getDashboardBlogs(BuildContext context) async {
   List<Map> x = [];
@@ -66,7 +67,6 @@ Future<List<Widget>> getDashboardBlogs(BuildContext context) async {
         }
       }
     }).catchError((e) {
-      // ignore: avoid_print
       print(e.toString());
     });
     blogView.add(
@@ -76,7 +76,15 @@ Future<List<Widget>> getDashboardBlogs(BuildContext context) async {
         date: date,
         blogText: subtitle,
         commentCount: commentCount,
+        viewsCount: 0,
+        likesCount: 0,
         thumbnail: thumbnail,
+        onComment: () {},
+        onShare: () async {
+          final RenderBox box = context.findRenderObject() as RenderBox;
+          await Share.share(x[i]['data']['link'],
+              sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+        },
       ),
     );
     y.add(
@@ -166,8 +174,16 @@ Future<List<Widget>> getBlogs(BuildContext context) async {
         title: title,
         date: date,
         blogText: subtitle,
+        viewsCount: 0,
+        likesCount: 0,
         commentCount: commentCount,
         thumbnail: thumbnail,
+        onComment: () {},
+        onShare: () async {
+          final RenderBox box = context.findRenderObject() as RenderBox;
+          await Share.share(x[i]['data']['link'],
+              sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+        },
       ),
     );
     y.add(

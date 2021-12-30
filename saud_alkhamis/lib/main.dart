@@ -16,21 +16,28 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
     ));
-    return MaterialApp(
-      builder: (context, child) {
-        return MediaQuery(
-          child: child,
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-        );
-      },
-      title: 'سعود-الخميس',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: appThemeColor,
-        brightness: Brightness.dark,
-        fontFamily: 'HelveticaNeueLTA',
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: MaterialApp(
+        builder: (context, child) {
+          return MediaQuery(
+            child: child,
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          );
+        },
+        title: 'سعود الخميس',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: appThemeColor,
+          brightness: Brightness.dark,
+          fontFamily: 'HelveticaNeueLTA',
+        ),
+        home: Splash(),
       ),
-      home: Splash(),
     );
   }
 }
