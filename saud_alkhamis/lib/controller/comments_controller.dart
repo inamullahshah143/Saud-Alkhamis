@@ -164,6 +164,7 @@ Future<void> launchURL(String url) async {
 
 Future<void> submitRequest(Map formData) async {
   await http
-      .post(Uri.parse("$apiURL/wpcf7_contact_form"), body: formData)
+      .post(Uri.parse("https://test.ijdcreatives.com/api/public/api/contactus"),
+          body: formData)
       .then((value) async {});
 }

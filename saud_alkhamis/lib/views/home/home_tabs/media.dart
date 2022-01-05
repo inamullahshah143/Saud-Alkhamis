@@ -1,6 +1,7 @@
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:saeud_alkhamis/controller/media_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'dashboard_subs/notices.dart';
@@ -18,6 +19,8 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
   Future<List<Widget>> diaries;
   GlobalKey key = GlobalKey();
   double x, y;
+  String interviewsCount;
+  String dariesCount;
   void getOffset(GlobalKey key) {
     RenderBox box = key.currentContext.findRenderObject();
     Offset position = box.localToGlobal(Offset.zero);
@@ -42,6 +45,8 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
+    interviewsCount = '';
+    dariesCount = '';
     media = getMedia(context);
     diaries = getDiaries(context);
     _tabController = TabController(length: 2, vsync: this);
@@ -143,7 +148,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    '04',
+                    '01',
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: yellowFonts,
@@ -204,9 +209,9 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                                 color: yellowFonts,
                               ),
                               controller: _tabController,
-                              tabs: const [
+                              tabs: [
                                 Text(
-                                  'اللقاءات ( 46 )',
+                                  'اللقاءات  ${interviewsCount}',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: whiteFonts,
@@ -214,7 +219,7 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                                 Text(
-                                  'المرئيات ( 202 )',
+                                  'المرئيات ${dariesCount}',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: whiteFonts,
@@ -299,77 +304,107 @@ class _MediaState extends State<Media> with SingleTickerProviderStateMixin {
             [
               FutureBuilder(
                 future: media,
-                builder: (context, snapshot) =>
-                    snapshot.connectionState == ConnectionState.waiting
-                        ? SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Center(
-                              child: CupertinoActivityIndicator(),
-                            ),
-                          )
-                        : snapshot.hasData
-                            ? SliverGrid(
-                                gridDelegate:
-                                    SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  mainAxisSpacing: 10.0,
-                                  crossAxisSpacing: 10.0,
-                                  childAspectRatio: 2.0,
-                                  mainAxisExtent: 300,
-                                ),
-                                delegate: SliverChildBuilderDelegate(
-                                  (_, index) {
-                                    if ((index + 1) % 6 == 0) return ads();
-                                    return snapshot.data[index];
-                                  },
-                                  childCount: snapshot.data.length,
-                                ),
-                              )
-                            : SliverToBoxAdapter(
-                                child: Text('لا توجد نتائج بحث'),
-                              ),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: CupertinoActivityIndicator(),
+                      ),
+                    );
+                  }
+                  if (snapshot.hasData) {
+                    SchedulerBinding.instance.addPostFrameCallback(
+                      (_) => setState(
+                        () {
+                          interviewsCount =
+                              '( ${snapshot.data.length.toString()} )';
+                        },
+                      ),
+                    );
+                    return SliverGrid(
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent:
+                            MediaQuery.of(context).size.width * 0.5,
+                        mainAxisSpacing: 10.0,
+                        crossAxisSpacing: 10.0,
+                        childAspectRatio: 2.0,
+                        mainAxisExtent: 300,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (_, index) {
+                          if ((index + 1) % 6 == 0) return ads();
+                          return snapshot.data[index];
+                        },
+                        childCount: snapshot.data.length,
+                      ),
+                    );
+                  }
+                  if (snapshot.data.size == 0) {
+                    return SliverToBoxAdapter(
+                      child: Center(
+                        child: Text('لا توجد نتائج بحث'),
+                      ),
+                    );
+                  }
+                  return SliverToBoxAdapter(
+                    child: Center(
+                      child: Text(snapshot.error),
+                    ),
+                  );
+                },
               ),
               FutureBuilder(
                 future: diaries,
-                builder: (context, snapshot) =>
-                    snapshot.connectionState == ConnectionState.waiting
-                        ? SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Center(
-                              child: CupertinoActivityIndicator(),
-                            ),
-                          )
-                        : snapshot.hasData
-                            ? SliverGrid(
-                                gridDelegate:
-                                    SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  mainAxisSpacing: 10.0,
-                                  crossAxisSpacing: 10.0,
-                                  childAspectRatio: 2.0,
-                                  mainAxisExtent: 300,
-                                ),
-                                delegate: SliverChildBuilderDelegate(
-                                  (_, index) {
-                                    if ((index + 1) % 6 == 0) return ads();
-                                    return snapshot.data[index];
-                                  },
-                                  childCount: snapshot.data.length,
-                                ),
-                              )
-                            : SliverFillRemaining(
-                                hasScrollBody: false,
-                                child: Center(
-                                  child: Text(
-                                    'لا توجد نتائج\n بحث',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: whiteFonts.withOpacity(0.5)),
-                                  ),
-                                ),
-                              ),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: CupertinoActivityIndicator(),
+                      ),
+                    );
+                  }
+                  if (snapshot.hasData) {
+                    SchedulerBinding.instance.addPostFrameCallback(
+                      (_) => setState(
+                        () {
+                          dariesCount =
+                              '( ${snapshot.data.length.toString()} )';
+                        },
+                      ),
+                    );
+                    return SliverGrid(
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent:
+                            MediaQuery.of(context).size.width * 0.5,
+                        mainAxisSpacing: 10.0,
+                        crossAxisSpacing: 10.0,
+                        childAspectRatio: 2.0,
+                        mainAxisExtent: 300,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (_, index) {
+                          if ((index + 1) % 6 == 0) return ads();
+                          return snapshot.data[index];
+                        },
+                        childCount: snapshot.data.length,
+                      ),
+                    );
+                  }
+                  if (snapshot.data.size == 0) {
+                    return SliverToBoxAdapter(
+                      child: Center(
+                        child: Text('لا توجد نتائج بحث'),
+                      ),
+                    );
+                  }
+                  return SliverToBoxAdapter(
+                    child: Center(
+                      child: Text(snapshot.error),
+                    ),
+                  );
+                },
               ),
             ][_tabController.index],
             SliverToBoxAdapter(

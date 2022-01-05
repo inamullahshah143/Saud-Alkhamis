@@ -1,9 +1,10 @@
 // ignore_for_file: must_be_immutable, no_logic_in_create_state
 
 import 'package:background_app_bar/background_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/controller/products_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-import 'package:saeud_alkhamis/views/widgets/store_list_tile.dart';
 
 class StoreSearchResult extends StatefulWidget {
   String searchKeyword;
@@ -144,7 +145,7 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
                       ListTile(
                         dense: true,
                         title: Text(
-                          'نتائج البحث',
+                          'لا توجد نتائج بحث',
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
@@ -182,25 +183,40 @@ class _StoreSearchResultState extends State<StoreSearchResult> {
                 ),
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (_, index) {
-                  return StoreListTile(
-                    onPressed: () {},
-                    type: 'فنون',
-                    date: '03/05/2021',
-                    thumnail:
-                        'https://m.media-amazon.com/images/I/71a5OIylnWL._AC_SY606_.jpg',
-                    title: 'ملهمون',
-                    subtitle:
-                        'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                    rating: '4.0',
-                    onBuy: () {},
-                    onShare: () {},
+            FutureBuilder(
+              future: searchBooks(context, searchKeyword),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Center(
+                      child: CupertinoActivityIndicator(),
+                    ),
                   );
-                },
-                childCount: 1,
-              ),
+                }
+                if (snapshot.hasData) {
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (_, index) {
+                        return snapshot.data[index];
+                      },
+                      childCount: snapshot.data.length,
+                    ),
+                  );
+                }
+                if (snapshot.data.size == 0) {
+                  return SliverToBoxAdapter(
+                    child: Center(
+                      child: Text('لا توجد نتائج بحث'),
+                    ),
+                  );
+                }
+                return SliverToBoxAdapter(
+                  child: Center(
+                    child: Text(snapshot.error),
+                  ),
+                );
+              },
             ),
           ],
         ),

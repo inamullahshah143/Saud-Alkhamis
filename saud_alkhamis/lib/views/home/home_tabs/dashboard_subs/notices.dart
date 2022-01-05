@@ -486,7 +486,7 @@ class _NoticesState extends State<Notices> {
                           controller: scrollController,
                           radius: Radius.circular(10),
                           child: SizedBox(
-                            height: 125,
+                            height: 135,
                             child: FutureBuilder(
                               future: timeline,
                               builder: (context, snapshot) =>
@@ -573,14 +573,14 @@ class _ListItemState extends State<ListItem> {
             title,
             style: TextStyle(
               color: whiteFonts,
-              fontSize: 14,
+              fontSize: 16,
             ),
           ),
           Text(
             subtitle,
             style: TextStyle(
               color: whiteFonts,
-              fontSize: 10,
+              fontSize: 12,
             ),
           ),
           Row(
@@ -600,6 +600,7 @@ class _ListItemState extends State<ListItem> {
                   style: TextStyle(
                     color: darkFonts,
                     fontSize: 6,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

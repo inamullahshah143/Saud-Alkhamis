@@ -16,7 +16,7 @@ Future<Widget> getCustomer(BuildContext context) async {
         if (data.isNotEmpty) {
           for (final element in data) {
             await http
-                .get(Uri.parse("$apiURL/media/${element['_thumbnail_id']}"))
+                .get(Uri.parse("$apiURL/media/${element['featured_media']}"))
                 .then((value) async {
               if (value.statusCode == 200) {
                 var data = jsonDecode(value.body);
@@ -126,10 +126,62 @@ Future<List<Widget>> getJobs(BuildContext context) async {
                     .format(DateTime.tryParse(element['date'])),
                 title: element['title']['rendered'],
                 thumnail: thumbnail,
-                likes: '21',
-                shares: '23',
+                likes: '0',
                 views: element['views'],
-                isShareable: false,
+              ),
+            );
+          }
+        }
+      }
+    },
+  );
+  return x;
+}
+
+Future<List<Widget>> searchJobs(BuildContext context, searchKeyword) async {
+  List<Widget> x = [];
+  String thumbnail = '';
+  String type = '';
+  await http.get(Uri.parse("$apiURL/job?search=${searchKeyword}")).then(
+    (value) async {
+      if (value.statusCode == 200) {
+        List data = jsonDecode(value.body);
+        if (data.isNotEmpty) {
+          for (final element in data) {
+            await http
+                .get(Uri.parse("$apiURL/media/${element['featured_media']}"))
+                .then(
+              (value) async {
+                if (value.statusCode == 200) {
+                  var data = jsonDecode(value.body);
+                  if (data.isNotEmpty) {
+                    thumbnail = data['source_url'];
+                  }
+                }
+              },
+            );
+            await http
+                .get(Uri.parse("$apiURL/job_cate/${element['job_cate'][0]}"))
+                .then((value) async {
+              if (value.statusCode == 200) {
+                var data = jsonDecode(value.body);
+                if (data.isNotEmpty) {
+                  type = data['name'];
+                }
+              }
+            });
+            await x.add(
+              VideoGridTile(
+                onPressed: () {
+                  launchURL(element['link']);
+                },
+                type: type,
+                date: DateFormat('dd/MM/yyyy')
+                    .format(DateTime.tryParse(element['date'])),
+                title: element['title']['rendered'],
+                thumnail: thumbnail,
+                likes: '0',
+                views: element['views'],
               ),
             );
           }

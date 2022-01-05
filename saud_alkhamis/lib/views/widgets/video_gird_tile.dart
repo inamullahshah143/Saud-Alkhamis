@@ -10,9 +10,7 @@ class VideoGridTile extends StatefulWidget {
   final String title;
   final String thumnail;
   final String likes;
-  final String shares;
   final String views;
-  final bool isShareable;
   const VideoGridTile({
     @required this.onPressed,
     @required this.type,
@@ -20,9 +18,7 @@ class VideoGridTile extends StatefulWidget {
     @required this.thumnail,
     @required this.title,
     @required this.likes,
-    @required this.shares,
     @required this.views,
-    @required this.isShareable,
   });
 
   @override
@@ -34,9 +30,7 @@ class VideoGridTile extends StatefulWidget {
         thumnail: thumnail,
         title: title,
         likes: likes,
-        shares: shares,
         views: views,
-        isShareable: isShareable,
       );
 }
 
@@ -47,9 +41,7 @@ class _VideoGridTileState extends State<VideoGridTile> {
   final String title;
   final String thumnail;
   final String likes;
-  final String shares;
   final String views;
-  final bool isShareable;
   _VideoGridTileState({
     @required this.onPressed,
     @required this.type,
@@ -57,9 +49,7 @@ class _VideoGridTileState extends State<VideoGridTile> {
     @required this.thumnail,
     @required this.title,
     @required this.likes,
-    @required this.shares,
     @required this.views,
-    @required this.isShareable,
   });
   bool isLiked;
   @override
@@ -133,59 +123,32 @@ class _VideoGridTileState extends State<VideoGridTile> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                isShareable
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'يوجد ${shares.toString()} زيارة',
-                            style: TextStyle(
-                              fontSize: 8,
-                              color: yellowFonts,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: ImageIcon(
-                              AssetImage('assets/images/icons/link.png'),
-                              color: yellowFonts,
-                            ),
-                          ),
-                          Text(
-                            'زيارة',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: whiteFonts,
-                            ),
-                          ),
-                        ],
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'يوجد ${views.toString()} مشاهدة',
-                            style: TextStyle(
-                              fontSize: 8,
-                              color: yellowFonts,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: ImageIcon(
-                              AssetImage('assets/images/icons/view-2.png'),
-                              color: yellowFonts,
-                            ),
-                          ),
-                          Text(
-                            'مشاهدة',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: whiteFonts,
-                            ),
-                          ),
-                        ],
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'يوجد ${views.toString()} مشاهدة',
+                      style: TextStyle(
+                        fontSize: 8,
+                        color: yellowFonts,
                       ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: ImageIcon(
+                        AssetImage('assets/images/icons/view-2.png'),
+                        color: yellowFonts,
+                      ),
+                    ),
+                    Text(
+                      'مشاهدة',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: whiteFonts,
+                      ),
+                    ),
+                  ],
+                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

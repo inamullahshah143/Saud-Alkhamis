@@ -27,7 +27,7 @@ const Color yellowFonts = Color.fromRGBO(255, 203, 0, 1);
 const Color darkFonts = Color.fromRGBO(39, 41, 41, 1);
 const Color whiteFonts = Color.fromRGBO(255, 255, 255, 1);
 const Color redFonts = Color.fromRGBO(230, 0, 35, 1);
-const String apiURL = 'https://saudalkhamis.net/wp-json/wp/v2';
+const String apiURL = 'https://test.ijdcreatives.com/wp-json/wp/v2';
 push(BuildContext context, Widget widget) {
   return Navigator.push(
     context,
@@ -52,7 +52,9 @@ class CustomListTile extends StatefulWidget {
   String title;
   String subtitle;
   String date;
-  bool isShareable;
+  String viewCount;
+  String likeCount;
+
   CustomListTile({
     Key key,
     @required this.onPressed,
@@ -60,7 +62,8 @@ class CustomListTile extends StatefulWidget {
     @required this.title,
     @required this.subtitle,
     @required this.date,
-    @required this.isShareable,
+    @required this.viewCount,
+    @required this.likeCount,
   }) : super(key: key);
 
   @override
@@ -70,7 +73,8 @@ class CustomListTile extends StatefulWidget {
         title: title,
         subtitle: subtitle,
         date: date,
-        isShareable: isShareable,
+        viewCount: viewCount,
+        likeCount: likeCount,
       );
 }
 
@@ -80,14 +84,16 @@ class _CustomListTileState extends State<CustomListTile> {
   String title;
   String subtitle;
   String date;
-  bool isShareable;
+  String viewCount;
+  String likeCount;
   _CustomListTileState({
     @required this.onPressed,
     @required this.type,
     @required this.title,
     @required this.subtitle,
     @required this.date,
-    @required this.isShareable,
+    @required this.viewCount,
+    @required this.likeCount,
   });
   bool isLiked;
   @override
@@ -191,64 +197,37 @@ class _CustomListTileState extends State<CustomListTile> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    isShareable
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'يوجد 38 زيارة',
-                                style: TextStyle(
-                                  fontSize: 8,
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ImageIcon(
-                                  AssetImage('assets/images/icons/link.png'),
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              Text(
-                                'زيارة',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: whiteFonts,
-                                ),
-                              ),
-                            ],
-                          )
-                        : Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'يوجد 38 زيارة',
-                                style: TextStyle(
-                                  fontSize: 8,
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: ImageIcon(
-                                  AssetImage('assets/images/icons/view-2.png'),
-                                  color: yellowFonts,
-                                ),
-                              ),
-                              Text(
-                                'قراءة',
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: whiteFonts,
-                                ),
-                              ),
-                            ],
-                          ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'يوجد 38 إعجاب',
+                          'يوجد ${viewCount} زيارة',
+                          style: TextStyle(
+                            fontSize: 8,
+                            color: yellowFonts,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: ImageIcon(
+                            AssetImage('assets/images/icons/view-2.png'),
+                            color: yellowFonts,
+                          ),
+                        ),
+                        Text(
+                          'قراءة',
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: whiteFonts,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'يوجد ${likeCount} إعجاب',
                           style: TextStyle(
                             fontSize: 8,
                             color: yellowFonts,

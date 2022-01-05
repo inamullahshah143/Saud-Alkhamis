@@ -1,7 +1,9 @@
 // ignore_for_file: must_be_immutable, no_logic_in_create_state
 
 import 'package:background_app_bar/background_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/controller/blog_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 
 class BlogSearchResult extends StatefulWidget {
@@ -141,7 +143,7 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                       ListTile(
                         dense: true,
                         title: Text(
-                          'نتائج البحث',
+                          'لا توجد نتائج بحث',
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
@@ -179,24 +181,44 @@ class _BlogSearchResultState extends State<BlogSearchResult> {
                 ),
               ),
             ),
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: CustomListTile(
-                      onPressed: (){},
-                      type: 'استشارت',
-                      title: 'تقديم استشارة في تجربة المستخدم',
-                      subtitle:
-                          'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.',
-                      date: '03/05/2021',
-                      isShareable: false,
-                    ),
-                  ),
-                  SizedBox(height: 80),
-                ],
+            FutureBuilder(
+              future: searchBlogs(context, searchKeyword),
+              builder: (context, snapshot) =>
+                  snapshot.connectionState == ConnectionState.waiting
+                      ? SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Center(
+                            child: CupertinoActivityIndicator(),
+                          ),
+                        )
+                      : snapshot.hasData
+                          ? SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                (_, index) {
+                                  return Column(
+                                    children: [
+                                      snapshot.data[index],
+                                    ],
+                                  );
+                                },
+                                childCount: snapshot.data.length,
+                              ),
+                            )
+                          : SliverFillRemaining(
+                              hasScrollBody: false,
+                              child: Center(
+                                child: Text(
+                                  'لا توجد\n نتيجة',
+                                  style: TextStyle(
+                                    color: whiteFonts.withOpacity(0.25),
+                                  ),
+                                ),
+                              ),
+                            ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 75,
               ),
             ),
           ],

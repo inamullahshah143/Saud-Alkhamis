@@ -3,6 +3,7 @@
 import 'package:background_app_bar/background_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:saeud_alkhamis/controller/products_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'dashboard_subs/notices.dart';
@@ -16,9 +17,12 @@ class Store extends StatefulWidget {
 }
 
 class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
-  Future<List<Widget>> products;
+  Future<List<Widget>> books;
+  Future<List<Widget>> tools;
   GlobalKey key = GlobalKey();
   double x, y;
+  String toolsCount;
+  String booksCount;
   void getOffset(GlobalKey key) {
     RenderBox box = key.currentContext.findRenderObject();
     Offset position = box.localToGlobal(Offset.zero);
@@ -43,7 +47,10 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    products = getProducts(context);
+    toolsCount = '';
+    booksCount = '';
+    books = getBooks(context);
+    tools = getTools(context);
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabSelection);
     super.initState();
@@ -143,7 +150,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    '04',
+                    '01',
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: yellowFonts,
@@ -204,9 +211,9 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                                     BorderRadius.circular(50), // Creates border
                                 color: yellowFonts,
                               ),
-                              tabs: const [
+                              tabs: [
                                 Text(
-                                  'أدواتي ( 12 )',
+                                  'أدواتي ${booksCount}',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: whiteFonts,
@@ -214,7 +221,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                                 Text(
-                                  'كتبي ( 23 )',
+                                  'كتبي ${toolsCount}',
                                   textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                     color: whiteFonts,
@@ -298,76 +305,98 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
             ),
             [
               FutureBuilder(
-                future: products,
-                builder: (context, snapshot) =>
-                    snapshot.connectionState == ConnectionState.waiting
-                        ? SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Center(
-                              child: CupertinoActivityIndicator(),
-                            ),
-                          )
-                        : snapshot.hasData
-                            ? SliverList(
-                                delegate: SliverChildBuilderDelegate(
-                                  (_, index) {
-                                    return Column(
-                                      children: [
-                                        snapshot.data[index],
-                                        if ((index + 1) % 3 == 0) ads(),
-                                      ],
-                                    );
-                                  },
-                                  childCount: snapshot.data.length,
-                                ),
-                              )
-                            : SliverFillRemaining(
-                                hasScrollBody: false,
-                                child: Center(
-                                  child: Text(
-                                    'لا توجد\n نتيجة',
-                                    style: TextStyle(
-                                      color: whiteFonts.withOpacity(0.25),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                future: books,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: CupertinoActivityIndicator(),
+                      ),
+                    );
+                  }
+                  if (snapshot.hasData) {
+                    SchedulerBinding.instance.addPostFrameCallback(
+                      (_) => setState(
+                        () {
+                          booksCount = '( ${snapshot.data.length.toString()} )';
+                        },
+                      ),
+                    );
+                    return SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (_, index) {
+                          return Column(
+                            children: [
+                              snapshot.data[index],
+                              if ((index + 1) % 3 == 0) ads(),
+                            ],
+                          );
+                        },
+                        childCount: snapshot.data.length,
+                      ),
+                    );
+                  }
+                  if (snapshot.data.size == 0) {
+                    return SliverToBoxAdapter(
+                      child: Center(
+                        child: Text('لا توجد نتائج بحث'),
+                      ),
+                    );
+                  }
+                  return SliverToBoxAdapter(
+                    child: Center(
+                      child: Text(snapshot.error),
+                    ),
+                  );
+                },
               ),
               FutureBuilder(
-                future: products,
-                builder: (context, snapshot) =>
-                    snapshot.connectionState == ConnectionState.waiting
-                        ? SliverFillRemaining(
-                            hasScrollBody: false,
-                            child: Center(
-                              child: CupertinoActivityIndicator(),
-                            ),
-                          )
-                        : snapshot.hasData
-                            ? SliverList(
-                                delegate: SliverChildBuilderDelegate(
-                                  (_, index) {
-                                    return Column(
-                                      children: [
-                                        snapshot.data[index],
-                                        if ((index + 1) % 3 == 0) ads(),
-                                      ],
-                                    );
-                                  },
-                                  childCount: snapshot.data.length,
-                                ),
-                              )
-                            : SliverFillRemaining(
-                                hasScrollBody: false,
-                                child: Center(
-                                  child: Text(
-                                    'لا توجد\n نتيجة',
-                                    style: TextStyle(
-                                      color: whiteFonts.withOpacity(0.25),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                future: tools,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: CupertinoActivityIndicator(),
+                      ),
+                    );
+                  }
+                  if (snapshot.hasData) {
+                    SchedulerBinding.instance.addPostFrameCallback(
+                      (_) => setState(
+                        () {
+                          toolsCount = '( ${snapshot.data.length.toString()} )';
+                        },
+                      ),
+                    );
+                    return SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (_, index) {
+                          return Column(
+                            children: [
+                              snapshot.data[index],
+                              if ((index + 1) % 3 == 0) ads(),
+                            ],
+                          );
+                        },
+                        childCount: snapshot.data.length,
+                      ),
+                    );
+                  }
+                  if (snapshot.data.isEmpty) {
+                    return SliverToBoxAdapter(
+                      child: Center(
+                        child: Text('لا توجد نتائج بحث'),
+                      ),
+                    );
+                  }
+                  return SliverToBoxAdapter(
+                    child: Center(
+                      child: Text(snapshot.error),
+                    ),
+                  );
+                },
               ),
             ][_tabController.index],
             SliverToBoxAdapter(

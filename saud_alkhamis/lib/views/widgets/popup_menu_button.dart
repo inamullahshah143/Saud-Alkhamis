@@ -29,7 +29,7 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
   @override
   void initState() {
     isAnimated = true;
-    Timer(Duration(milliseconds: 100), () {
+    Timer(Duration(milliseconds: 50), () {
       setState(() {
         isAnimated = false;
       });
@@ -44,7 +44,7 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
       body: Stack(
         children: [
           AnimatedPositioned(
-            duration: Duration(milliseconds: 200),
+            duration: Duration(milliseconds: 100),
             top: isAnimated ? y : y + 75,
             left: isAnimated ? x - 5 : x - 50,
             child: Column(
@@ -77,7 +77,7 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
             ),
           ),
           AnimatedPositioned(
-            duration: Duration(milliseconds: 200),
+            duration: Duration(milliseconds: 100),
             top: isAnimated ? y : y + 75,
             left: isAnimated ? x : x + 50,
             child: Column(
@@ -135,7 +135,7 @@ class _PopupMenuBthState extends State<PopupMenuBth> {
                 setState(() {
                   isAnimated = true;
                 });
-                Timer(Duration(milliseconds: 200), () {
+                Timer(Duration(milliseconds: 100), () {
                   Navigator.of(context).pop();
                 });
               },

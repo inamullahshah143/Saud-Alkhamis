@@ -128,7 +128,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    '04',
+                    '01',
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: yellowFonts,

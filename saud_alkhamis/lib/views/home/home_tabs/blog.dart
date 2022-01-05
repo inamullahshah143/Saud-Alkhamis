@@ -16,6 +16,13 @@ class Blog extends StatefulWidget {
 }
 
 class _BlogState extends State<Blog> {
+  Future<List<Widget>> blogs;
+  @override
+  void initState() {
+    super.initState();
+    blogs = getBlogs(context);
+  }
+
   GlobalKey key = GlobalKey();
   double x, y;
   void getOffset(GlobalKey key) {
@@ -28,7 +35,6 @@ class _BlogState extends State<Blog> {
     });
   }
 
-  Future<List<Widget>> blogs;
   String tags = '';
   List<String> options = [
     'الكل',
@@ -36,11 +42,6 @@ class _BlogState extends State<Blog> {
     'من الواقع',
     'من حياتي',
   ];
-  @override
-  void initState() {
-    blogs = getBlogs(context);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +138,7 @@ class _BlogState extends State<Blog> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    '04',
+                    '01',
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       color: yellowFonts,
@@ -204,7 +205,28 @@ class _BlogState extends State<Blog> {
                                   BorderRadius.all(Radius.circular(25)),
                               borderColor: appColorDark,
                             ),
-                            onChanged: (val) => setState(() => tags = val),
+                            onChanged: (val) {
+                              setState(() {
+                                tags = val;
+                              });
+                              if (val == 'الكل') {
+                                setState(() {
+                                  blogs = getBlogs(context);
+                                });
+                              } else if (val == 'عن العظماء') {
+                                setState(() {
+                                  blogs = filterBlogs(context, 226);
+                                });
+                              } else if (val == 'من الواقع') {
+                                setState(() {
+                                  blogs = filterBlogs(context, 227);
+                                });
+                              } else if (val == 'من حياتي') {
+                                setState(() {
+                                  blogs = filterBlogs(context, 225);
+                                });
+                              }
+                            },
                             choiceItems: C2Choice.listFrom<String, String>(
                               source: options,
                               value: (i, v) => v,
@@ -317,6 +339,10 @@ class _BlogState extends State<Blog> {
                           ? SliverList(
                               delegate: SliverChildBuilderDelegate(
                                 (_, index) {
+                                  if (index == snapshot.data.length)
+                                    return Center(
+                                      child: CupertinoActivityIndicator(),
+                                    );
                                   return Column(
                                     children: [
                                       snapshot.data[index],

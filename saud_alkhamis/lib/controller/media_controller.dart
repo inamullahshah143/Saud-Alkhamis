@@ -16,21 +16,21 @@ Future<List<Widget>> getMedia(BuildContext context) async {
   String date = '';
   String thumbnail = '';
   String views = '';
-  await http.get(Uri.parse("$apiURL/interview_cate")).then((value) async {
+  await http
+      .get(Uri.parse("$apiURL/interview?per_page=100"))
+      .then((value) async {
     if (value.statusCode == 200) {
       List data = jsonDecode(value.body);
       if (data.isNotEmpty) {
-        for (final element in data) {
+        for (final e in data) {
           await http
-              .get(Uri.parse(
-                  "$apiURL/interview?interview_cate=${element['id'].toInt()}"))
-              .then((value) {
+              .get(
+                  Uri.parse("$apiURL/interview_cate/${e['interview_cate'][0]}"))
+              .then((value) async {
             if (value.statusCode == 200) {
-              List data = jsonDecode(value.body);
+              var data = jsonDecode(value.body);
               if (data.isNotEmpty) {
-                for (final e in data) {
-                  x.add({"category": "${element['name']}", "data": e});
-                }
+                x.add({"category": "${data['name']}", "data": e});
               }
             }
           });
@@ -38,13 +38,12 @@ Future<List<Widget>> getMedia(BuildContext context) async {
       }
     }
   }).catchError((e) {
-    // ignore: avoid_print
     print(e.toString());
   });
   x.sort((a, b) {
     DateTime adate = DateTime.tryParse(a['data']['date']);
     DateTime bdate = DateTime.tryParse(b['data']['date']);
-    return adate.compareTo(bdate);
+    return bdate.compareTo(adate);
   });
   for (var i = 0; i < x.length; i++) {
     title = x[i]['data']['title']['rendered'].toString();
@@ -64,7 +63,7 @@ Future<List<Widget>> getMedia(BuildContext context) async {
         .format(DateTime.tryParse(x[i]['data']['date']));
     views = x[i]['data']['views'].toString();
     videoURLs.add(
-      x[i]['data']['_interview_video'],
+      x[i]['data']['link'],
     );
     await y.add(
       VideoGridTile(
@@ -75,10 +74,8 @@ Future<List<Widget>> getMedia(BuildContext context) async {
         date: date,
         title: title,
         thumnail: thumbnail,
-        likes: '21',
-        shares: '23',
+        likes: '0',
         views: views,
-        isShareable: false,
       ),
     );
   }
@@ -101,21 +98,18 @@ Future<List<Widget>> getDiaries(BuildContext context) async {
   String date = '';
   String thumbnail = '';
   String views = '';
-  await http.get(Uri.parse("$apiURL/diaries_cate")).then((value) async {
+  await http.get(Uri.parse("$apiURL/diaries?per_page=100")).then((value) async {
     if (value.statusCode == 200) {
       List data = jsonDecode(value.body);
       if (data.isNotEmpty) {
-        for (final element in data) {
+        for (final e in data) {
           await http
-              .get(Uri.parse(
-                  "$apiURL/diaries?diaries_cate=${element['id'].toInt()}"))
-              .then((value) {
+              .get(Uri.parse("$apiURL/diaries_cate/${e['diaries_cate'][0]}"))
+              .then((value) async {
             if (value.statusCode == 200) {
-              List data = jsonDecode(value.body);
+              var data = jsonDecode(value.body);
               if (data.isNotEmpty) {
-                for (final e in data) {
-                  x.add({"category": "${element['name']}", "data": e});
-                }
+                x.add({"category": "${data['name']}", "data": e});
               }
             }
           });
@@ -123,7 +117,83 @@ Future<List<Widget>> getDiaries(BuildContext context) async {
       }
     }
   }).catchError((e) {
-    // ignore: avoid_print
+    print(e.toString());
+  });
+
+  x.sort((a, b) {
+    DateTime adate = DateTime.tryParse(a['data']['date']);
+    DateTime bdate = DateTime.tryParse(b['data']['date']);
+    return bdate.compareTo(adate);
+  });
+  for (var i = 0; i < x.length; i++) {
+    title = x[i]['data']['title']['rendered'].toString();
+    await http
+        .get(Uri.parse("$apiURL/media/${x[i]['data']['featured_media']}"))
+        .then(
+      (value) async {
+        if (value.statusCode == 200) {
+          var data = jsonDecode(value.body);
+          if (data.isNotEmpty) {
+            thumbnail = data['source_url'];
+          }
+        }
+      },
+    );
+    date = DateFormat('dd/MM/yyyy')
+        .format(DateTime.tryParse(x[i]['data']['date']));
+    views = x[i]['data']['views'].toString();
+    videoURLs.add(
+      x[i]['data']['link'],
+    );
+    await y.add(
+      VideoGridTile(
+        onPressed: () {
+          launchYoutubeVideo(videoURLs[i]);
+        },
+        type: x[i]['category'],
+        date: date,
+        title: title,
+        thumnail: thumbnail,
+        likes: '0',
+        views: views,
+      ),
+    );
+  }
+
+  return y;
+}
+
+Future<List<Widget>> searchMedia(BuildContext context, searchKeyword) async {
+  List<Map> x = [];
+  List<Widget> y = [];
+  List<String> videoURLs = [];
+  String title = '';
+  String date = '';
+  String thumbnail = '';
+  String views = '';
+
+  await http
+      .get(Uri.parse("$apiURL/interview?search=${searchKeyword}"))
+      .then((value) async {
+    if (value.statusCode == 200) {
+      List data = jsonDecode(value.body);
+      if (data.isNotEmpty) {
+        for (final e in data) {
+          await http
+              .get(
+                  Uri.parse("$apiURL/interview_cate/${e['interview_cate'][0]}"))
+              .then((value) async {
+            if (value.statusCode == 200) {
+              var data = jsonDecode(value.body);
+              if (data.isNotEmpty) {
+                x.add({"category": "${data['name']}", "data": e});
+              }
+            }
+          });
+        }
+      }
+    }
+  }).catchError((e) {
     print(e.toString());
   });
   x.sort((a, b) {
@@ -149,7 +219,7 @@ Future<List<Widget>> getDiaries(BuildContext context) async {
         .format(DateTime.tryParse(x[i]['data']['date']));
     views = x[i]['data']['views'].toString();
     videoURLs.add(
-      x[i]['data']['_diaries_video'],
+      x[i]['data']['link'],
     );
     await y.add(
       VideoGridTile(
@@ -160,10 +230,8 @@ Future<List<Widget>> getDiaries(BuildContext context) async {
         date: date,
         title: title,
         thumnail: thumbnail,
-        likes: '21',
-        shares: '23',
+        likes: '0',
         views: views,
-        isShareable: false,
       ),
     );
   }

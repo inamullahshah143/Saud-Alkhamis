@@ -107,7 +107,7 @@ class _OrderFormState extends State<OrderForm> {
                                     Column(
                                       children: const [
                                         Text(
-                                          '04',
+                                          '01',
                                           style: TextStyle(
                                             color: yellowFonts,
                                             fontSize: 14,
@@ -200,10 +200,10 @@ class _OrderFormState extends State<OrderForm> {
                                             fontSize: 14,
                                           ),
                                           onChanged: (value) {
-                                            setState(() {
-                                              requestFormData['username'] =
-                                                  value;
-                                            });
+                                            // setState(() {
+                                            //   requestFormData['username'] =
+                                            //       value;
+                                            // });
                                           },
                                           keyboardType: TextInputType.text,
                                           decoration: InputDecoration(
@@ -259,10 +259,9 @@ class _OrderFormState extends State<OrderForm> {
                                             fontSize: 14,
                                           ),
                                           onChanged: (value) {
-                                            setState(() {
-                                              requestFormData['username'] =
-                                                  value;
-                                            });
+                                            // setState(() {
+                                            //   requestFormData['phone'] = value;
+                                            // });
                                           },
                                           keyboardType: TextInputType.text,
                                           decoration: InputDecoration(
@@ -317,10 +316,9 @@ class _OrderFormState extends State<OrderForm> {
                                             fontSize: 14,
                                           ),
                                           onChanged: (value) {
-                                            setState(() {
-                                              requestFormData['username'] =
-                                                  value;
-                                            });
+                                            // setState(() {
+                                            //   requestFormData['email'] = value;
+                                            // });
                                           },
                                           keyboardType: TextInputType.text,
                                           decoration: InputDecoration(
@@ -429,8 +427,8 @@ class _OrderFormState extends State<OrderForm> {
                                           icon: Icon(Icons.arrow_downward),
                                           onChanged: (value) {
                                             setState(() {
-                                              requestFormData['username'] =
-                                                  value;
+                                              // requestFormData['category'] =
+                                              //     value;
                                             });
                                           },
                                           style: TextStyle(
@@ -488,7 +486,7 @@ class _OrderFormState extends State<OrderForm> {
                                           ),
                                           onChanged: (value) {
                                             setState(() {
-                                              requestFormData['username'] =
+                                              requestFormData['description'] =
                                                   value;
                                             });
                                           },

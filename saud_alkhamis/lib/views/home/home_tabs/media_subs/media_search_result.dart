@@ -1,9 +1,10 @@
 // ignore_for_file: must_be_immutable, no_logic_in_create_state
 
 import 'package:background_app_bar/background_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saeud_alkhamis/controller/media_controller.dart';
 import 'package:saeud_alkhamis/views/widgets/const.dart';
-import 'package:saeud_alkhamis/views/widgets/video_gird_tile.dart';
 
 class MediaSearchResult extends StatefulWidget {
   String searchKeyword;
@@ -18,10 +19,6 @@ class _MediaSearchResultState extends State<MediaSearchResult> {
   String searchKeyword;
   _MediaSearchResultState({@required this.searchKeyword});
 
-  List<String> images = [
-    "https://mir-s3-cdn-cf.behance.net/project_modules/disp/9ee12212906787.5626e998e99ad.jpg",
-    "https://saudalkhamis.net/wp-content/uploads/2019/12/CleanShot-2019-12-15-at-20.39.51-450x350.png",
-  ];
   TextEditingController seachText;
   @override
   void initState() {
@@ -148,7 +145,7 @@ class _MediaSearchResultState extends State<MediaSearchResult> {
                       ListTile(
                         dense: true,
                         title: Text(
-                          'نتائج البحث',
+                          'لا توجد نتائج بحث',
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             color: yellowFonts,
@@ -186,24 +183,37 @@ class _MediaSearchResultState extends State<MediaSearchResult> {
                 ),
               ),
             ),
-            SliverGrid.count(
-              childAspectRatio: 0.6,
-              crossAxisCount: 2,
-              crossAxisSpacing: 10.0,
-              mainAxisSpacing: 10.0,
-              children: [
-                VideoGridTile(
-                  onPressed: (){},
-                  type: 'مجموعة مصوري الرياض',
-                  date: '03/05/2021',
-                  title: 'تجربة توظيف المهامتجربة توظيف المهارات',
-                  thumnail: images[1],
-                  likes: '23',
-                  views: '43',
-                  shares: '',
-                  isShareable: true,
-                ),
-              ],
+            FutureBuilder(
+              future: searchMedia(context, searchKeyword),
+              builder: (context, snapshot) =>
+                  snapshot.connectionState == ConnectionState.waiting
+                      ? SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Center(
+                            child: CupertinoActivityIndicator(),
+                          ),
+                        )
+                      : snapshot.hasData
+                          ? SliverGrid(
+                              gridDelegate:
+                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                                maxCrossAxisExtent:
+                                    MediaQuery.of(context).size.width * 0.5,
+                                mainAxisSpacing: 10.0,
+                                crossAxisSpacing: 10.0,
+                                childAspectRatio: 2.0,
+                                mainAxisExtent: 300,
+                              ),
+                              delegate: SliverChildBuilderDelegate(
+                                (_, index) {
+                                  return snapshot.data[index];
+                                },
+                                childCount: snapshot.data.length,
+                              ),
+                            )
+                          : SliverToBoxAdapter(
+                              child: Text('لا توجد نتائج بحث'),
+                            ),
             ),
             SliverToBoxAdapter(
               child: SizedBox(

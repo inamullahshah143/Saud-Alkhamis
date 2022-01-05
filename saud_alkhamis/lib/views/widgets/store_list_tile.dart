@@ -13,6 +13,7 @@ class StoreListTile extends StatefulWidget {
   final String title;
   final String subtitle;
   final String rating;
+  final String views;
   // ignore: use_key_in_widget_constructors
   const StoreListTile({
     @required this.onPressed,
@@ -24,6 +25,7 @@ class StoreListTile extends StatefulWidget {
     @required this.title,
     @required this.subtitle,
     @required this.rating,
+    @required this.views,
   });
 
   @override
@@ -38,6 +40,7 @@ class StoreListTile extends StatefulWidget {
         title: title,
         subtitle: subtitle,
         rating: rating,
+        views: views,
       );
 }
 
@@ -51,6 +54,7 @@ class _StoreListTileState extends State<StoreListTile> {
   final String title;
   final String subtitle;
   final String rating;
+  final String views;
   _StoreListTileState({
     @required this.onPressed,
     @required this.onShare,
@@ -61,6 +65,7 @@ class _StoreListTileState extends State<StoreListTile> {
     @required this.title,
     @required this.subtitle,
     @required this.rating,
+    @required this.views,
   });
   bool isLiked;
   @override
@@ -220,7 +225,7 @@ class _StoreListTileState extends State<StoreListTile> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'يوجد 38 إعجاب',
+                    'يوجد ${views} إعجاب',
                     style: TextStyle(
                       fontSize: 8,
                       color: yellowFonts,
