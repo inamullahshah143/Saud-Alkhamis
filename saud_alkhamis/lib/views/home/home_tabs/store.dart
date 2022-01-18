@@ -283,7 +283,7 @@ class _StoreState extends State<Store> with SingleTickerProviderStateMixin {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/1.png',
+                        'assets/images/4.png',
                       ),
                       fit: BoxFit.cover,
                     ),

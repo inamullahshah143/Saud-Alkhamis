@@ -6,7 +6,7 @@ import 'package:saeud_alkhamis/views/home/home_tabs/dashboard_subs/notices.dart'
 import 'package:saeud_alkhamis/views/widgets/const.dart';
 import 'package:html/parser.dart';
 
-Future<Widget> getTimeline(BuildContext context) async {
+Future<List<Widget>> getTimeline(BuildContext context) async {
   List<Widget> x = [];
   String title = '';
   String subtitle = '';
@@ -17,9 +17,10 @@ Future<Widget> getTimeline(BuildContext context) async {
         List data = jsonDecode(value.body);
         if (data.isNotEmpty) {
           for (final element in data) {
-            date = DateFormat('yyyy')
-                .format(DateTime.tryParse(element['date']));
-            final subtitleData = parse(element['content']['rendered'].toString());
+            date =
+                DateFormat('yyyy').format(DateTime.tryParse(element['date']));
+            final subtitleData =
+                parse(element['content']['rendered'].toString());
             final String subtitleString =
                 parse(subtitleData.body.text).documentElement.text;
             title = element['title']['rendered'].toString();
@@ -36,10 +37,5 @@ Future<Widget> getTimeline(BuildContext context) async {
       }
     },
   );
-  return ListView(
-    shrinkWrap: true,
-    physics: BouncingScrollPhysics(),
-    scrollDirection: Axis.horizontal,
-    children: x,
-  );
+  return x;
 }

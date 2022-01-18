@@ -174,7 +174,12 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                         padding: EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 10.0),
                         child: DropdownButtonFormField(
-                          hint: Text('مشاريعي'),
+                          hint: Text(
+                            'مشاريعي',
+                            style: TextStyle(
+                              fontFamily: 'HelveticaNeueLTA',
+                            ),
+                          ),
                           isDense: false,
                           elevation: 1,
                           alignment: AlignmentDirectional.centerStart,
@@ -208,6 +213,7 @@ class _ProjectsAndPortfolioState extends State<ProjectsAndPortfolio> {
                           onChanged: (value) {},
                           style: TextStyle(
                             color: whiteFonts,
+                            fontFamily: 'HelveticaNeueLTA',
                             fontSize: 14,
                           ),
                           decoration: InputDecoration(

@@ -81,7 +81,12 @@ class _ProjectFiltersState extends State<ProjectFilters> {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 5.0),
                         child: DropdownButtonFormField(
-                          hint: Text('مشاريعي'),
+                          hint: Text(
+                            'مشاريعي',
+                            style: TextStyle(
+                              fontFamily: 'HelveticaNeueLTA',
+                            ),
+                          ),
                           isDense: false,
                           elevation: 1,
                           alignment: AlignmentDirectional.centerStart,
@@ -115,6 +120,7 @@ class _ProjectFiltersState extends State<ProjectFilters> {
                           onChanged: (value) {},
                           style: TextStyle(
                             color: whiteFonts,
+                            fontFamily: 'HelveticaNeueLTA',
                             fontSize: 14,
                           ),
                           decoration: InputDecoration(

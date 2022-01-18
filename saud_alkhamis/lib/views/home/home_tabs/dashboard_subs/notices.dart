@@ -14,7 +14,7 @@ class Notices extends StatefulWidget {
 
 class _NoticesState extends State<Notices> {
   ScrollController scrollController = ScrollController();
-  Future<Widget> timeline;
+  Future<List<Widget>> timeline;
   @override
   void initState() {
     timeline = getTimeline(context);
@@ -111,7 +111,7 @@ class _NoticesState extends State<Notices> {
                               child: GridView.count(
                                 physics: NeverScrollableScrollPhysics(),
                                 crossAxisCount: 4,
-                                childAspectRatio: 1.25,
+                                childAspectRatio: 1.2,
                                 children: [
                                   InkWell(
                                     onTap: () {},
@@ -128,7 +128,7 @@ class _NoticesState extends State<Notices> {
                                         Icon(
                                           Icons.add_circle,
                                           color: redFonts,
-                                          size: 12,
+                                          size: 16,
                                         ),
                                         Text(
                                           'تيلقيرام',
@@ -158,7 +158,7 @@ class _NoticesState extends State<Notices> {
                                         Icon(
                                           Icons.add_circle,
                                           color: redFonts,
-                                          size: 12,
+                                          size: 16,
                                         ),
                                         Text(
                                           'انستقرام',
@@ -188,7 +188,7 @@ class _NoticesState extends State<Notices> {
                                         Icon(
                                           Icons.add_circle,
                                           color: redFonts,
-                                          size: 12,
+                                          size: 16,
                                         ),
                                         Text(
                                           'اليوتيوب',
@@ -218,7 +218,7 @@ class _NoticesState extends State<Notices> {
                                         Icon(
                                           Icons.add_circle,
                                           color: redFonts,
-                                          size: 12,
+                                          size: 16,
                                         ),
                                         Text(
                                           'تويتر',
@@ -248,7 +248,7 @@ class _NoticesState extends State<Notices> {
                                         Icon(
                                           Icons.add_circle,
                                           color: redFonts,
-                                          size: 12,
+                                          size: 16,
                                         ),
                                         Text(
                                           'مقالات شخصية',
@@ -278,7 +278,7 @@ class _NoticesState extends State<Notices> {
                                         Icon(
                                           Icons.add_circle,
                                           color: redFonts,
-                                          size: 12,
+                                          size: 16,
                                         ),
                                         Text(
                                           'تقديم خدمة',
@@ -308,7 +308,7 @@ class _NoticesState extends State<Notices> {
                                         Icon(
                                           Icons.add_circle,
                                           color: redFonts,
-                                          size: 12,
+                                          size: 16,
                                         ),
                                         Text(
                                           'تيك توك',
@@ -338,7 +338,7 @@ class _NoticesState extends State<Notices> {
                                         Icon(
                                           Icons.add_circle,
                                           color: redFonts,
-                                          size: 12,
+                                          size: 16,
                                         ),
                                         Text(
                                           'سناب شات',
@@ -481,33 +481,38 @@ class _NoticesState extends State<Notices> {
                             ),
                           ),
                         ),
-                        Scrollbar(
-                          isAlwaysShown: true,
-                          controller: scrollController,
-                          radius: Radius.circular(10),
-                          child: SizedBox(
-                            height: 135,
-                            child: FutureBuilder(
-                              future: timeline,
-                              builder: (context, snapshot) =>
-                                  snapshot.connectionState ==
-                                          ConnectionState.waiting
-                                      ? Center(
-                                          child: CupertinoActivityIndicator(),
-                                        )
-                                      : snapshot.hasData
-                                          ? snapshot.data
-                                          : Center(
-                                              child: Text(
-                                                'لا توجد نتائج\n بحث',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: whiteFonts
-                                                        .withOpacity(0.5)),
-                                              ),
-                                            ),
-                            ),
-                          ),
+                        FutureBuilder(
+                          future: timeline,
+                          builder: (context, snapshot) => snapshot
+                                      .connectionState ==
+                                  ConnectionState.waiting
+                              ? Center(
+                                  child: CupertinoActivityIndicator(),
+                                )
+                              : snapshot.hasData
+                                  ? SizedBox(
+                                      height: 150,
+                                      child: Scrollbar(
+                                        isAlwaysShown: true,
+                                        radius: Radius.circular(10),
+                                        child: ListView.builder(
+                                            physics: BouncingScrollPhysics(),
+                                            itemCount: snapshot.data.length,
+                                            scrollDirection: Axis.horizontal,
+                                            shrinkWrap: true,
+                                            itemBuilder: (context, index) {
+                                              return snapshot.data[index];
+                                            }),
+                                      ),
+                                    )
+                                  : Center(
+                                      child: Text(
+                                        'لا توجد نتائج\n بحث',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: whiteFonts.withOpacity(0.5)),
+                                      ),
+                                    ),
                         ),
                       ],
                     ),
@@ -587,19 +592,19 @@ class _ListItemState extends State<ListItem> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: 25,
-                height: 25,
+                width: 30,
+                height: 30,
                 alignment: Alignment.center,
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(30),
                   color: yellowFonts,
                 ),
                 child: Text(
                   widget.year,
                   style: TextStyle(
                     color: darkFonts,
-                    fontSize: 6,
+                    fontSize: 8,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

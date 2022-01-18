@@ -360,6 +360,7 @@ showPopupMenu(context, String post, String media, String project) async {
                     text: post,
                     style: TextStyle(
                       color: whiteFonts,
+                      fontFamily: 'HelveticaNeueLTA',
                       fontSize: 12,
                     ),
                   ),
@@ -370,6 +371,7 @@ showPopupMenu(context, String post, String media, String project) async {
                     text: 'مقال جديد',
                     style: TextStyle(
                       color: whiteFonts,
+                      fontFamily: 'HelveticaNeueLTA',
                       fontSize: 12,
                     ),
                   ),
@@ -399,6 +401,7 @@ showPopupMenu(context, String post, String media, String project) async {
                     text: media,
                     style: TextStyle(
                       color: whiteFonts,
+                      fontFamily: 'HelveticaNeueLTA',
                       fontSize: 12,
                     ),
                   ),
@@ -410,6 +413,7 @@ showPopupMenu(context, String post, String media, String project) async {
                     style: TextStyle(
                       color: whiteFonts,
                       fontSize: 12,
+                      fontFamily: 'HelveticaNeueLTA',
                     ),
                   ),
                 ],
@@ -438,6 +442,7 @@ showPopupMenu(context, String post, String media, String project) async {
                     text: project,
                     style: TextStyle(
                       color: whiteFonts,
+                      fontFamily: 'HelveticaNeueLTA',
                       fontSize: 12,
                     ),
                   ),
@@ -448,6 +453,7 @@ showPopupMenu(context, String post, String media, String project) async {
                     text: 'مشاريع جديدة',
                     style: TextStyle(
                       color: whiteFonts,
+                      fontFamily: 'HelveticaNeueLTA',
                       fontSize: 12,
                     ),
                   ),
